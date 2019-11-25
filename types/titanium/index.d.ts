@@ -1,10 +1,9 @@
-// Type definitions for non-npm package Titanium 7.3
+// Type definitions for non-npm package Titanium 8.3
 // Project: https://github.com/appcelerator/titanium_mobile
 // Definitions by: Axway Appcelerator <https://github.com/appcelerator>
 //                 Jan Vennemann <https://github.com/janvennemann>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.6
-
 declare const Ti: typeof Titanium;
 
 /**
@@ -201,7 +200,6 @@ declare namespace Titanium {
 		setLifecycleContainer?(lifecycleContainer: Titanium.UI.TabGroup): void;
 
 	}
-
 	/**
 	 * A container for binary data.
 	 */
@@ -334,7 +332,6 @@ declare namespace Titanium {
 		getSize(): number;
 
 	}
-
 	/**
 	 * Wrapper around <Titanium.Blob> that implements the <Titanium.IOStream> interface.
 	 */
@@ -342,12 +339,12 @@ declare namespace Titanium {
 		/**
 		 * Reads data from this stream into a buffer.
 		 */
-		read(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		read(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: ReadCallbackArgs) => any): number;
 
 		/**
 		 * Writes data from a buffer to this stream.
 		 */
-		write(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		write(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: WriteCallbackArgs) => any): number;
 
 		/**
 		 * Indicates whether this stream is writable.
@@ -365,7 +362,6 @@ declare namespace Titanium {
 		close(): void;
 
 	}
-
 	/**
 	 * Buffer is a mutable, resizable container for raw data.
 	 */
@@ -481,7 +477,6 @@ declare namespace Titanium {
 		setByteOrder(byteOrder: number): void;
 
 	}
-
 	/**
 	 * Wrapper around <Titanium.Buffer> that implements the <Titanium.IOStream> interface.
 	 */
@@ -489,12 +484,12 @@ declare namespace Titanium {
 		/**
 		 * Reads data from this stream into a buffer.
 		 */
-		read(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		read(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: ReadCallbackArgs) => any): number;
 
 		/**
 		 * Writes data from a buffer to this stream.
 		 */
-		write(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		write(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: WriteCallbackArgs) => any): number;
 
 		/**
 		 * Indicates whether this stream is writable.
@@ -512,7 +507,6 @@ declare namespace Titanium {
 		close(): void;
 
 	}
-
 	/**
 	 * The base type for all Titanium events.
 	 */
@@ -538,7 +532,6 @@ declare namespace Titanium {
 		cancelBubble: boolean;
 
 	}
-
 	/**
 	 * IOStream is the interface that all stream types implement.
 	 */
@@ -547,12 +540,12 @@ declare namespace Titanium {
 		/**
 		 * Reads data from this stream into a buffer.
 		 */
-		read(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		read(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: ReadCallbackArgs) => any): number;
 
 		/**
 		 * Writes data from a buffer to this stream.
 		 */
-		write(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+		write(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: WriteCallbackArgs) => any): number;
 
 		/**
 		 * Indicates whether this stream is writable.
@@ -570,7 +563,6 @@ declare namespace Titanium {
 		close(): void;
 
 	}
-
 
 	/**
 	 * The main <Titanium.UI> module.
@@ -669,6 +661,11 @@ declare namespace Titanium {
 		 * Use with <Attribute.type> to specify a color for the stroke text.
 		 */
 		const ATTRIBUTE_STROKE_COLOR: number;
+
+		/**
+		 * Use with <Attribute.type> to manages the behaviour of string set.
+		 */
+		const ATTRIBUTE_PARAGRAPH_STYLE: number;
 
 		/**
 		 * Use with <Attribute.type> to specify the width of the stroke text.
@@ -1636,6 +1633,21 @@ declare namespace Titanium {
 		const RETURNKEY_YAHOO: number;
 
 		/**
+		 * Return the dark value from the applications colorset
+		 */
+		const SEMANTIC_COLOR_TYPE_DARK: string;
+
+		/**
+		 * Return the light value from the applications colorset.
+		 */
+		const SEMANTIC_COLOR_TYPE_LIGHT: string;
+
+		/**
+		 * When running on Android, iOS 10 or lower, or Windows the value to return form the applications colorset.
+		 */
+		let semanticColorType: string;
+
+		/**
 		 * SIZE behavior for UI layout.
 		 */
 		const SIZE: string;
@@ -1691,54 +1703,59 @@ declare namespace Titanium {
 		const TEXT_AUTOCAPITALIZATION_WORDS: number;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for headings.
 		 */
 		const TEXT_STYLE_HEADLINE: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for subheadings.
 		 */
 		const TEXT_STYLE_SUBHEADLINE: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for body texts.
 		 */
 		const TEXT_STYLE_BODY: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used in footnotes.
 		 */
 		const TEXT_STYLE_FOOTNOTE: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for standard captions.
 		 */
 		const TEXT_STYLE_CAPTION1: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for alternate captions.
 		 */
 		const TEXT_STYLE_CAPTION2: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for callouts.
 		 */
 		const TEXT_STYLE_CALLOUT: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for first level hierarchical headings.
 		 */
 		const TEXT_STYLE_TITLE1: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for second level hierarchical headings.
 		 */
 		const TEXT_STYLE_TITLE2: string;
 
 		/**
-		 * Specifies the text style for the <Font> Object.
+		 * The font used for third level hierarchical headings.
 		 */
 		const TEXT_STYLE_TITLE3: string;
+
+		/**
+		 * Specifies the text style for the <Font> Object.
+		 */
+		const TEXT_STYLE_LARGE_TITLE: string;
 
 		/**
 		 * Align text to the bottom of the view.
@@ -1901,7 +1918,22 @@ declare namespace Titanium {
 		/**
 		 * Creates and returns an instance of <Titanium.UI.2DMatrix>.
 		 */
-		function create2DMatrix(parameters?: MatrixCreationDict): Titanium.UI.Matrix2D;
+		function create2DMatrix(parameters?: Matrix2DCreationDict): Titanium.UI.Matrix2D;
+
+		/**
+		 * Creates and returns an instance of <Titanium.UI.Matrix2D>.
+		 */
+		function createMatrix2D(parameters?: Matrix2DCreationDict): Titanium.UI.Matrix2D;
+
+		/**
+		 * Creates and returns an instance of <Titanium.UI.3DMatrix>.
+		 */
+		function create3DMatrix(parameters?: Matrix3DCreationDict): Titanium.UI.Matrix3D;
+
+		/**
+		 * Creates and returns an instance of <Titanium.UI.Matrix3D>.
+		 */
+		function createMatrix3D(parameters?: Matrix3DCreationDict): Titanium.UI.Matrix3D;
 
 		/**
 		 * Converts one type of unit to another using the metrics of the main display.
@@ -1909,14 +1941,14 @@ declare namespace Titanium {
 		function convertUnits(convertFromValue: string, convertToUnits: number): number;
 
 		/**
+		 * Fetches the correct color to be used with a UI element dependent on the users current dark mode setting on iOS 13 and above, or the [Titanium.UI.semanticColorType](Titanium.UI.semanticColorType) setting in other instances.
+		 */
+		function fetchSemanticColor(colorName: string): string;
+
+		/**
 		 * Creates and returns an instance of <Titanium.UI.View>.
 		 */
 		function createView(parameters?: any): Titanium.UI.View;
-
-		/**
-		 * Creates and returns an instance of <Titanium.UI.3DMatrix>.
-		 */
-		function create3DMatrix(parameters?: any): Titanium.UI.Matrix3D;
 
 		/**
 		 * Creates and returns an instance of <Titanium.UI.ActivityIndicator>.
@@ -1994,6 +2026,11 @@ declare namespace Titanium {
 		function createMaskedImage(parameters?: any): Titanium.UI.MaskedImage;
 
 		/**
+		 * Creates and returns an instance of <Titanium.UI.NavigationWindow>.
+		 */
+		function createNavigationWindow(parameters?: any): Titanium.UI.NavigationWindow;
+
+		/**
 		 * Creates and returns an instance of <Titanium.UI.Notification>.
 		 */
 		function createNotification(parameters?: any): Titanium.UI.Notification;
@@ -2042,6 +2079,11 @@ declare namespace Titanium {
 		 * Creates and returns an instance of <Titanium.UI.SearchBar>.
 		 */
 		function createSearchBar(parameters?: any): Titanium.UI.SearchBar;
+
+		/**
+		 * Creates and returns an instance of <Titanium.UI.ShortcutItem>.
+		 */
+		function createShortcutItem(parameters?: any): Titanium.UI.ShortcutItem;
 
 		/**
 		 * Creates and returns an instance of <Titanium.UI.Slider>.
@@ -2127,6 +2169,16 @@ declare namespace Titanium {
 		 * Sets the value of the <Titanium.UI.lifecycleContainer> property.
 		 */
 		function setLifecycleContainer(lifecycleContainer: Titanium.UI.TabGroup): void;
+
+		/**
+		 * Gets the value of the <Titanium.UI.semanticColorType> property.
+		 */
+		function getSemanticColorType(): string;
+
+		/**
+		 * Sets the value of the <Titanium.UI.semanticColorType> property.
+		 */
+		function setSemanticColorType(semanticColorType: string): void;
 
 		/**
 		 * Gets the value of the <Titanium.UI.backgroundColor> property.
@@ -2359,7 +2411,7 @@ declare namespace Titanium {
 			layout: string;
 
 			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 			 */
 			opacity: number;
 
@@ -2370,6 +2422,7 @@ declare namespace Titanium {
 
 			/**
 			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+			 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 			 */
 			pullBackgroundColor: string;
 
@@ -2419,7 +2472,7 @@ declare namespace Titanium {
 			readonly size: Dimension;
 
 			/**
-			 * Determines keyboard behavior when this view is focused.
+			 * Determines keyboard behavior when this view is focused. Defaults to <Titanium.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS>.
 			 */
 			softKeyboardOnFocus: number;
 
@@ -2532,6 +2585,11 @@ declare namespace Titanium {
 			 * Animates this view.
 			 */
 			animate(animation: any, callback?: (param0: any) => any): void;
+
+			/**
+			 * Removes all previously added motion effects.
+			 */
+			clearMotionEffects(): void;
 
 			/**
 			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -3251,7 +3309,6 @@ declare namespace Titanium {
 			setKeepScreenOn(keepScreenOn: boolean): void;
 
 		}
-
 		/**
 		 * An empty drawing surface or container
 		 */
@@ -3418,7 +3475,7 @@ declare namespace Titanium {
 			layout: string;
 
 			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 			 */
 			opacity: number;
 
@@ -3429,6 +3486,7 @@ declare namespace Titanium {
 
 			/**
 			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+			 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 			 */
 			pullBackgroundColor: string;
 
@@ -3478,7 +3536,7 @@ declare namespace Titanium {
 			readonly size: Dimension;
 
 			/**
-			 * Determines keyboard behavior when this view is focused.
+			 * Determines keyboard behavior when this view is focused. Defaults to <Titanium.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS>.
 			 */
 			softKeyboardOnFocus: number;
 
@@ -3591,6 +3649,11 @@ declare namespace Titanium {
 			 * Animates this view.
 			 */
 			animate(animation: any, callback?: (param0: any) => any): void;
+
+			/**
+			 * Removes all previously added motion effects.
+			 */
+			clearMotionEffects(): void;
 
 			/**
 			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -4310,7 +4373,6 @@ declare namespace Titanium {
 			setKeepScreenOn(keepScreenOn: boolean): void;
 
 		}
-
 		/**
 		 * The 2D Matrix is an object for holding values for an affine transformation matrix.
 		 */
@@ -4431,7 +4493,6 @@ declare namespace Titanium {
 			setTy(ty: number): void;
 
 		}
-
 		/**
 		 * The 3D Matrix is an object for holding values for a 3D affine transform.
 		 */
@@ -4702,7 +4763,6 @@ declare namespace Titanium {
 			setM44(m44: number): void;
 
 		}
-
 		/**
 		 * An activity indicator that lets the user know an action is taking place.
 		 */
@@ -4798,7 +4858,6 @@ declare namespace Titanium {
 			setIndicatorColor(indicatorColor: string): void;
 
 		}
-
 		/**
 		 * An alert dialog is a modal view that includes an optional title, a message and buttons,
 		 * positioned in the middle of the display.
@@ -5308,7 +5367,6 @@ declare namespace Titanium {
 			setValue(value: string): void;
 
 		}
-
 		/**
 		 * The `Animation` object defines an animation that can be applied to a view.
 		 */
@@ -5350,6 +5408,11 @@ declare namespace Titanium {
 			curve: number;
 
 			/**
+			 * The damping ratio for the spring animation as it approaches its quiescent state.
+			 */
+			dampingRatio: number;
+
+			/**
 			 * Delay, in milliseconds before starting the animation.
 			 */
 			delay: number;
@@ -5388,6 +5451,11 @@ declare namespace Titanium {
 			 * Value of the `right` property at the end of the animation.
 			 */
 			right: number;
+
+			/**
+			 * The initial spring velocity.
+			 */
+			springVelocity: number;
 
 			/**
 			 * Value of the `top` property at the end of the animation.
@@ -5495,6 +5563,16 @@ declare namespace Titanium {
 			setCurve(curve: number): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.Animation.dampingRatio> property.
+			 */
+			getDampingRatio(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Animation.dampingRatio> property.
+			 */
+			setDampingRatio(dampingRatio: number): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.Animation.delay> property.
 			 */
 			getDelay(): number;
@@ -5575,6 +5653,16 @@ declare namespace Titanium {
 			setRight(right: number): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.Animation.springVelocity> property.
+			 */
+			getSpringVelocity(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Animation.springVelocity> property.
+			 */
+			setSpringVelocity(springVelocity: number): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.Animation.top> property.
 			 */
 			getTop(): number;
@@ -5650,7 +5738,6 @@ declare namespace Titanium {
 			setZIndex(zIndex: number): void;
 
 		}
-
 		/**
 		 * An attributed string proxy manages character strings and associated sets of attributes (for example,
 		 * font and foregroundcolor) that apply to individual characters or ranges of characters in the string.
@@ -5692,7 +5779,6 @@ declare namespace Titanium {
 			setAttributes(attributes: ReadonlyArray<Attribute>): void;
 
 		}
-
 		/**
 		 * A button widget that has four states: normal, disabled, focused and selected.
 		 */
@@ -5954,7 +6040,6 @@ declare namespace Titanium {
 			setVerticalAlign(verticalAlign: string): void;
 
 		}
-
 		/**
 		 * An iOS button bar component.
 		 */
@@ -6071,12 +6156,13 @@ declare namespace Titanium {
 			layout: string;
 
 			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 			 */
 			opacity: number;
 
 			/**
 			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+			 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 			 */
 			pullBackgroundColor: string;
 
@@ -6174,6 +6260,11 @@ declare namespace Titanium {
 			 * Animates this view.
 			 */
 			animate(animation: any, callback?: (param0: any) => any): void;
+
+			/**
+			 * Removes all previously added motion effects.
+			 */
+			clearMotionEffects(): void;
 
 			/**
 			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -6668,7 +6759,6 @@ declare namespace Titanium {
 			setLabels(labels: ReadonlyArray<BarItemType>): void;
 
 		}
-
 		/**
 		 * The cover flow view is a container showing animated three-dimensional images in a style
 		 * consistent with the cover flow presentation used for iPod, iTunes, and file browsing.
@@ -6786,12 +6876,13 @@ declare namespace Titanium {
 			layout: string;
 
 			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 			 */
 			opacity: number;
 
 			/**
 			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+			 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 			 */
 			pullBackgroundColor: string;
 
@@ -6889,6 +6980,11 @@ declare namespace Titanium {
 			 * Animates this view.
 			 */
 			animate(animation: any, callback?: (param0: any) => any): void;
+
+			/**
+			 * Removes all previously added motion effects.
+			 */
+			clearMotionEffects(): void;
 
 			/**
 			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -7413,7 +7509,6 @@ declare namespace Titanium {
 			setSelected(selected: number): void;
 
 		}
-
 		/**
 		 * A dashboard item is a view that is displayed as an icon in a <Titanium.UI.DashboardView>.
 		 */
@@ -7489,7 +7584,6 @@ declare namespace Titanium {
 			setSelectedImage(selectedImage: Titanium.Blob): void;
 
 		}
-
 		/**
 		 * A dashboard view is an iOS Springboard-like view of <Titanium.UI.DashboardItem> items that may
 		 * be deleted and reordered by the user using its built-in edit mode.
@@ -7612,12 +7706,13 @@ declare namespace Titanium {
 			layout: string;
 
 			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 			 */
 			opacity: number;
 
 			/**
 			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+			 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 			 */
 			pullBackgroundColor: string;
 
@@ -7730,6 +7825,11 @@ declare namespace Titanium {
 			 * Animates this view.
 			 */
 			animate(animation: any, callback?: (param0: any) => any): void;
+
+			/**
+			 * Removes all previously added motion effects.
+			 */
+			clearMotionEffects(): void;
 
 			/**
 			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -8264,7 +8364,6 @@ declare namespace Titanium {
 			setWobble(wobble: boolean): void;
 
 		}
-
 		/**
 		 * An email dialog is a modal window that allows users to compose and send an email.
 		 */
@@ -8417,7 +8516,6 @@ declare namespace Titanium {
 			setToRecipients(toRecipients: ReadonlyArray<string>): void;
 
 		}
-
 		/**
 		 * A view to display a single image or series of animated images.
 		 */
@@ -8674,7 +8772,6 @@ declare namespace Titanium {
 			setUrl(url: string): void;
 
 		}
-
 		/**
 		 * A text label, with an optional background image.
 		 */
@@ -9051,7 +9148,6 @@ declare namespace Titanium {
 			setVerticalAlign(verticalAlign: string): void;
 
 		}
-
 		/**
 		 * A list item is an individual item in a list section.
 		 */
@@ -9202,7 +9298,6 @@ declare namespace Titanium {
 			setSelectedSubtitleColor(selectedSubtitleColor: string): void;
 
 		}
-
 		/**
 		 * A list section is a container within a list view used to organize list items.
 		 */
@@ -9314,7 +9409,6 @@ declare namespace Titanium {
 			getItems(): ListDataItem[];
 
 		}
-
 		/**
 		 * A list view is used to present information, organized in to sections and items,
 		 * in a vertically-scrolling view.
@@ -9341,6 +9435,11 @@ declare namespace Titanium {
 			editing: boolean;
 
 			/**
+			 * Sets the fastScroll mode on Android ListViews.
+			 */
+			fastScroll: boolean;
+
+			/**
 			 * Determines whether this list view items can be selected while editing the table.
 			 */
 			allowsSelectionDuringEditing: boolean;
@@ -9349,6 +9448,11 @@ declare namespace Titanium {
 			 * Determines whether multiple items of this list view can be selected at the same time while editing the table.
 			 */
 			allowsMultipleSelectionDuringEditing: boolean;
+
+			/**
+			 * Allows a two-finger pan gesture to automatically transition the table view into editing mode and start selecting rows.
+			 */
+			allowsMultipleSelectionInteraction: boolean;
 
 			/**
 			 * Determines if the list view should use lazy loading to load remote images.
@@ -9511,6 +9615,11 @@ declare namespace Titanium {
 			dimBackgroundForSearch: boolean;
 
 			/**
+			 * A Boolean indicating whether search bar will be in navigation bar.
+			 */
+			showSearchBarInNavBar: boolean;
+
+			/**
 			 * The background color of the search results (iOS-only).
 			 */
 			resultsBackgroundColor: string;
@@ -9642,6 +9751,16 @@ declare namespace Titanium {
 			setEditing(editing: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.ListView.fastScroll> property.
+			 */
+			getFastScroll(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ListView.fastScroll> property.
+			 */
+			setFastScroll(fastScroll: boolean): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.ListView.allowsSelectionDuringEditing> property.
 			 */
 			getAllowsSelectionDuringEditing(): boolean;
@@ -9660,6 +9779,16 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.ListView.allowsMultipleSelectionDuringEditing> property.
 			 */
 			setAllowsMultipleSelectionDuringEditing(allowsMultipleSelectionDuringEditing: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.ListView.allowsMultipleSelectionInteraction> property.
+			 */
+			getAllowsMultipleSelectionInteraction(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ListView.allowsMultipleSelectionInteraction> property.
+			 */
+			setAllowsMultipleSelectionInteraction(allowsMultipleSelectionInteraction: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.ListView.lazyLoadingEnabled> property.
@@ -9992,6 +10121,16 @@ declare namespace Titanium {
 			setDimBackgroundForSearch(dimBackgroundForSearch: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.ListView.showSearchBarInNavBar> property.
+			 */
+			getShowSearchBarInNavBar(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ListView.showSearchBarInNavBar> property.
+			 */
+			setShowSearchBarInNavBar(showSearchBarInNavBar: boolean): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.ListView.resultsBackgroundColor> property.
 			 */
 			getResultsBackgroundColor(): string;
@@ -10042,7 +10181,6 @@ declare namespace Titanium {
 			setSelectedItems(selectedItems: ReadonlyArray<ListItemEventType>): void;
 
 		}
-
 		/**
 		 * A control that displays an image composited with a background image or color.
 		 */
@@ -10108,7 +10246,1058 @@ declare namespace Titanium {
 			setTint(tint: string): void;
 
 		}
+		/**
+		 * The 2D Matrix is an object for holding values for an affine transformation matrix.
+		 */
+		interface Matrix2D extends Titanium.Proxy {
+			/**
+			 * The entry at position [1,1] in the matrix.
+			 */
+			a: number;
 
+			/**
+			 * The entry at position [1,2] in the matrix.
+			 */
+			b: number;
+
+			/**
+			 * The entry at position [2,1] in the matrix.
+			 */
+			c: number;
+
+			/**
+			 * The entry at position [2,2] in the matrix.
+			 */
+			d: number;
+
+			/**
+			 * The entry at position [3,1] in the matrix.
+			 */
+			tx: number;
+
+			/**
+			 * The entry at position [3,2] in the matrix.
+			 */
+			ty: number;
+
+			/**
+			 * Returns a matrix constructed by inverting this matrix.
+			 */
+			invert(): Titanium.UI.Matrix2D;
+
+			/**
+			 * Returns a matrix constructed by combining two existing matrices.
+			 */
+			multiply(t2: Titanium.UI.Matrix2D): Titanium.UI.Matrix2D;
+
+			/**
+			 * Returns a matrix constructed by rotating this matrix.
+			 */
+			rotate(angle: number, toAngle?: number): Titanium.UI.Matrix2D;
+
+			/**
+			 * Returns a `Matrix2D` object that specifies a scaling animation from one scale to another.
+			 */
+			scale(sx: number, sy: number, toSx?: number, toSy?: number): Titanium.UI.Matrix2D;
+
+			/**
+			 * Returns a matrix constructed by applying a translation transform to this matrix.
+			 */
+			translate(tx: number, ty: number): Titanium.UI.Matrix2D;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.a> property.
+			 */
+			getA(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.a> property.
+			 */
+			setA(a: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.b> property.
+			 */
+			getB(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.b> property.
+			 */
+			setB(b: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.c> property.
+			 */
+			getC(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.c> property.
+			 */
+			setC(c: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.d> property.
+			 */
+			getD(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.d> property.
+			 */
+			setD(d: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.tx> property.
+			 */
+			getTx(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.tx> property.
+			 */
+			setTx(tx: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix2D.ty> property.
+			 */
+			getTy(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix2D.ty> property.
+			 */
+			setTy(ty: number): void;
+
+		}
+		/**
+		 * The 3D Matrix is an object for holding values for a 3D affine transform.
+		 */
+		interface Matrix3D extends Titanium.Proxy {
+			/**
+			 * The entry at position [1,1] in the matrix.
+			 */
+			m11: number;
+
+			/**
+			 * The entry at position [1,2] in the matrix.
+			 */
+			m12: number;
+
+			/**
+			 * The entry at position [1,3] in the matrix.
+			 */
+			m13: number;
+
+			/**
+			 * The entry at position [1,4] in the matrix.
+			 */
+			m14: number;
+
+			/**
+			 * The entry at position [2,1] in the matrix.
+			 */
+			m21: number;
+
+			/**
+			 * The entry at position [2,2] in the matrix.
+			 */
+			m22: number;
+
+			/**
+			 * The entry at position [2,3] in the matrix.
+			 */
+			m23: number;
+
+			/**
+			 * The entry at position [2,4] in the matrix.
+			 */
+			m24: number;
+
+			/**
+			 * The entry at position [3,1] in the matrix.
+			 */
+			m31: number;
+
+			/**
+			 * The entry at position [3,2] in the matrix.
+			 */
+			m32: number;
+
+			/**
+			 * The entry at position [3,3] in the matrix.
+			 */
+			m33: number;
+
+			/**
+			 * The entry at position [3,4] in the matrix.
+			 */
+			m34: number;
+
+			/**
+			 * The entry at position [4,1] in the matrix.
+			 */
+			m41: number;
+
+			/**
+			 * The entry at position [4,2] in the matrix.
+			 */
+			m42: number;
+
+			/**
+			 * The entry at position [4,3] in the matrix.
+			 */
+			m43: number;
+
+			/**
+			 * The entry at position [4,4] in the matrix.
+			 */
+			m44: number;
+
+			/**
+			 * Returns a matrix constructed by inverting this matrix.
+			 */
+			invert(): Titanium.UI.Matrix3D;
+
+			/**
+			 * Returns a matrix constructed by combining two existing matrix.
+			 */
+			multiply(t2: Titanium.UI.Matrix3D): Titanium.UI.Matrix3D;
+
+			/**
+			 * Returns a matrix constructed by rotating this matrix.
+			 */
+			rotate(angle: number, x: number, y: number, z: number): Titanium.UI.Matrix3D;
+
+			/**
+			 * Returns a matrix constructed by scaling this matrix.
+			 */
+			scale(sx: number, sy: number, sz: number): Titanium.UI.Matrix3D;
+
+			/**
+			 * Returns a matrix constructed by translating an existing matrix.
+			 */
+			translate(tx: number, ty: number, tz: number): Titanium.UI.Matrix3D;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m11> property.
+			 */
+			getM11(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m11> property.
+			 */
+			setM11(m11: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m12> property.
+			 */
+			getM12(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m12> property.
+			 */
+			setM12(m12: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m13> property.
+			 */
+			getM13(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m13> property.
+			 */
+			setM13(m13: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m14> property.
+			 */
+			getM14(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m14> property.
+			 */
+			setM14(m14: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m21> property.
+			 */
+			getM21(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m21> property.
+			 */
+			setM21(m21: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m22> property.
+			 */
+			getM22(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m22> property.
+			 */
+			setM22(m22: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m23> property.
+			 */
+			getM23(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m23> property.
+			 */
+			setM23(m23: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m24> property.
+			 */
+			getM24(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m24> property.
+			 */
+			setM24(m24: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m31> property.
+			 */
+			getM31(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m31> property.
+			 */
+			setM31(m31: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m32> property.
+			 */
+			getM32(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m32> property.
+			 */
+			setM32(m32: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m33> property.
+			 */
+			getM33(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m33> property.
+			 */
+			setM33(m33: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m34> property.
+			 */
+			getM34(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m34> property.
+			 */
+			setM34(m34: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m41> property.
+			 */
+			getM41(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m41> property.
+			 */
+			setM41(m41: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m42> property.
+			 */
+			getM42(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m42> property.
+			 */
+			setM42(m42: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m43> property.
+			 */
+			getM43(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m43> property.
+			 */
+			setM43(m43: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Matrix3D.m44> property.
+			 */
+			getM44(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Matrix3D.m44> property.
+			 */
+			setM44(m44: number): void;
+
+		}
+		/**
+		 * A `NavigationWindow` implements a specialized view that manages the navigation of hierarchical
+		 * content.
+		 */
+		interface NavigationWindow extends Titanium.UI.View {
+			/**
+			 * Contains a reference to the Android Activity object associated with this window.
+			 */
+			readonly activity: Titanium.Android.Activity;
+
+			/**
+			 * Boolean value indicating if the application should exit when the Android
+			 * Back button is pressed while the window is being shown or when the window
+			 * is closed programmatically.
+			 */
+			exitOnClose: boolean;
+
+			/**
+			 * An array of supported values specified using the EXTEND_EDGE constants in <Titanium.UI>.
+			 */
+			extendEdges: number[];
+
+			/**
+			 * Treat the content of the window as secure, preventing it from appearing in screenshots or from being viewed on non-secure displays.
+			 */
+			flagSecure: boolean;
+
+			/**
+			 * Specifies if the edges should extend beyond opaque bars (navigation bar, tab bar, toolbar).
+			 */
+			includeOpaqueBars: boolean;
+
+			/**
+			 * Specifies whether or not the view controller should automatically adjust its scroll view insets.
+			 */
+			autoAdjustScrollViewInsets: boolean;
+
+			/**
+			 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
+			 */
+			extendSafeArea: boolean;
+
+			/**
+			 * Boolean value indicating if the window is fullscreen.
+			 */
+			fullscreen: boolean;
+
+			/**
+			 * Boolean value indicating whether the system is allowed to hide the visual indicator for returning to the Home screen.
+			 */
+			homeIndicatorAutoHidden: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar on swipe.
+			 */
+			hidesBarsOnSwipe: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar on tap.
+			 */
+			hidesBarsOnTap: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar when the keyboard appears.
+			 */
+			hidesBarsWhenKeyboardAppears: boolean;
+
+			/**
+			 * Set this to true to hide the back button of navigation bar.
+			 */
+			hidesBackButton: boolean;
+
+			/**
+			 * A Boolean value indicating whether the title should be displayed in a large format.
+			 */
+			largeTitleEnabled: boolean;
+
+			/**
+			 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+			 */
+			hidesSearchBarWhenScrolling: boolean;
+
+			/**
+			 * The mode to use when displaying the title of the navigation bar.
+			 */
+			largeTitleDisplayMode: number;
+
+			/**
+			 * An Array of views to show in the left nav bar area.
+			 */
+			leftNavButtons: Titanium.UI.View[];
+
+			/**
+			 * Indicates to open a modal window or not.
+			 */
+			modal: boolean;
+
+			/**
+			 * The <Titanium.UI.NavigationWindow> instance hosting this window.
+			 */
+			readonly navigationWindow: Titanium.UI.NavigationWindow;
+
+			/**
+			 * Callback function that overrides the default behavior when the user presses the **Back**
+			 * button.
+			 */
+			onBack: (param0: any) => any;
+
+			/**
+			 * Array of supported orientation modes, specified using the orientation
+			 * constants defined in <Titanium.UI>.
+			 */
+			orientationModes: number[];
+
+			/**
+			 * Current orientation of the window.
+			 */
+			readonly orientation: number;
+
+			/**
+			 * An Array of views to show in the right nav bar area.
+			 */
+			rightNavButtons: Titanium.UI.View[];
+
+			/**
+			 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+			 */
+			readonly safeAreaPadding: Dimension;
+
+			/**
+			 * Boolean value to enable split action bar.
+			 */
+			splitActionBar: boolean;
+
+			/**
+			 * The status bar style associated with this window.
+			 */
+			statusBarStyle: number;
+
+			/**
+			 * Maintain a sustainable level of performance.
+			 */
+			sustainedPerformanceMode: boolean;
+
+			/**
+			 * Name of the theme to apply to the window.
+			 */
+			theme: string;
+
+			/**
+			 * Title text attributes of the window.
+			 */
+			titleAttributes: titleAttributesParams;
+
+			/**
+			 * Additional flags to set on the Activity Window.
+			 */
+			windowFlags: number;
+
+			/**
+			 * Determines whether a window's soft input area (ie software keyboard) is visible
+			 * as it receives focus and how the window behaves in order to accomodate it while keeping its
+			 * contents in view.
+			 */
+			windowSoftInputMode: number;
+
+			/**
+			 * Set the pixel format for the Activity's Window.
+			 */
+			windowPixelFormat: number;
+
+			/**
+			 * The type of transition used when activity is exiting.
+			 */
+			activityExitTransition: number;
+
+			/**
+			 * The type of transition used when activity is entering.
+			 */
+			activityEnterTransition: number;
+
+			/**
+			 * The type of transition used when returning from a previously started activity.
+			 */
+			activityReturnTransition: number;
+
+			/**
+			 * The type of transition used when reentering to a previously started activity.
+			 */
+			activityReenterTransition: number;
+
+			/**
+			 * The type of exit transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementExitTransition: number;
+
+			/**
+			 * The type of enter transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementEnterTransition: number;
+
+			/**
+			 * The type of return transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementReturnTransition: number;
+
+			/**
+			 * The type of reenter transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementReenterTransition: number;
+
+			/**
+			 * Window to add to this navigation window.
+			 */
+			window: Titanium.UI.Window;
+
+			/**
+			 * Adds a common UI element to participate in window transition animation.
+			 */
+			addSharedElement(view: any, transitionName: string): void;
+
+			/**
+			 * Closes the window.
+			 */
+			close(params?: any): void;
+
+			/**
+			 * Hides the navigation bar.
+			 */
+			hideNavBar(options?: any): void;
+
+			/**
+			 * Opens the window.
+			 */
+			open(params?: openWindowParams): void;
+
+			/**
+			 * Clears all added shared elements.
+			 */
+			removeAllSharedElements(): void;
+
+			/**
+			 * Makes the navigation bar visible.
+			 */
+			showNavBar(options?: any): void;
+
+			/**
+			 * Makes the bottom toolbar visible.
+			 */
+			showToolbar(options?: any): void;
+
+			/**
+			 * Makes the bottom toolbar invisible.
+			 */
+			hideToolbar(options?: any): void;
+
+			/**
+			 * Closes a window and removes it from the navigation window.
+			 */
+			closeWindow(window: Titanium.UI.Window, options: any): void;
+
+			/**
+			 * Opens a window within the navigation window.
+			 */
+			openWindow(window: Titanium.UI.Window, options: any): void;
+
+			/**
+			 * Closes all windows that are currently opened inside the navigation window.
+			 */
+			popToRootWindow(options: any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activity> property.
+			 */
+			getActivity(): Titanium.Android.Activity;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.exitOnClose> property.
+			 */
+			getExitOnClose(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.exitOnClose> property.
+			 */
+			setExitOnClose(exitOnClose: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.extendEdges> property.
+			 */
+			getExtendEdges(): number[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.extendEdges> property.
+			 */
+			setExtendEdges(extendEdges: ReadonlyArray<number>): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.flagSecure> property.
+			 */
+			getFlagSecure(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.flagSecure> property.
+			 */
+			setFlagSecure(flagSecure: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.includeOpaqueBars> property.
+			 */
+			getIncludeOpaqueBars(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.includeOpaqueBars> property.
+			 */
+			setIncludeOpaqueBars(includeOpaqueBars: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.autoAdjustScrollViewInsets> property.
+			 */
+			getAutoAdjustScrollViewInsets(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.autoAdjustScrollViewInsets> property.
+			 */
+			setAutoAdjustScrollViewInsets(autoAdjustScrollViewInsets: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.extendSafeArea> property.
+			 */
+			getExtendSafeArea(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.extendSafeArea> property.
+			 */
+			setExtendSafeArea(extendSafeArea: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.fullscreen> property.
+			 */
+			getFullscreen(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.fullscreen> property.
+			 */
+			setFullscreen(fullscreen: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.homeIndicatorAutoHidden> property.
+			 */
+			getHomeIndicatorAutoHidden(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.homeIndicatorAutoHidden> property.
+			 */
+			setHomeIndicatorAutoHidden(homeIndicatorAutoHidden: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.hidesBarsOnSwipe> property.
+			 */
+			getHidesBarsOnSwipe(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.hidesBarsOnSwipe> property.
+			 */
+			setHidesBarsOnSwipe(hidesBarsOnSwipe: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.hidesBarsOnTap> property.
+			 */
+			getHidesBarsOnTap(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.hidesBarsOnTap> property.
+			 */
+			setHidesBarsOnTap(hidesBarsOnTap: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.hidesBarsWhenKeyboardAppears> property.
+			 */
+			getHidesBarsWhenKeyboardAppears(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.hidesBarsWhenKeyboardAppears> property.
+			 */
+			setHidesBarsWhenKeyboardAppears(hidesBarsWhenKeyboardAppears: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.hidesBackButton> property.
+			 */
+			getHidesBackButton(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.hidesBackButton> property.
+			 */
+			setHidesBackButton(hidesBackButton: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.largeTitleEnabled> property.
+			 */
+			getLargeTitleEnabled(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.largeTitleEnabled> property.
+			 */
+			setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.hidesSearchBarWhenScrolling> property.
+			 */
+			getHidesSearchBarWhenScrolling(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.hidesSearchBarWhenScrolling> property.
+			 */
+			setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.largeTitleDisplayMode> property.
+			 */
+			getLargeTitleDisplayMode(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.largeTitleDisplayMode> property.
+			 */
+			setLargeTitleDisplayMode(largeTitleDisplayMode: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.leftNavButtons> property.
+			 */
+			getLeftNavButtons(): Titanium.UI.View[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.leftNavButtons> property.
+			 */
+			setLeftNavButtons(leftNavButtons: any[]): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.modal> property.
+			 */
+			getModal(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.modal> property.
+			 */
+			setModal(modal: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.navigationWindow> property.
+			 */
+			getNavigationWindow(): Titanium.UI.NavigationWindow;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.onBack> property.
+			 */
+			getOnBack(): (param0: any) => any;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.onBack> property.
+			 */
+			setOnBack(onBack: (param0: any) => any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.orientationModes> property.
+			 */
+			getOrientationModes(): number[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.orientationModes> property.
+			 */
+			setOrientationModes(orientationModes: ReadonlyArray<number>): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.orientation> property.
+			 */
+			getOrientation(): number;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.rightNavButtons> property.
+			 */
+			getRightNavButtons(): Titanium.UI.View[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.rightNavButtons> property.
+			 */
+			setRightNavButtons(rightNavButtons: any[]): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.safeAreaPadding> property.
+			 */
+			getSafeAreaPadding(): Dimension;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.splitActionBar> property.
+			 */
+			getSplitActionBar(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.splitActionBar> property.
+			 */
+			setSplitActionBar(splitActionBar: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.statusBarStyle> property.
+			 */
+			getStatusBarStyle(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.statusBarStyle> property.
+			 */
+			setStatusBarStyle(statusBarStyle: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.sustainedPerformanceMode> property.
+			 */
+			getSustainedPerformanceMode(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.sustainedPerformanceMode> property.
+			 */
+			setSustainedPerformanceMode(sustainedPerformanceMode: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.theme> property.
+			 */
+			getTheme(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.theme> property.
+			 */
+			setTheme(theme: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.titleAttributes> property.
+			 */
+			getTitleAttributes(): titleAttributesParams;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.titleAttributes> property.
+			 */
+			setTitleAttributes(titleAttributes: titleAttributesParams): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.windowFlags> property.
+			 */
+			getWindowFlags(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.windowFlags> property.
+			 */
+			setWindowFlags(windowFlags: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.windowSoftInputMode> property.
+			 */
+			getWindowSoftInputMode(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.windowSoftInputMode> property.
+			 */
+			setWindowSoftInputMode(windowSoftInputMode: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.windowPixelFormat> property.
+			 */
+			getWindowPixelFormat(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.windowPixelFormat> property.
+			 */
+			setWindowPixelFormat(windowPixelFormat: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activityExitTransition> property.
+			 */
+			getActivityExitTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activityExitTransition> property.
+			 */
+			setActivityExitTransition(activityExitTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activityEnterTransition> property.
+			 */
+			getActivityEnterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activityEnterTransition> property.
+			 */
+			setActivityEnterTransition(activityEnterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activityReturnTransition> property.
+			 */
+			getActivityReturnTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activityReturnTransition> property.
+			 */
+			setActivityReturnTransition(activityReturnTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activityReenterTransition> property.
+			 */
+			getActivityReenterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activityReenterTransition> property.
+			 */
+			setActivityReenterTransition(activityReenterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activitySharedElementExitTransition> property.
+			 */
+			getActivitySharedElementExitTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activitySharedElementExitTransition> property.
+			 */
+			setActivitySharedElementExitTransition(activitySharedElementExitTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activitySharedElementEnterTransition> property.
+			 */
+			getActivitySharedElementEnterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activitySharedElementEnterTransition> property.
+			 */
+			setActivitySharedElementEnterTransition(activitySharedElementEnterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activitySharedElementReturnTransition> property.
+			 */
+			getActivitySharedElementReturnTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activitySharedElementReturnTransition> property.
+			 */
+			setActivitySharedElementReturnTransition(activitySharedElementReturnTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.activitySharedElementReenterTransition> property.
+			 */
+			getActivitySharedElementReenterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.activitySharedElementReenterTransition> property.
+			 */
+			setActivitySharedElementReenterTransition(activitySharedElementReenterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.NavigationWindow.window> property.
+			 */
+			getWindow(): Titanium.UI.Window;
+
+			/**
+			 * Sets the value of the <Titanium.UI.NavigationWindow.window> property.
+			 */
+			setWindow(window: Titanium.UI.Window): void;
+
+		}
 		/**
 		 * A toast notification.
 		 */
@@ -10224,7 +11413,6 @@ declare namespace Titanium {
 			setVerticalMargin(verticalMargin: number): void;
 
 		}
-
 		/**
 		 * An option dialog is a modal view that includes a message and one or more option items positioned
 		 * in the middle of the display on Android and at the bottom edge on iOS. On Android, buttons may
@@ -10267,7 +11455,7 @@ declare namespace Titanium {
 			persistent: boolean;
 
 			/**
-			 * Defines the default selected option.
+			 * Defines the default selected option. Since `8.1.0`, if not defined or -1 it will show a normal list instead of radio buttons.
 			 */
 			selectedIndex: number;
 
@@ -10382,7 +11570,6 @@ declare namespace Titanium {
 			setTitleid(titleid: string): void;
 
 		}
-
 		/**
 		 * A control used to select one or more fixed values.
 		 */
@@ -10641,11 +11828,6 @@ declare namespace Titanium {
 			getValue(): Date;
 
 			/**
-			 * Sets the value of the <Titanium.UI.Picker.value> property.
-			 */
-			setValue(value: Date): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.Picker.visibleItems> property.
 			 */
 			getVisibleItems(): number;
@@ -10676,7 +11858,6 @@ declare namespace Titanium {
 			setFont(font: Font): void;
 
 		}
-
 		/**
 		 * A picker column, representing a selectable group of items in a <Titanium.UI.Picker>.
 		 */
@@ -10727,7 +11908,6 @@ declare namespace Titanium {
 			setFont(font: Font): void;
 
 		}
-
 		/**
 		 * A picker row, representing a selectable item in a <Titanium.UI.Picker>.
 		 */
@@ -10778,7 +11958,6 @@ declare namespace Titanium {
 			setTitle(title: string): void;
 
 		}
-
 		/**
 		 * A progress bar.
 		 */
@@ -10904,7 +12083,6 @@ declare namespace Titanium {
 			setValue(value: number): void;
 
 		}
-
 		/**
 		 * The RefreshControl is a representation of the native iOS
 		 * [UIRefreshControl](https://developer.apple.com/documentation/uikit/uirefreshcontrol)
@@ -10952,7 +12130,6 @@ declare namespace Titanium {
 			setTintColor(tintColor: string): void;
 
 		}
-
 		/**
 		 * A view that contains a horizontally and/or vertically-scrollable region of content.
 		 */
@@ -11066,7 +12243,7 @@ declare namespace Titanium {
 			/**
 			 * Sets the value of the [contentOffset](Titanium.UI.ScrollView.contentOffset) property.
 			 */
-			setContentOffset(contentOffset: any, animated?: contentOffsetOption): void;
+			setContentOffset(contentOffsetXY: any, animated?: contentOffsetOption): void;
 
 			/**
 			 * Sets the value of the [zoomScale](Titanium.UI.ScrollView.zoomScale) property.
@@ -11112,11 +12289,6 @@ declare namespace Titanium {
 			 * Gets the value of the <Titanium.UI.ScrollView.contentOffset> property.
 			 */
 			getContentOffset(): any;
-
-			/**
-			 * Sets the value of the <Titanium.UI.ScrollView.contentOffset> property.
-			 */
-			setContentOffset(contentOffset: any): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.ScrollView.contentWidth> property.
@@ -11289,7 +12461,6 @@ declare namespace Titanium {
 			getZoomScale(): number;
 
 		}
-
 		/**
 		 * A view that encapsulates a horizontally-scrolling set of child views, known as pages, navigable
 		 * using its built-in horizontal swipe gestures.
@@ -11380,6 +12551,11 @@ declare namespace Titanium {
 			 * Sets the region where this view responds to gestures.
 			 */
 			hitRect: Dimension;
+
+			/**
+			 * The padding applied to the scrollable view.
+			 */
+			padding: ViewPadding;
 
 			/**
 			 * Inserts views at the specified position in the [views](Titanium.UI.ScrollableView.views) array.
@@ -11591,8 +12767,17 @@ declare namespace Titanium {
 			 */
 			setHitRect(hitRect: Dimension): void;
 
-		}
+			/**
+			 * Gets the value of the <Titanium.UI.ScrollableView.padding> property.
+			 */
+			getPadding(): ViewPadding;
 
+			/**
+			 * Sets the value of the <Titanium.UI.ScrollableView.padding> property.
+			 */
+			setPadding(padding: ViewPadding): void;
+
+		}
 		/**
 		 * A specialized text field for entering search text.
 		 */
@@ -11860,11 +13045,6 @@ declare namespace Titanium {
 			getShowCancel(): boolean;
 
 			/**
-			 * Sets the value of the <Titanium.UI.SearchBar.showCancel> property.
-			 */
-			setShowCancel(showCancel: boolean): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.SearchBar.style> property.
 			 */
 			getStyle(): number;
@@ -11885,7 +13065,91 @@ declare namespace Titanium {
 			setValue(value: string): void;
 
 		}
+		/**
+		 * An application shortcut.
+		 */
+		interface ShortcutItem extends Titanium.Proxy {
+			/**
+			 * Determines shortcut id.
+			 */
+			id: string;
 
+			/**
+			 * Title of the shortcut.
+			 */
+			title: string;
+
+			/**
+			 * Description of the shortcut.
+			 */
+			description: string;
+
+			/**
+			 * Shortcut icon.
+			 */
+			icon: string | number;
+
+			/**
+			 * Allow the shortcut to show.
+			 */
+			show(): void;
+
+			/**
+			 * Hide the shortcut.
+			 */
+			hide(): void;
+
+			/**
+			 * Pin shortcut to launcher.
+			 */
+			pin(): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.ShortcutItem.id> property.
+			 */
+			getId(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ShortcutItem.id> property.
+			 */
+			setId(id: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.ShortcutItem.title> property.
+			 */
+			getTitle(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ShortcutItem.title> property.
+			 */
+			setTitle(title: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.ShortcutItem.description> property.
+			 */
+			getDescription(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ShortcutItem.description> property.
+			 */
+			setDescription(description: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.ShortcutItem.icon> property.
+			 */
+			getIcon(): string | number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ShortcutItem.icon> property.
+			 */
+			setIcon(icon: string): void;
+
+			/**
+			 * Sets the value of the <Titanium.UI.ShortcutItem.icon> property.
+			 */
+			setIcon(icon: number): void;
+
+		}
 		/**
 		 * A slider component with a draggable thumb.
 		 */
@@ -11999,6 +13263,11 @@ declare namespace Titanium {
 			 * Image for the slider thumb.
 			 */
 			thumbImage: string | Titanium.Blob;
+
+			/**
+			 * The color shown for the portion of the progress bar that is not filled.
+			 */
+			trackTintColor: string;
 
 			/**
 			 * Current value of the slider.
@@ -12236,12 +13505,21 @@ declare namespace Titanium {
 			setThumbImage(thumbImage: Titanium.Blob): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.Slider.trackTintColor> property.
+			 */
+			getTrackTintColor(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Slider.trackTintColor> property.
+			 */
+			setTrackTintColor(trackTintColor: string): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.Slider.value> property.
 			 */
 			getValue(): string;
 
 		}
-
 		/**
 		 * An on/off switch control.
 		 */
@@ -12453,7 +13731,6 @@ declare namespace Titanium {
 			setVerticalAlign(verticalAlign: string): void;
 
 		}
-
 		/**
 		 * A tab instance for a [TabGroup](Titanium.UI.TabGroup).
 		 */
@@ -12670,20 +13947,329 @@ declare namespace Titanium {
 			getWindow(): Titanium.UI.Window;
 
 		}
-
 		/**
 		 * A tabbed group of windows.
 		 */
 		interface TabGroup extends Titanium.UI.View {
 			/**
-			 * Active tab.
-			 */
-			activeTab: Titanium.UI.Tab;
-
-			/**
 			 * Reference to the Android Activity object associated with this tab group.
 			 */
 			readonly activity: Titanium.Android.Activity;
+
+			/**
+			 * Title for the back button. This is only valid when the window is a child of a tab.
+			 */
+			backButtonTitle: string;
+
+			/**
+			 * The image to show as the back button. This is only valid when the window is a child of a tab.
+			 */
+			backButtonTitleImage: string | Titanium.Blob;
+
+			/**
+			 * Default navigation bar color (typically for the **More** tab), as a color name or hex triplet.
+			 */
+			barColor: string;
+
+			/**
+			 * Background image for the nav bar, specified as a URL to a local image.
+			 */
+			barImage: string;
+
+			/**
+			 * Boolean value indicating if the application should exit when closing the tab group, whether via Android
+			 * back button or the [close](Titanium.UI.TabGroup.close) method.
+			 */
+			exitOnClose: boolean;
+
+			/**
+			 * An array of supported values specified using the EXTEND_EDGE constants in <Titanium.UI>.
+			 */
+			extendEdges: number[];
+
+			/**
+			 * Treat the content of the window as secure, preventing it from appearing in screenshots or from being viewed on non-secure displays.
+			 */
+			flagSecure: boolean;
+
+			/**
+			 * Specifies if the edges should extend beyond opaque bars (navigation bar, tab bar, toolbar).
+			 */
+			includeOpaqueBars: boolean;
+
+			/**
+			 * Specifies whether or not the view controller should automatically adjust its scroll view insets.
+			 */
+			autoAdjustScrollViewInsets: boolean;
+
+			/**
+			 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
+			 */
+			extendSafeArea: boolean;
+
+			/**
+			 * Boolean value indicating if the window is fullscreen.
+			 */
+			fullscreen: boolean;
+
+			/**
+			 * Boolean value indicating whether the system is allowed to hide the visual indicator for returning to the Home screen.
+			 */
+			homeIndicatorAutoHidden: boolean;
+
+			/**
+			 * Set this to true to hide the shadow image of the navigation bar.
+			 */
+			hideShadow: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar on swipe.
+			 */
+			hidesBarsOnSwipe: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar on tap.
+			 */
+			hidesBarsOnTap: boolean;
+
+			/**
+			 * Set this to true to hide the navigation bar when the keyboard appears.
+			 */
+			hidesBarsWhenKeyboardAppears: boolean;
+
+			/**
+			 * Set this to true to hide the back button of navigation bar.
+			 */
+			hidesBackButton: boolean;
+
+			/**
+			 * A Boolean value indicating whether the title should be displayed in a large format.
+			 */
+			largeTitleEnabled: boolean;
+
+			/**
+			 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+			 */
+			hidesSearchBarWhenScrolling: boolean;
+
+			/**
+			 * The mode to use when displaying the title of the navigation bar.
+			 */
+			largeTitleDisplayMode: number;
+
+			/**
+			 * View to show in the left nav bar area.
+			 */
+			leftNavButton: Titanium.UI.View;
+
+			/**
+			 * An Array of views to show in the left nav bar area.
+			 */
+			leftNavButtons: Titanium.UI.View[];
+
+			/**
+			 * Indicates to open a modal window or not.
+			 */
+			modal: boolean;
+
+			/**
+			 * Hides the navigation bar (`true`) or shows the navigation bar (`false`).
+			 */
+			navBarHidden: boolean;
+
+			/**
+			 * The tintColor to apply to the navigation bar (typically for the **More** tab).
+			 */
+			navTintColor: string;
+
+			/**
+			 * The <Titanium.UI.NavigationWindow> instance hosting this window.
+			 */
+			readonly navigationWindow: Titanium.UI.NavigationWindow;
+
+			/**
+			 * Callback function that overrides the default behavior when the user presses the **Back**
+			 * button.
+			 */
+			onBack: (param0: any) => any;
+
+			/**
+			 * Array of supported orientation modes, specified using the orientation
+			 * constants defined in <Titanium.UI>.
+			 */
+			orientationModes: number[];
+
+			/**
+			 * Current orientation of the window.
+			 */
+			readonly orientation: number;
+
+			/**
+			 * View to show in the right nav bar area.
+			 */
+			rightNavButton: Titanium.UI.View;
+
+			/**
+			 * An Array of views to show in the right nav bar area.
+			 */
+			rightNavButtons: Titanium.UI.View[];
+
+			/**
+			 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+			 */
+			readonly safeAreaPadding: Dimension;
+
+			/**
+			 * Image of the shadow placed between the tab bar and the content area.
+			 */
+			shadowImage: string;
+
+			/**
+			 * Boolean value to enable split action bar.
+			 */
+			splitActionBar: boolean;
+
+			/**
+			 * The status bar style associated with this window.
+			 */
+			statusBarStyle: number;
+
+			/**
+			 * Maintain a sustainable level of performance.
+			 */
+			sustainedPerformanceMode: boolean;
+
+			/**
+			 * Boolean value indicating if the user should be able to close a window using a swipe gesture.
+			 */
+			swipeToClose: boolean;
+
+			/**
+			 * Boolean value indicating if the tab bar should be hidden.
+			 */
+			tabBarHidden: boolean;
+
+			/**
+			 * Name of the theme to apply to the window.
+			 */
+			theme: string;
+
+			/**
+			 * Title for this tabGroup.
+			 */
+			title: string;
+
+			/**
+			 * Title text attributes of the window to be applied on the **More** tab.
+			 */
+			titleAttributes: titleAttributesParams;
+
+			/**
+			 * View to show in the title area of the nav bar.
+			 */
+			titleControl: Titanium.UI.View;
+
+			/**
+			 * Image to show in the title area of the nav bar, specified as a local file path or URL.
+			 */
+			titleImage: string;
+
+			/**
+			 * Title prompt for the window.
+			 */
+			titlePrompt: string;
+
+			/**
+			 * Key identifying a string from the locale file to use for the window title.
+			 */
+			titleid: string;
+
+			/**
+			 * Key identifying a string from the locale file to use for the window title prompt.
+			 */
+			titlepromptid: string;
+
+			/**
+			 * Array of button objects to show in the window's toolbar.
+			 */
+			toolbar: any[];
+
+			/**
+			 * Use a transition animation when opening or closing windows in a
+			 * <Titanium.UI.NavigationWindow> or <Titanium.UI.Tab>.
+			 */
+			transitionAnimation: Titanium.Proxy;
+
+			/**
+			 * Boolean value indicating if the nav bar (typically for the **More** tab), is translucent.
+			 */
+			translucent: boolean;
+
+			/**
+			 * Loads a JavaScript file from a local URL.
+			 */
+			url: string;
+
+			/**
+			 * Additional flags to set on the Activity Window.
+			 */
+			windowFlags: number;
+
+			/**
+			 * Determines how the tab group is treated when a soft input method (such as a virtual keyboard)
+			 * is displayed.
+			 */
+			windowSoftInputMode: number;
+
+			/**
+			 * Set the pixel format for the Activity's Window.
+			 */
+			windowPixelFormat: number;
+
+			/**
+			 * The type of transition used when activity is exiting.
+			 */
+			activityExitTransition: number;
+
+			/**
+			 * The type of transition used when activity is entering.
+			 */
+			activityEnterTransition: number;
+
+			/**
+			 * The type of transition used when returning from a previously started activity.
+			 */
+			activityReturnTransition: number;
+
+			/**
+			 * The type of transition used when reentering to a previously started activity.
+			 */
+			activityReenterTransition: number;
+
+			/**
+			 * The type of exit transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementExitTransition: number;
+
+			/**
+			 * The type of enter transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementEnterTransition: number;
+
+			/**
+			 * The type of return transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementReturnTransition: number;
+
+			/**
+			 * The type of reenter transition used when animating shared elements between two activities.
+			 */
+			activitySharedElementReenterTransition: number;
+
+			/**
+			 * Active tab.
+			 */
+			activeTab: number | Titanium.UI.Tab;
 
 			/**
 			 * Allow the user to reorder tabs in the tab group using the **Edit** button on the **More**
@@ -12692,35 +14278,9 @@ declare namespace Titanium {
 			allowUserCustomization: boolean;
 
 			/**
-			 * Default navigation bar color (typically for the **More** tab), as a color name or hex triplet.
-			 */
-			barColor: string;
-
-			/**
-			 * Boolean value indicating if the nav bar (typically for the **More** tab), is translucent.
-			 */
-			translucent: boolean;
-
-			/**
-			 * Title text attributes of the window to be applied on the **More** tab.
-			 */
-			titleAttributes: titleAttributesParams;
-
-			/**
-			 * The tintColor to apply to the navigation bar (typically for the **More** tab).
-			 */
-			navTintColor: string;
-
-			/**
 			 * Title for the edit button on the **More** tab.
 			 */
 			editButtonTitle: string;
-
-			/**
-			 * Boolean value indicating if the application should exit when closing the tab group, whether via Android
-			 * back button or the [close](Titanium.UI.TabGroup.close) method.
-			 */
-			exitOnClose: boolean;
 
 			/**
 			 * Boolean value indicating if tab navigation can be done by swipes, in addition to tab clicks.
@@ -12738,10 +14298,14 @@ declare namespace Titanium {
 			tabs: Titanium.UI.Tab[];
 
 			/**
-			 * Determines how the tab group is treated when a soft input method (such as a virtual keyboard)
-			 * is displayed.
+			 * Determines whether the [TABS_STYLE_BOTTOM_NAVIGATION](Titanium.UI.Android.TABS_STYLE_BOTTOM_NAVIGATION) uses shiftMode.
 			 */
-			windowSoftInputMode: number;
+			shiftMode: boolean;
+
+			/**
+			 * Property defining which style for the TabGroup to be used.
+			 */
+			style: number;
 
 			/**
 			 * Default background color for inactive tabs, as a color name or hex triplet.
@@ -12759,11 +14323,6 @@ declare namespace Titanium {
 			tabsTranslucent: boolean;
 
 			/**
-			 * Title for this tabGroup.
-			 */
-			title: string;
-
-			/**
 			 * Default background image for tabs.
 			 */
 			tabsBackgroundImage: string;
@@ -12773,11 +14332,6 @@ declare namespace Titanium {
 			 * indicates that the tab group should use its default value instead.
 			 */
 			unselectedItemTintColor: string;
-
-			/**
-			 * Image of the shadow placed between the tab bar and the content area.
-			 */
-			shadowImage: string;
 
 			/**
 			 * Color applied to active tabs icons, as a color name or hex triplet, where the tab's activeIcon was not defined.
@@ -12795,14 +14349,59 @@ declare namespace Titanium {
 			activeTabBackgroundImage: string;
 
 			/**
-			 * Adds a tab to the tab group.
+			 * Adds a common UI element to participate in window transition animation.
 			 */
-			addTab(tab: Titanium.UI.Tab): void;
+			addSharedElement(view: any, transitionName: string): void;
 
 			/**
 			 * Closes the tab group and removes it from the UI.
 			 */
-			close(): void;
+			close(params?: any): void;
+
+			/**
+			 * Hides the navigation bar.
+			 */
+			hideNavBar(options?: any): void;
+
+			/**
+			 * Hides the tab bar. Must be called before opening the window.
+			 */
+			hideTabBar(): void;
+
+			/**
+			 * Opens the tab group and makes it visible.
+			 */
+			open(params?: openWindowParams): void;
+
+			/**
+			 * Clears all added shared elements.
+			 */
+			removeAllSharedElements(): void;
+
+			/**
+			 * Sets the array of items to show in the window's toolbar.
+			 */
+			setToolbar(items: ReadonlyArray<any>, params?: windowToolbarParam): void;
+
+			/**
+			 * Makes the navigation bar visible.
+			 */
+			showNavBar(options?: any): void;
+
+			/**
+			 * Makes the bottom toolbar visible.
+			 */
+			showToolbar(options?: any): void;
+
+			/**
+			 * Makes the bottom toolbar invisible.
+			 */
+			hideToolbar(options?: any): void;
+
+			/**
+			 * Adds a tab to the tab group.
+			 */
+			addTab(tab: Titanium.UI.Tab): void;
 
 			/**
 			 * Disable (or re-enable) tab navigation. If tab navigation is disabled, the tabs are hidden and
@@ -12814,11 +14413,6 @@ declare namespace Titanium {
 			 * Gets the currently-active tab.
 			 */
 			getActiveTab(): Titanium.UI.Tab;
-
-			/**
-			 * Opens the tab group and makes it visible.
-			 */
-			open(): void;
 
 			/**
 			 * Removes a tab from the tab group.
@@ -12841,29 +14435,34 @@ declare namespace Titanium {
 			getTabs(): Titanium.UI.Tab[];
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.activeTab> property.
-			 */
-			getActiveTab(): Titanium.UI.Tab;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.activeTab> property.
-			 */
-			setActiveTab(activeTab: Titanium.UI.Tab): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.activity> property.
 			 */
 			getActivity(): Titanium.Android.Activity;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.allowUserCustomization> property.
+			 * Gets the value of the <Titanium.UI.TabGroup.backButtonTitle> property.
 			 */
-			getAllowUserCustomization(): boolean;
+			getBackButtonTitle(): string;
 
 			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.allowUserCustomization> property.
+			 * Sets the value of the <Titanium.UI.TabGroup.backButtonTitle> property.
 			 */
-			setAllowUserCustomization(allowUserCustomization: boolean): void;
+			setBackButtonTitle(backButtonTitle: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.backButtonTitleImage> property.
+			 */
+			getBackButtonTitleImage(): string | Titanium.Blob;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.backButtonTitleImage> property.
+			 */
+			setBackButtonTitleImage(backButtonTitleImage: string): void;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.backButtonTitleImage> property.
+			 */
+			setBackButtonTitleImage(backButtonTitleImage: Titanium.Blob): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.barColor> property.
@@ -12876,24 +14475,214 @@ declare namespace Titanium {
 			setBarColor(barColor: string): void;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.translucent> property.
+			 * Gets the value of the <Titanium.UI.TabGroup.barImage> property.
 			 */
-			getTranslucent(): boolean;
+			getBarImage(): string;
 
 			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.translucent> property.
+			 * Sets the value of the <Titanium.UI.TabGroup.barImage> property.
 			 */
-			setTranslucent(translucent: boolean): void;
+			setBarImage(barImage: string): void;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.titleAttributes> property.
+			 * Gets the value of the <Titanium.UI.TabGroup.exitOnClose> property.
 			 */
-			getTitleAttributes(): titleAttributesParams;
+			getExitOnClose(): boolean;
 
 			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.titleAttributes> property.
+			 * Sets the value of the <Titanium.UI.TabGroup.exitOnClose> property.
 			 */
-			setTitleAttributes(titleAttributes: titleAttributesParams): void;
+			setExitOnClose(exitOnClose: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.extendEdges> property.
+			 */
+			getExtendEdges(): number[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.extendEdges> property.
+			 */
+			setExtendEdges(extendEdges: ReadonlyArray<number>): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.flagSecure> property.
+			 */
+			getFlagSecure(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.flagSecure> property.
+			 */
+			setFlagSecure(flagSecure: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.includeOpaqueBars> property.
+			 */
+			getIncludeOpaqueBars(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.includeOpaqueBars> property.
+			 */
+			setIncludeOpaqueBars(includeOpaqueBars: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.autoAdjustScrollViewInsets> property.
+			 */
+			getAutoAdjustScrollViewInsets(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.autoAdjustScrollViewInsets> property.
+			 */
+			setAutoAdjustScrollViewInsets(autoAdjustScrollViewInsets: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.extendSafeArea> property.
+			 */
+			getExtendSafeArea(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.extendSafeArea> property.
+			 */
+			setExtendSafeArea(extendSafeArea: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.fullscreen> property.
+			 */
+			getFullscreen(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.fullscreen> property.
+			 */
+			setFullscreen(fullscreen: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.homeIndicatorAutoHidden> property.
+			 */
+			getHomeIndicatorAutoHidden(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.homeIndicatorAutoHidden> property.
+			 */
+			setHomeIndicatorAutoHidden(homeIndicatorAutoHidden: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hideShadow> property.
+			 */
+			getHideShadow(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hideShadow> property.
+			 */
+			setHideShadow(hideShadow: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hidesBarsOnSwipe> property.
+			 */
+			getHidesBarsOnSwipe(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hidesBarsOnSwipe> property.
+			 */
+			setHidesBarsOnSwipe(hidesBarsOnSwipe: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hidesBarsOnTap> property.
+			 */
+			getHidesBarsOnTap(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hidesBarsOnTap> property.
+			 */
+			setHidesBarsOnTap(hidesBarsOnTap: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hidesBarsWhenKeyboardAppears> property.
+			 */
+			getHidesBarsWhenKeyboardAppears(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hidesBarsWhenKeyboardAppears> property.
+			 */
+			setHidesBarsWhenKeyboardAppears(hidesBarsWhenKeyboardAppears: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hidesBackButton> property.
+			 */
+			getHidesBackButton(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hidesBackButton> property.
+			 */
+			setHidesBackButton(hidesBackButton: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.largeTitleEnabled> property.
+			 */
+			getLargeTitleEnabled(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.largeTitleEnabled> property.
+			 */
+			setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.hidesSearchBarWhenScrolling> property.
+			 */
+			getHidesSearchBarWhenScrolling(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.hidesSearchBarWhenScrolling> property.
+			 */
+			setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.largeTitleDisplayMode> property.
+			 */
+			getLargeTitleDisplayMode(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.largeTitleDisplayMode> property.
+			 */
+			setLargeTitleDisplayMode(largeTitleDisplayMode: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.leftNavButton> property.
+			 */
+			getLeftNavButton(): Titanium.UI.View;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.leftNavButton> property.
+			 */
+			setLeftNavButton(leftNavButton: any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.leftNavButtons> property.
+			 */
+			getLeftNavButtons(): Titanium.UI.View[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.leftNavButtons> property.
+			 */
+			setLeftNavButtons(leftNavButtons: any[]): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.modal> property.
+			 */
+			getModal(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.modal> property.
+			 */
+			setModal(modal: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.navBarHidden> property.
+			 */
+			getNavBarHidden(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.navBarHidden> property.
+			 */
+			setNavBarHidden(navBarHidden: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.navTintColor> property.
@@ -12906,6 +14695,356 @@ declare namespace Titanium {
 			setNavTintColor(navTintColor: string): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.navigationWindow> property.
+			 */
+			getNavigationWindow(): Titanium.UI.NavigationWindow;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.onBack> property.
+			 */
+			getOnBack(): (param0: any) => any;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.onBack> property.
+			 */
+			setOnBack(onBack: (param0: any) => any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.orientationModes> property.
+			 */
+			getOrientationModes(): number[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.orientationModes> property.
+			 */
+			setOrientationModes(orientationModes: ReadonlyArray<number>): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.orientation> property.
+			 */
+			getOrientation(): number;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.rightNavButton> property.
+			 */
+			getRightNavButton(): Titanium.UI.View;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.rightNavButton> property.
+			 */
+			setRightNavButton(rightNavButton: any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.rightNavButtons> property.
+			 */
+			getRightNavButtons(): Titanium.UI.View[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.rightNavButtons> property.
+			 */
+			setRightNavButtons(rightNavButtons: any[]): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.safeAreaPadding> property.
+			 */
+			getSafeAreaPadding(): Dimension;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.shadowImage> property.
+			 */
+			getShadowImage(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.shadowImage> property.
+			 */
+			setShadowImage(shadowImage: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.splitActionBar> property.
+			 */
+			getSplitActionBar(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.splitActionBar> property.
+			 */
+			setSplitActionBar(splitActionBar: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.statusBarStyle> property.
+			 */
+			getStatusBarStyle(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.statusBarStyle> property.
+			 */
+			setStatusBarStyle(statusBarStyle: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.sustainedPerformanceMode> property.
+			 */
+			getSustainedPerformanceMode(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.sustainedPerformanceMode> property.
+			 */
+			setSustainedPerformanceMode(sustainedPerformanceMode: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.swipeToClose> property.
+			 */
+			getSwipeToClose(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.swipeToClose> property.
+			 */
+			setSwipeToClose(swipeToClose: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.tabBarHidden> property.
+			 */
+			getTabBarHidden(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.tabBarHidden> property.
+			 */
+			setTabBarHidden(tabBarHidden: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.theme> property.
+			 */
+			getTheme(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.theme> property.
+			 */
+			setTheme(theme: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.title> property.
+			 */
+			getTitle(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.title> property.
+			 */
+			setTitle(title: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titleAttributes> property.
+			 */
+			getTitleAttributes(): titleAttributesParams;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titleAttributes> property.
+			 */
+			setTitleAttributes(titleAttributes: titleAttributesParams): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titleControl> property.
+			 */
+			getTitleControl(): Titanium.UI.View;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titleControl> property.
+			 */
+			setTitleControl(titleControl: any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titleImage> property.
+			 */
+			getTitleImage(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titleImage> property.
+			 */
+			setTitleImage(titleImage: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titlePrompt> property.
+			 */
+			getTitlePrompt(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titlePrompt> property.
+			 */
+			setTitlePrompt(titlePrompt: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titleid> property.
+			 */
+			getTitleid(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titleid> property.
+			 */
+			setTitleid(titleid: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.titlepromptid> property.
+			 */
+			getTitlepromptid(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.titlepromptid> property.
+			 */
+			setTitlepromptid(titlepromptid: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.toolbar> property.
+			 */
+			getToolbar(): any[];
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.transitionAnimation> property.
+			 */
+			getTransitionAnimation(): Titanium.Proxy;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.transitionAnimation> property.
+			 */
+			setTransitionAnimation(transitionAnimation: Titanium.Proxy): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.translucent> property.
+			 */
+			getTranslucent(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.translucent> property.
+			 */
+			setTranslucent(translucent: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.url> property.
+			 */
+			getUrl(): string;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.url> property.
+			 */
+			setUrl(url: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.windowFlags> property.
+			 */
+			getWindowFlags(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.windowFlags> property.
+			 */
+			setWindowFlags(windowFlags: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.windowSoftInputMode> property.
+			 */
+			getWindowSoftInputMode(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.windowSoftInputMode> property.
+			 */
+			setWindowSoftInputMode(windowSoftInputMode: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.windowPixelFormat> property.
+			 */
+			getWindowPixelFormat(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.windowPixelFormat> property.
+			 */
+			setWindowPixelFormat(windowPixelFormat: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activityExitTransition> property.
+			 */
+			getActivityExitTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activityExitTransition> property.
+			 */
+			setActivityExitTransition(activityExitTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activityEnterTransition> property.
+			 */
+			getActivityEnterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activityEnterTransition> property.
+			 */
+			setActivityEnterTransition(activityEnterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activityReturnTransition> property.
+			 */
+			getActivityReturnTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activityReturnTransition> property.
+			 */
+			setActivityReturnTransition(activityReturnTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activityReenterTransition> property.
+			 */
+			getActivityReenterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activityReenterTransition> property.
+			 */
+			setActivityReenterTransition(activityReenterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activitySharedElementExitTransition> property.
+			 */
+			getActivitySharedElementExitTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activitySharedElementExitTransition> property.
+			 */
+			setActivitySharedElementExitTransition(activitySharedElementExitTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activitySharedElementEnterTransition> property.
+			 */
+			getActivitySharedElementEnterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activitySharedElementEnterTransition> property.
+			 */
+			setActivitySharedElementEnterTransition(activitySharedElementEnterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activitySharedElementReturnTransition> property.
+			 */
+			getActivitySharedElementReturnTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activitySharedElementReturnTransition> property.
+			 */
+			setActivitySharedElementReturnTransition(activitySharedElementReturnTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.activitySharedElementReenterTransition> property.
+			 */
+			getActivitySharedElementReenterTransition(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.activitySharedElementReenterTransition> property.
+			 */
+			setActivitySharedElementReenterTransition(activitySharedElementReenterTransition: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.allowUserCustomization> property.
+			 */
+			getAllowUserCustomization(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.allowUserCustomization> property.
+			 */
+			setAllowUserCustomization(allowUserCustomization: boolean): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.editButtonTitle> property.
 			 */
 			getEditButtonTitle(): string;
@@ -12914,16 +15053,6 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.TabGroup.editButtonTitle> property.
 			 */
 			setEditButtonTitle(editButtonTitle: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.exitOnClose> property.
-			 */
-			getExitOnClose(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.exitOnClose> property.
-			 */
-			setExitOnClose(exitOnClose: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.swipeable> property.
@@ -12946,24 +15075,29 @@ declare namespace Titanium {
 			setSmoothScrollOnTabClick(smoothScrollOnTabClick: boolean): void;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.tabs> property.
-			 */
-			getTabs(): Titanium.UI.Tab[];
-
-			/**
 			 * Sets the value of the <Titanium.UI.TabGroup.tabs> property.
 			 */
 			setTabs(tabs: ReadonlyArray<Titanium.UI.Tab>): void;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.windowSoftInputMode> property.
+			 * Gets the value of the <Titanium.UI.TabGroup.shiftMode> property.
 			 */
-			getWindowSoftInputMode(): number;
+			getShiftMode(): boolean;
 
 			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.windowSoftInputMode> property.
+			 * Sets the value of the <Titanium.UI.TabGroup.shiftMode> property.
 			 */
-			setWindowSoftInputMode(windowSoftInputMode: number): void;
+			setShiftMode(shiftMode: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TabGroup.style> property.
+			 */
+			getStyle(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TabGroup.style> property.
+			 */
+			setStyle(style: number): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.tabsBackgroundColor> property.
@@ -12996,16 +15130,6 @@ declare namespace Titanium {
 			setTabsTranslucent(tabsTranslucent: boolean): void;
 
 			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.title> property.
-			 */
-			getTitle(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.title> property.
-			 */
-			setTitle(title: string): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.tabsBackgroundImage> property.
 			 */
 			getTabsBackgroundImage(): string;
@@ -13024,16 +15148,6 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.TabGroup.unselectedItemTintColor> property.
 			 */
 			setUnselectedItemTintColor(unselectedItemTintColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabGroup.shadowImage> property.
-			 */
-			getShadowImage(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabGroup.shadowImage> property.
-			 */
-			setShadowImage(shadowImage: string): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabGroup.activeTabIconTint> property.
@@ -13066,212 +15180,10 @@ declare namespace Titanium {
 			setActiveTabBackgroundImage(activeTabBackgroundImage: string): void;
 
 		}
-
 		/**
 		 * A button bar that maintains a selected state.
 		 */
-		interface TabbedBar extends Titanium.Proxy {
-			/**
-			 * Whether the view should be "hidden" from (i.e., ignored by) the accessibility service.
-			 */
-			accessibilityHidden: boolean;
-
-			/**
-			 * Briefly describes what performing an action (such as a click) on the view will do.
-			 */
-			accessibilityHint: string;
-
-			/**
-			 * A succint label identifying the view for the device's accessibility service.
-			 */
-			accessibilityLabel: string;
-
-			/**
-			 * A string describing the value (if any) of the view for the device's accessibility service.
-			 */
-			accessibilityValue: string;
-
-			/**
-			 * Coordinate of the view about which to pivot an animation.
-			 */
-			anchorPoint: Point;
-
-			/**
-			 * Current position of the view during an animation.
-			 */
-			readonly animatedCenter: Point;
-
-			/**
-			 * Background color of the view, as a color name or hex triplet.
-			 */
-			backgroundColor: string;
-
-			/**
-			 * A background gradient for the view.
-			 */
-			backgroundGradient: Gradient;
-
-			/**
-			 * Background image for the view, specified as a local file path or URL.
-			 */
-			backgroundImage: string;
-
-			/**
-			 * Determines whether to tile a background across a view.
-			 */
-			backgroundRepeat: boolean;
-
-			/**
-			 * Size of the left end cap.
-			 */
-			backgroundLeftCap: number;
-
-			/**
-			 * Size of the top end cap.
-			 */
-			backgroundTopCap: number;
-
-			/**
-			 * Border color of the view, as a color name or hex triplet.
-			 */
-			borderColor: string;
-
-			/**
-			 * Radius for the rounded corners of the view's border.
-			 */
-			borderRadius: number;
-
-			/**
-			 * Border width of the view.
-			 */
-			borderWidth: number;
-
-			/**
-			 * View's bottom position, in platform-specific units.
-			 */
-			bottom: number | string;
-
-			/**
-			 * View's center position, in the parent view's coordinates.
-			 */
-			center: Point;
-
-			/**
-			 * View's clipping behavior.
-			 */
-			clipMode: number;
-
-			/**
-			 * View height, in platform-specific units.
-			 */
-			height: number | string;
-
-			/**
-			 * Adds a horizontal parallax effect to the view
-			 */
-			horizontalMotionEffect: any;
-
-			/**
-			 * View's left position, in platform-specific units.
-			 */
-			left: number | string;
-
-			/**
-			 * Specifies how the view positions its children.
-			 * One of: 'composite', 'vertical', or 'horizontal'.
-			 */
-			layout: string;
-
-			/**
-			 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
-			 */
-			opacity: number;
-
-			/**
-			 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
-			 */
-			pullBackgroundColor: string;
-
-			/**
-			 * The preview context used in the 3D-Touch feature "Peek and Pop".
-			 */
-			previewContext: Titanium.UI.iOS.PreviewContext;
-
-			/**
-			 * View's right position, in platform-specific units.
-			 */
-			right: number | string;
-
-			/**
-			 * The bounding box of the view relative to its parent, in system units.
-			 */
-			readonly rect: Dimension;
-
-			/**
-			 * The size of the view in system units.
-			 */
-			readonly size: Dimension;
-
-			/**
-			 * The view's tintColor
-			 */
-			tintColor: string;
-
-			/**
-			 * The view's top position.
-			 */
-			top: number | string;
-
-			/**
-			 * Determines whether view should receive touch events.
-			 */
-			touchEnabled: boolean;
-
-			/**
-			 * Transformation matrix to apply to the view.
-			 */
-			transform: Titanium.UI.Matrix2D | Titanium.UI.Matrix3D;
-
-			/**
-			 * Adds a vertical parallax effect to the view
-			 */
-			verticalMotionEffect: any;
-
-			/**
-			 * Determines the blur radius used to create the shadow.
-			 */
-			viewShadowRadius: number;
-
-			/**
-			 * Determines the color of the shadow.
-			 */
-			viewShadowColor: string;
-
-			/**
-			 * Determines the offset for the shadow of the view.
-			 */
-			viewShadowOffset: Point;
-
-			/**
-			 * Determines whether the view is visible.
-			 */
-			visible: boolean;
-
-			/**
-			 * View's width, in platform-specific units.
-			 */
-			width: number | string;
-
-			/**
-			 * Determines whether the layout has wrapping behavior.
-			 */
-			horizontalWrap: boolean;
-
-			/**
-			 * Z-index stack order position, relative to other sibling views.
-			 */
-			zIndex: number;
-
+		interface TabbedBar extends Titanium.UI.View {
 			/**
 			 * Index of the currently selected button.
 			 */
@@ -13286,478 +15198,6 @@ declare namespace Titanium {
 			 * Style of the tabbed bar.
 			 */
 			style: number;
-
-			/**
-			 * Animates this view.
-			 */
-			animate(animation: any, callback?: (param0: any) => any): void;
-
-			/**
-			 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
-			 * view tree.
-			 */
-			finishLayout(): void;
-
-			/**
-			 * Hides this view.
-			 */
-			hide(options?: AnimationOption): void;
-
-			/**
-			 * Inserts a view at the specified position in the [children](Titanium.UI.View.children) array.
-			 */
-			insertAt(params: any): void;
-
-			/**
-			 * Makes this view visible.
-			 */
-			show(options?: AnimationOption): void;
-
-			/**
-			 * Starts a batch update of this view's layout properties.
-			 */
-			startLayout(): void;
-
-			/**
-			 * Returns an image of the rendered view, as a Blob.
-			 */
-			toImage(callback?: (param0: Titanium.Blob) => any, honorScaleFactor?: boolean): Titanium.Blob;
-
-			/**
-			 * Performs a batch update of all supplied layout properties and schedules a layout pass after
-			 * they have been updated.
-			 */
-			updateLayout(params: any): void;
-
-			/**
-			 * Translates a point from this view's coordinate system to another view's coordinate system.
-			 */
-			convertPointToView(point: Point, destinationView: any): Point;
-
-			/**
-			 * Returns the matching view of a given view ID.
-			 */
-			getViewById(id: string): Titanium.UI.View;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.accessibilityHidden> property.
-			 */
-			getAccessibilityHidden(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.accessibilityHidden> property.
-			 */
-			setAccessibilityHidden(accessibilityHidden: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.accessibilityHint> property.
-			 */
-			getAccessibilityHint(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.accessibilityHint> property.
-			 */
-			setAccessibilityHint(accessibilityHint: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.accessibilityLabel> property.
-			 */
-			getAccessibilityLabel(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.accessibilityLabel> property.
-			 */
-			setAccessibilityLabel(accessibilityLabel: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.accessibilityValue> property.
-			 */
-			getAccessibilityValue(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.accessibilityValue> property.
-			 */
-			setAccessibilityValue(accessibilityValue: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.anchorPoint> property.
-			 */
-			getAnchorPoint(): Point;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.anchorPoint> property.
-			 */
-			setAnchorPoint(anchorPoint: Point): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.animatedCenter> property.
-			 */
-			getAnimatedCenter(): Point;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundColor> property.
-			 */
-			getBackgroundColor(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundColor> property.
-			 */
-			setBackgroundColor(backgroundColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundGradient> property.
-			 */
-			getBackgroundGradient(): Gradient;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundGradient> property.
-			 */
-			setBackgroundGradient(backgroundGradient: Gradient): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundImage> property.
-			 */
-			getBackgroundImage(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundImage> property.
-			 */
-			setBackgroundImage(backgroundImage: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundRepeat> property.
-			 */
-			getBackgroundRepeat(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundRepeat> property.
-			 */
-			setBackgroundRepeat(backgroundRepeat: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundLeftCap> property.
-			 */
-			getBackgroundLeftCap(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundLeftCap> property.
-			 */
-			setBackgroundLeftCap(backgroundLeftCap: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.backgroundTopCap> property.
-			 */
-			getBackgroundTopCap(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.backgroundTopCap> property.
-			 */
-			setBackgroundTopCap(backgroundTopCap: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.borderColor> property.
-			 */
-			getBorderColor(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.borderColor> property.
-			 */
-			setBorderColor(borderColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.borderRadius> property.
-			 */
-			getBorderRadius(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.borderRadius> property.
-			 */
-			setBorderRadius(borderRadius: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.borderWidth> property.
-			 */
-			getBorderWidth(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.borderWidth> property.
-			 */
-			setBorderWidth(borderWidth: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.bottom> property.
-			 */
-			getBottom(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.bottom> property.
-			 */
-			setBottom(bottom: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.bottom> property.
-			 */
-			setBottom(bottom: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.center> property.
-			 */
-			getCenter(): Point;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.center> property.
-			 */
-			setCenter(center: Point): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.clipMode> property.
-			 */
-			getClipMode(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.clipMode> property.
-			 */
-			setClipMode(clipMode: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.height> property.
-			 */
-			getHeight(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.height> property.
-			 */
-			setHeight(height: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.height> property.
-			 */
-			setHeight(height: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.horizontalMotionEffect> property.
-			 */
-			getHorizontalMotionEffect(): any;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.horizontalMotionEffect> property.
-			 */
-			setHorizontalMotionEffect(horizontalMotionEffect: any): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.left> property.
-			 */
-			getLeft(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.left> property.
-			 */
-			setLeft(left: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.left> property.
-			 */
-			setLeft(left: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.layout> property.
-			 */
-			getLayout(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.layout> property.
-			 */
-			setLayout(layout: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.opacity> property.
-			 */
-			getOpacity(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.opacity> property.
-			 */
-			setOpacity(opacity: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.pullBackgroundColor> property.
-			 */
-			getPullBackgroundColor(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.pullBackgroundColor> property.
-			 */
-			setPullBackgroundColor(pullBackgroundColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.previewContext> property.
-			 */
-			getPreviewContext(): Titanium.UI.iOS.PreviewContext;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.previewContext> property.
-			 */
-			setPreviewContext(previewContext: Titanium.UI.iOS.PreviewContext): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.right> property.
-			 */
-			getRight(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.right> property.
-			 */
-			setRight(right: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.right> property.
-			 */
-			setRight(right: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.rect> property.
-			 */
-			getRect(): Dimension;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.size> property.
-			 */
-			getSize(): Dimension;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.tintColor> property.
-			 */
-			getTintColor(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.tintColor> property.
-			 */
-			setTintColor(tintColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.top> property.
-			 */
-			getTop(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.top> property.
-			 */
-			setTop(top: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.top> property.
-			 */
-			setTop(top: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.touchEnabled> property.
-			 */
-			getTouchEnabled(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.touchEnabled> property.
-			 */
-			setTouchEnabled(touchEnabled: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.transform> property.
-			 */
-			getTransform(): Titanium.UI.Matrix2D | Titanium.UI.Matrix3D;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.transform> property.
-			 */
-			setTransform(transform: Titanium.UI.Matrix2D): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.transform> property.
-			 */
-			setTransform(transform: Titanium.UI.Matrix3D): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.verticalMotionEffect> property.
-			 */
-			getVerticalMotionEffect(): any;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.verticalMotionEffect> property.
-			 */
-			setVerticalMotionEffect(verticalMotionEffect: any): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.viewShadowRadius> property.
-			 */
-			getViewShadowRadius(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.viewShadowRadius> property.
-			 */
-			setViewShadowRadius(viewShadowRadius: number): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.viewShadowColor> property.
-			 */
-			getViewShadowColor(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.viewShadowColor> property.
-			 */
-			setViewShadowColor(viewShadowColor: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.viewShadowOffset> property.
-			 */
-			getViewShadowOffset(): Point;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.viewShadowOffset> property.
-			 */
-			setViewShadowOffset(viewShadowOffset: Point): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.visible> property.
-			 */
-			getVisible(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.visible> property.
-			 */
-			setVisible(visible: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.width> property.
-			 */
-			getWidth(): number | string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.width> property.
-			 */
-			setWidth(width: number): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.width> property.
-			 */
-			setWidth(width: string): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.horizontalWrap> property.
-			 */
-			getHorizontalWrap(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.horizontalWrap> property.
-			 */
-			setHorizontalWrap(horizontalWrap: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.UI.TabbedBar.zIndex> property.
-			 */
-			getZIndex(): number;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TabbedBar.zIndex> property.
-			 */
-			setZIndex(zIndex: number): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TabbedBar.index> property.
@@ -13795,7 +15235,6 @@ declare namespace Titanium {
 			setStyle(style: number): void;
 
 		}
-
 		/**
 		 * A table view is used to present information, organized in sections and rows, in a
 		 * vertically-scrolling view.
@@ -13872,6 +15311,16 @@ declare namespace Titanium {
 			 * Determines whether the search field should hide on completion.
 			 */
 			hideSearchOnSelection: boolean;
+
+			/**
+			 * Determines whether multiple items of this table view can be selected at the same time while editing the table.
+			 */
+			allowsMultipleSelectionDuringEditing: boolean;
+
+			/**
+			 * Allows a two-finger pan gesture to automatically transition the table view into editing mode and start selecting rows.
+			 */
+			allowsMultipleSelectionInteraction: boolean;
 
 			/**
 			 * Table view footer as a view that will be rendered instead of a label.
@@ -13953,6 +15402,11 @@ declare namespace Titanium {
 			 * A Boolean indicating whether the underlying content is dimmed during a search.
 			 */
 			dimBackgroundForSearch: boolean;
+
+			/**
+			 * A Boolean indicating whether search bar will be in navigation bar.
+			 */
+			showSearchBarInNavBar: boolean;
 
 			/**
 			 * Determines whether the [SearchBar](Titanium.UI.SearchBar) or [SearchView](Titanium.UI.Android.SearchView) appears as part of the TableView.
@@ -14155,16 +15609,6 @@ declare namespace Titanium {
 			getData(): Titanium.UI.TableViewRow[] | Titanium.UI.TableViewSection[];
 
 			/**
-			 * Sets the value of the <Titanium.UI.TableView.data> property.
-			 */
-			setData(data: ReadonlyArray<Titanium.UI.TableViewRow>): void;
-
-			/**
-			 * Sets the value of the <Titanium.UI.TableView.data> property.
-			 */
-			setData(data: ReadonlyArray<Titanium.UI.TableViewSection>): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.TableView.editable> property.
 			 */
 			getEditable(): boolean;
@@ -14250,11 +15694,6 @@ declare namespace Titanium {
 			getHeaderPullView(): Titanium.UI.View;
 
 			/**
-			 * Sets the value of the <Titanium.UI.TableView.headerPullView> property.
-			 */
-			setHeaderPullView(headerPullView: any): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.TableView.refreshControl> property.
 			 */
 			getRefreshControl(): Titanium.UI.RefreshControl;
@@ -14273,6 +15712,26 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.TableView.hideSearchOnSelection> property.
 			 */
 			setHideSearchOnSelection(hideSearchOnSelection: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TableView.allowsMultipleSelectionDuringEditing> property.
+			 */
+			getAllowsMultipleSelectionDuringEditing(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TableView.allowsMultipleSelectionDuringEditing> property.
+			 */
+			setAllowsMultipleSelectionDuringEditing(allowsMultipleSelectionDuringEditing: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.TableView.allowsMultipleSelectionInteraction> property.
+			 */
+			getAllowsMultipleSelectionInteraction(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TableView.allowsMultipleSelectionInteraction> property.
+			 */
+			setAllowsMultipleSelectionInteraction(allowsMultipleSelectionInteraction: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TableView.footerView> property.
@@ -14440,6 +15899,16 @@ declare namespace Titanium {
 			setDimBackgroundForSearch(dimBackgroundForSearch: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.TableView.showSearchBarInNavBar> property.
+			 */
+			getShowSearchBarInNavBar(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.TableView.showSearchBarInNavBar> property.
+			 */
+			setShowSearchBarInNavBar(showSearchBarInNavBar: boolean): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.TableView.searchAsChild> property.
 			 */
 			getSearchAsChild(): boolean;
@@ -14585,7 +16054,6 @@ declare namespace Titanium {
 			setResultsSeparatorInsets(resultsSeparatorInsets: any): void;
 
 		}
-
 		/**
 		 * A table view row is an individual item in a table, organized into table view sections.
 		 */
@@ -14880,7 +16348,6 @@ declare namespace Titanium {
 			setTitle(title: string): void;
 
 		}
-
 		/**
 		 * A table view section is a container within a table used to organize table view rows.
 		 */
@@ -14981,7 +16448,6 @@ declare namespace Titanium {
 			getRows(): Titanium.UI.TableViewRow[];
 
 		}
-
 		/**
 		 * A multiline text field that supports editing and scrolling.
 		 */
@@ -15121,7 +16587,7 @@ declare namespace Titanium {
 			/**
 			 * Sets the left and right padding of this TextArea. The text will always be vertically centered.
 			 */
-			padding: TextAreaPadding;
+			padding: ViewPadding;
 
 			/**
 			 * Specifies the text to display on the keyboard `Return` key when this text area is focused.
@@ -15457,12 +16923,12 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.UI.TextArea.padding> property.
 			 */
-			getPadding(): TextAreaPadding;
+			getPadding(): ViewPadding;
 
 			/**
 			 * Sets the value of the <Titanium.UI.TextArea.padding> property.
 			 */
-			setPadding(padding: TextAreaPadding): void;
+			setPadding(padding: ViewPadding): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TextArea.returnKeyType> property.
@@ -15560,7 +17026,6 @@ declare namespace Titanium {
 			setVerticalAlign(verticalAlign: string): void;
 
 		}
-
 		/**
 		 * A single line text field.
 		 */
@@ -15722,7 +17187,7 @@ declare namespace Titanium {
 			/**
 			 * Sets the padding of this text field.
 			 */
-			padding: TextFieldPadding;
+			padding: ViewPadding;
 
 			/**
 			 * Left padding of this text field.
@@ -16128,12 +17593,12 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.UI.TextField.padding> property.
 			 */
-			getPadding(): TextFieldPadding;
+			getPadding(): ViewPadding;
 
 			/**
 			 * Sets the value of the <Titanium.UI.TextField.padding> property.
 			 */
-			setPadding(padding: TextFieldPadding): void;
+			setPadding(padding: ViewPadding): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.TextField.paddingLeft> property.
@@ -16291,9 +17756,8 @@ declare namespace Titanium {
 			setMaxLength(maxLength: number): void;
 
 		}
-
 		/**
-		 * A toolbar, which can contain buttons and certain other controls.
+		 * A Toolbar can contain buttons, as well as certain other widgets, including text fields and labels.
 		 */
 		interface Toolbar extends Titanium.UI.View {
 			/**
@@ -16592,7 +18056,6 @@ declare namespace Titanium {
 			setTitleTextColor(titleTextColor: string): void;
 
 		}
-
 		/**
 		 * The web view allows you to open an HTML5 based view which can load either local or remote content.
 		 */
@@ -16634,6 +18097,16 @@ declare namespace Titanium {
 			handlePlatformUrl: boolean;
 
 			/**
+			 * The configuration for the new web view.
+			 */
+			configuration: Titanium.UI.iOS.WebViewConfiguration;
+
+			/**
+			 * List of allowed URL schemes for the web view.
+			 */
+			allowedURLSchemes: string[];
+
+			/**
 			 * Hides activity indicator when loading remote URL.
 			 */
 			hideLoadIndicator: boolean;
@@ -16665,6 +18138,11 @@ declare namespace Titanium {
 			onCreateWindow: (param0: any) => any;
 
 			/**
+			 * Fired before navigating to a link.
+			 */
+			onlink: (param0: OnLinkURLResponse) => any;
+
+			/**
 			 * Determines the behavior when the user overscrolls the view.
 			 */
 			overScrollMode: number;
@@ -16688,6 +18166,11 @@ declare namespace Titanium {
 			 * If `true`, zoom controls are enabled.
 			 */
 			enableZoomControls: boolean;
+
+			/**
+			 * If `true`, allows the loading of insecure resources from a secure origin.
+			 */
+			mixedContentMode: boolean;
 
 			/**
 			 * If `true`, scale contents to fit the web view.
@@ -16725,6 +18208,42 @@ declare namespace Titanium {
 			zoomLevel: number;
 
 			/**
+			 * A Boolean value indicating whether horizontal swipe gestures will trigger back-forward list navigations.
+			 */
+			allowsBackForwardNavigationGestures: boolean;
+
+			/**
+			 * Returns page title of webpage.
+			 */
+			readonly title: string;
+
+			/**
+			 * An estimate of what fraction of the current navigation has been loaded.
+			 */
+			readonly progress: number;
+
+			/**
+			 * The cache policy for the request.
+			 */
+			cachePolicy: number;
+
+			/**
+			 * The timeout interval for the request, in seconds.
+			 */
+			timeout: number;
+
+			/**
+			 * The level of granularity with which the user can interactively select content in the web view.
+			 */
+			readonly selectionGranularity: number;
+
+			/**
+			 * A Boolean value indicating whether all resources on the page have been loaded through
+			 * securely encrypted connections.
+			 */
+			readonly secure: boolean;
+
+			/**
 			 * Sets the value of [html](Titanium.UI.WebView.html) property.
 			 */
 			setHtml(html: any, options?: any): void;
@@ -16741,9 +18260,10 @@ declare namespace Titanium {
 
 			/**
 			 * Evaluates a JavaScript expression inside the context of the web view and
-			 * optionally, returns a result.
+			 * optionally, returns a result. If a callback function is passed in as second argument,
+			 * the evaluation will take place asynchronously and the the callback function will be called with the result.
 			 */
-			evalJS(code: string): string;
+			evalJS(code: string, callback?: (param0: string) => any): string;
 
 			/**
 			 * Goes back one entry in the web view's history list, to the previous page.
@@ -16781,14 +18301,54 @@ declare namespace Titanium {
 			resume(): void;
 
 			/**
-			 * Sets the basic authentication for this web view to use on subsequent URl requests.
+			 * Sets the basic authentication for this web view to use on subsequent URL requests.
 			 */
-			setBasicAuthentication(username: string, password: string): void;
+			setBasicAuthentication(username: string, password: string, persistence: number): void;
 
 			/**
 			 * Stops loading a currently loading page.
 			 */
 			stopLoading(): void;
+
+			/**
+			 * Add native properties for observing for change.
+			 */
+			startListeningToProperties(propertyList: ReadonlyArray<string>): void;
+
+			/**
+			 * Remove native properties from observing.
+			 */
+			stopListeningToProperties(propertyList: ReadonlyArray<string>): void;
+
+			/**
+			 * Takes a snapshot of the view's visible viewport.
+			 */
+			takeSnapshot(callback: (param0: SnapshotResult) => any): void;
+
+			/**
+			 * Adds a user script.
+			 */
+			addUserScript(source: string, injectionTime: number, mainFrameOnly: boolean): void;
+
+			/**
+			 * Removes all associated user scripts.
+			 */
+			removeAllUserScripts(): void;
+
+			/**
+			 * Adds a script message handler.
+			 */
+			addScriptMessageHandler(handlerName: string): void;
+
+			/**
+			 * Removes a script message handler.
+			 */
+			removeScriptMessageHandler(name: string): void;
+
+			/**
+			 * An object which maintains a list of visited pages used to go back and forward to the most recent page.
+			 */
+			backForwardList(): BackForwardList;
 
 			/**
 			 * Gets the value of the <Titanium.UI.WebView.allowsLinkPreview> property.
@@ -16866,6 +18426,26 @@ declare namespace Titanium {
 			setHandlePlatformUrl(handlePlatformUrl: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.UI.WebView.configuration> property.
+			 */
+			getConfiguration(): Titanium.UI.iOS.WebViewConfiguration;
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.configuration> property.
+			 */
+			setConfiguration(configuration: Titanium.UI.iOS.WebViewConfiguration): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.allowedURLSchemes> property.
+			 */
+			getAllowedURLSchemes(): string[];
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.allowedURLSchemes> property.
+			 */
+			setAllowedURLSchemes(allowedURLSchemes: ReadonlyArray<string>): void;
+
+			/**
 			 * Gets the value of the <Titanium.UI.WebView.hideLoadIndicator> property.
 			 */
 			getHideLoadIndicator(): boolean;
@@ -16879,11 +18459,6 @@ declare namespace Titanium {
 			 * Gets the value of the <Titanium.UI.WebView.html> property.
 			 */
 			getHtml(): string;
-
-			/**
-			 * Sets the value of the <Titanium.UI.WebView.html> property.
-			 */
-			setHtml(html: string): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.WebView.keyboardDisplayRequiresUserAction> property.
@@ -16924,6 +18499,16 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.WebView.onCreateWindow> property.
 			 */
 			setOnCreateWindow(onCreateWindow: (param0: any) => any): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.onlink> property.
+			 */
+			getOnlink(): (param0: OnLinkURLResponse) => any;
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.onlink> property.
+			 */
+			setOnlink(onlink: (param0: OnLinkURLResponse) => any): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.WebView.overScrollMode> property.
@@ -16974,6 +18559,16 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.WebView.enableZoomControls> property.
 			 */
 			setEnableZoomControls(enableZoomControls: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.mixedContentMode> property.
+			 */
+			getMixedContentMode(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.mixedContentMode> property.
+			 */
+			setMixedContentMode(mixedContentMode: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.WebView.scalesPageToFit> property.
@@ -17045,16 +18640,63 @@ declare namespace Titanium {
 			 */
 			setZoomLevel(zoomLevel: number): void;
 
-		}
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.allowsBackForwardNavigationGestures> property.
+			 */
+			getAllowsBackForwardNavigationGestures(): boolean;
 
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.allowsBackForwardNavigationGestures> property.
+			 */
+			setAllowsBackForwardNavigationGestures(allowsBackForwardNavigationGestures: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.title> property.
+			 */
+			getTitle(): string;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.progress> property.
+			 */
+			getProgress(): number;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.cachePolicy> property.
+			 */
+			getCachePolicy(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.cachePolicy> property.
+			 */
+			setCachePolicy(cachePolicy: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.timeout> property.
+			 */
+			getTimeout(): number;
+
+			/**
+			 * Sets the value of the <Titanium.UI.WebView.timeout> property.
+			 */
+			setTimeout(timeout: number): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.selectionGranularity> property.
+			 */
+			getSelectionGranularity(): number;
+
+			/**
+			 * Gets the value of the <Titanium.UI.WebView.secure> property.
+			 */
+			getSecure(): boolean;
+
+		}
 		/**
 		 * The Window is an empty drawing surface or container.
 		 */
 		interface Window extends Titanium.UI.View {
 			/**
-			 * For lightweight windows, this property returns undefined.
-			 * For heavyweight windows, this property contains a reference to the
-			 * Android Activity object associated with this window.
+			 * Contains a reference to the Android Activity object associated with this window.
 			 */
 			readonly activity: Titanium.Android.Activity;
 
@@ -17106,8 +18748,7 @@ declare namespace Titanium {
 			autoAdjustScrollViewInsets: boolean;
 
 			/**
-			 * Specifies whether the content (subviews) of the window  will render inside the safe-area or not.
-			 * Only used in iOS 11.0 and later.
+			 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
 			 */
 			extendSafeArea: boolean;
 
@@ -17149,7 +18790,12 @@ declare namespace Titanium {
 			/**
 			 * A Boolean value indicating whether the title should be displayed in a large format.
 			 */
-			largeTitleEnabled: string;
+			largeTitleEnabled: boolean;
+
+			/**
+			 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+			 */
+			hidesSearchBarWhenScrolling: boolean;
 
 			/**
 			 * The mode to use when displaying the title of the navigation bar.
@@ -17182,9 +18828,9 @@ declare namespace Titanium {
 			navTintColor: string;
 
 			/**
-			 * The <Titanium.UI.iOS.NavigationWindow> instance hosting this window.
+			 * The <Titanium.UI.NavigationWindow> instance hosting this window.
 			 */
-			readonly navigationWindow: Titanium.UI.iOS.NavigationWindow;
+			readonly navigationWindow: Titanium.UI.NavigationWindow;
 
 			/**
 			 * Callback function that overrides the default behavior when the user presses the **Back**
@@ -17212,6 +18858,11 @@ declare namespace Titanium {
 			 * An Array of views to show in the right nav bar area.
 			 */
 			rightNavButtons: Titanium.UI.View[];
+
+			/**
+			 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+			 */
+			readonly safeAreaPadding: Dimension;
 
 			/**
 			 * Shadow image for the navigation bar, specified as a URL to a local image..
@@ -17290,7 +18941,7 @@ declare namespace Titanium {
 
 			/**
 			 * Use a transition animation when opening or closing windows in a
-			 * <Titanium.UI.iOS.NavigationWindow> or <Titanium.UI.Tab>.
+			 * <Titanium.UI.NavigationWindow> or <Titanium.UI.Tab>.
 			 */
 			transitionAnimation: Titanium.Proxy;
 
@@ -17310,7 +18961,7 @@ declare namespace Titanium {
 			windowFlags: number;
 
 			/**
-			 * Determines whether a heavyweight window's soft input area (ie software keyboard) is visible
+			 * Determines whether a window's soft input area (ie software keyboard) is visible
 			 * as it receives focus and how the window behaves in order to accomodate it while keeping its
 			 * contents in view.
 			 */
@@ -17594,12 +19245,22 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.UI.Window.largeTitleEnabled> property.
 			 */
-			getLargeTitleEnabled(): string;
+			getLargeTitleEnabled(): boolean;
 
 			/**
 			 * Sets the value of the <Titanium.UI.Window.largeTitleEnabled> property.
 			 */
-			setLargeTitleEnabled(largeTitleEnabled: string): void;
+			setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Window.hidesSearchBarWhenScrolling> property.
+			 */
+			getHidesSearchBarWhenScrolling(): boolean;
+
+			/**
+			 * Sets the value of the <Titanium.UI.Window.hidesSearchBarWhenScrolling> property.
+			 */
+			setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
 
 			/**
 			 * Gets the value of the <Titanium.UI.Window.largeTitleDisplayMode> property.
@@ -17664,7 +19325,7 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.UI.Window.navigationWindow> property.
 			 */
-			getNavigationWindow(): Titanium.UI.iOS.NavigationWindow;
+			getNavigationWindow(): Titanium.UI.NavigationWindow;
 
 			/**
 			 * Gets the value of the <Titanium.UI.Window.onBack> property.
@@ -17710,6 +19371,11 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.Window.rightNavButtons> property.
 			 */
 			setRightNavButtons(rightNavButtons: any[]): void;
+
+			/**
+			 * Gets the value of the <Titanium.UI.Window.safeAreaPadding> property.
+			 */
+			getSafeAreaPadding(): Dimension;
 
 			/**
 			 * Gets the value of the <Titanium.UI.Window.shadowImage> property.
@@ -17857,11 +19523,6 @@ declare namespace Titanium {
 			getToolbar(): any[];
 
 			/**
-			 * Sets the value of the <Titanium.UI.Window.toolbar> property.
-			 */
-			setToolbar(toolbar: ReadonlyArray<any>): void;
-
-			/**
 			 * Gets the value of the <Titanium.UI.Window.transitionAnimation> property.
 			 */
 			getTransitionAnimation(): Titanium.Proxy;
@@ -18003,7 +19664,6 @@ declare namespace Titanium {
 
 		}
 
-
 		/**
 		 * A set of constants for the styles available for <Titanium.UI.ActivityIndicator> objects.
 		 */
@@ -18114,6 +19774,16 @@ declare namespace Titanium {
 			 * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
 			 */
 			let lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+
+			/**
+			 * Window flag which makes the Android system's navigation bar semi-transparent.
+			 */
+			const FLAG_TRANSLUCENT_NAVIGATION: number;
+
+			/**
+			 * Window flag which makes the Android system's top status bar semi-transparent.
+			 */
+			const FLAG_TRANSLUCENT_STATUS: number;
 
 			/**
 			 * Raw bit controlling whether the right/bottom edge is clipped to its container, based on the gravity direction being applied.
@@ -18574,6 +20244,16 @@ declare namespace Titanium {
 			const TRANSITION_NONE: number;
 
 			/**
+			 * The default TabGroup style that places the Tabs bellow the ActionBar and above the Window content.
+			 */
+			const TABS_STYLE_DEFAULT: number;
+
+			/**
+			 * TabGroup style taking advantage of a bottom navigation controller for switching between tabs.
+			 */
+			const TABS_STYLE_BOTTOM_NAVIGATION: number;
+
+			/**
 			 * Adds the specified callback as an event listener for the named event.
 			 */
 			function addEventListener(name: string, callback: (param0: any) => any): void;
@@ -18679,6 +20359,11 @@ declare namespace Titanium {
 				accessibilityValue: string;
 
 				/**
+				 * Coordinate of the view about which to pivot an animation.
+				 */
+				anchorPoint: Point;
+
+				/**
 				 * Background color for CardView as a color name or hex triplet.
 				 */
 				backgroundColor: string;
@@ -18770,7 +20455,7 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
@@ -18820,7 +20505,7 @@ declare namespace Titanium {
 				readonly size: Dimension;
 
 				/**
-				 * Determines keyboard behavior when this view is focused.
+				 * Determines keyboard behavior when this view is focused. Defaults to <Titanium.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS>.
 				 */
 				softKeyboardOnFocus: number;
 
@@ -19107,6 +20792,16 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.Android.CardView.accessibilityValue> property.
 				 */
 				setAccessibilityValue(accessibilityValue: string): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.Android.CardView.anchorPoint> property.
+				 */
+				getAnchorPoint(): Point;
+
+				/**
+				 * Sets the value of the <Titanium.UI.Android.CardView.anchorPoint> property.
+				 */
+				setAnchorPoint(anchorPoint: Point): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.Android.CardView.backgroundColor> property.
@@ -19749,7 +21444,6 @@ declare namespace Titanium {
 				setPaddingTop(paddingTop: number): void;
 
 			}
-
 			/**
 			 * A panel that displays the app's main navigation options on the left edge of the screen.
 			 */
@@ -19773,6 +21467,11 @@ declare namespace Titanium {
 				 * A string describing the value (if any) of the view for the device's accessibility service.
 				 */
 				accessibilityValue: string;
+
+				/**
+				 * Coordinate of the view about which to pivot an animation.
+				 */
+				anchorPoint: Point;
 
 				/**
 				 * Background color of the view, as a color name or hex triplet.
@@ -19886,7 +21585,7 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
@@ -19936,7 +21635,7 @@ declare namespace Titanium {
 				readonly size: Dimension;
 
 				/**
-				 * Determines keyboard behavior when this view is focused.
+				 * Determines keyboard behavior when this view is focused. Defaults to <Titanium.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS>.
 				 */
 				softKeyboardOnFocus: number;
 
@@ -20246,6 +21945,16 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.Android.DrawerLayout.accessibilityValue> property.
 				 */
 				setAccessibilityValue(accessibilityValue: string): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.Android.DrawerLayout.anchorPoint> property.
+				 */
+				getAnchorPoint(): Point;
+
+				/**
+				 * Sets the value of the <Titanium.UI.Android.DrawerLayout.anchorPoint> property.
+				 */
+				setAnchorPoint(anchorPoint: Point): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.Android.DrawerLayout.backgroundColor> property.
@@ -20868,7 +22577,6 @@ declare namespace Titanium {
 				setToolbar(toolbar: Titanium.UI.Toolbar): void;
 
 			}
-
 			/**
 			 * A progress dialog or a horizontal progress bar in the title of the window.
 			 */
@@ -21231,7 +22939,6 @@ declare namespace Titanium {
 				setType(type: number): void;
 
 			}
-
 			/**
 			 * A specialized text field for entering search text.
 			 */
@@ -21255,6 +22962,11 @@ declare namespace Titanium {
 				 * A string describing the value (if any) of the view for the device's accessibility service.
 				 */
 				accessibilityValue: string;
+
+				/**
+				 * Coordinate of the view about which to pivot an animation.
+				 */
+				anchorPoint: Point;
 
 				/**
 				 * Background color of the view, as a color name or hex triplet.
@@ -21368,7 +23080,7 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
@@ -21418,7 +23130,7 @@ declare namespace Titanium {
 				readonly size: Dimension;
 
 				/**
-				 * Determines keyboard behavior when this view is focused.
+				 * Determines keyboard behavior when this view is focused. Defaults to <Titanium.UI.Android.SOFT_KEYBOARD_DEFAULT_ON_FOCUS>.
 				 */
 				softKeyboardOnFocus: number;
 
@@ -21643,6 +23355,16 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.Android.SearchView.accessibilityValue> property.
 				 */
 				setAccessibilityValue(accessibilityValue: string): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.Android.SearchView.anchorPoint> property.
+				 */
+				getAnchorPoint(): Point;
+
+				/**
+				 * Sets the value of the <Titanium.UI.Android.SearchView.anchorPoint> property.
+				 */
+				setAnchorPoint(anchorPoint: Point): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.Android.SearchView.backgroundColor> property.
@@ -22205,7 +23927,6 @@ declare namespace Titanium {
 				setSubmitEnabled(submitEnabled: boolean): void;
 
 			}
-
 		}
 
 		/**
@@ -22830,6 +24551,81 @@ declare namespace Titanium {
 			const BLUR_EFFECT_STYLE_PROMINENT: number;
 
 			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_ULTRA_THIN_MATERIAL: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THIN_MATERIAL: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_MATERIAL: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THICK_MATERIAL: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_CHROME_MATERIAL: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_ULTRA_THIN_MATERIAL_LIGHT: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THIN_MATERIAL_LIGHT: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_MATERIAL_LIGHT: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THICK_MATERIAL_LIGHT: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_CHROME_MATERIAL_LIGHT: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_ULTRA_THIN_MATERIAL_DARK: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THIN_MATERIAL_DARK: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_MATERIAL_DARK: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_THICK_MATERIAL_DARK: number;
+
+			/**
+			 * Use with [BlurView.effect](Titanium.UI.iOS.BlurView.effect) to specify a blur effect.
+			 */
+			const BLUR_EFFECT_STYLE_SYSTEM_CHROME_MATERIAL_DARK: number;
+
+			/**
 			 * Use with [AdView.adSize](Titanium.UI.iOS.AdView.adSize) to specify a banner ad size
 			 * appropriate for portrait orientations.
 			 */
@@ -23292,6 +25088,101 @@ declare namespace Titanium {
 			let statusBarBackgroundColor: string;
 
 			/**
+			 * Credential should not be stored.
+			 */
+			const CREDENTIAL_PERSISTENCE_NONE: number;
+
+			/**
+			 * Credential should be stored only for this session.
+			 */
+			const CREDENTIAL_PERSISTENCE_FOR_SESSION: number;
+
+			/**
+			 * Credential should be stored in the keychain.
+			 */
+			const CREDENTIAL_PERSISTENCE_PERMANENT: number;
+
+			/**
+			 * Credential should be stored permanently in the keychain, and in addition should be
+			 * distributed to other devices based on the owning AppleID.
+			 */
+			const CREDENTIAL_PERSISTENCE_SYNCHRONIZABLE: number;
+
+			/**
+			 * No media types require a user gesture to begin playing.
+			 */
+			const AUDIOVISUAL_MEDIA_TYPE_NONE: number;
+
+			/**
+			 * Media types containing audio require a user gesture to begin playing.
+			 */
+			const AUDIOVISUAL_MEDIA_TYPE_AUDIO: number;
+
+			/**
+			 * Media types containing video require a user gesture to begin playing.
+			 */
+			const AUDIOVISUAL_MEDIA_TYPE_VIDEO: number;
+
+			/**
+			 * All media types require a user gesture to begin playing.
+			 */
+			const AUDIOVISUAL_MEDIA_TYPE_ALL: number;
+
+			/**
+			 * Specifies that the caching logic defined in the protocol implementation, if any,
+			 * is used for a particular URL load request.
+			 */
+			const CACHE_POLICY_USE_PROTOCOL_CACHE_POLICY: number;
+
+			/**
+			 * Specifies that the data for the URL load should be loaded from the originating source.
+			 * No existing cache data should be used to satisfy a URL load request.
+			 */
+			const CACHE_POLICY_RELOAD_IGNORING_LOCAL_CACHE_DATA: number;
+
+			/**
+			 * Specifies that the existing cached data should be used to satisfy the request,
+			 * regardless of its age or expiration date.
+			 */
+			const CACHE_POLICY_RETURN_CACHE_DATA_ELSE_LOAD: number;
+
+			/**
+			 * Specifies that the existing cache data should be used to satisfy a request,
+			 * regardless of its age or expiration date.
+			 */
+			const CACHE_POLICY_RETURN_CACHE_DATA_DONT_LOAD: number;
+
+			/**
+			 * Selection granularity varies automatically depending on the selection.
+			 */
+			const SELECTION_GRANULARITY_DYNAMIC: number;
+
+			/**
+			 * Selection endpoints can be placed at any character boundary.
+			 */
+			const SELECTION_GRANULARITY_CHARACTER: number;
+
+			/**
+			 * Cancel the navigation.
+			 */
+			const ACTION_POLICY_CANCEL: number;
+
+			/**
+			 * Allow the navigation to continue.
+			 */
+			const ACTION_POLICY_ALLOW: number;
+
+			/**
+			 * Inject the script after the document element is created, but before any other content is loaded.
+			 */
+			const INJECTION_TIME_DOCUMENT_START: number;
+
+			/**
+			 * Inject the script after the document finishes loading, but before other subresources finish loading.
+			 */
+			const INJECTION_TIME_DOCUMENT_END: number;
+
+			/**
 			 * Adds the specified callback as an event listener for the named event.
 			 */
 			function addEventListener(name: string, callback: (param0: any) => any): void;
@@ -23313,7 +25204,7 @@ declare namespace Titanium {
 
 			/**
 			 * Creates a transition animation when opening or closing windows in a
-			 * <Titanium.UI.iOS.NavigationWindow> or <Titanium.UI.Tab>.
+			 * <Titanium.UI.NavigationWindow> or <Titanium.UI.Tab>.
 			 */
 			function createTransitionAnimation(transition: transitionAnimationParam): Titanium.Proxy;
 
@@ -23324,9 +25215,9 @@ declare namespace Titanium {
 			function createLivePhotoBadge(type: number): Titanium.Blob;
 
 			/**
-			 * Creates and returns an instance of <Titanium.UI.iOS.3DMatrix>.
+			 * Get image from SF Symbols provided by Apple.
 			 */
-			function create3DMatrix(parameters?: any): Titanium.UI.iOS.Matrix3D;
+			function systemImage(name: string): Titanium.Blob;
 
 			/**
 			 * Creates and returns an instance of <Titanium.UI.iOS.AdView>.
@@ -23459,6 +25350,21 @@ declare namespace Titanium {
 			function createViewAttachmentBehavior(parameters?: any): Titanium.UI.iOS.ViewAttachmentBehavior;
 
 			/**
+			 * Creates and returns an instance of <Titanium.UI.iOS.WebViewConfiguration>.
+			 */
+			function createWebViewConfiguration(parameters?: any): Titanium.UI.iOS.WebViewConfiguration;
+
+			/**
+			 * Creates and returns an instance of <Titanium.UI.iOS.WebViewDecisionHandler>.
+			 */
+			function createWebViewDecisionHandler(parameters?: any): Titanium.UI.iOS.WebViewDecisionHandler;
+
+			/**
+			 * Creates and returns an instance of <Titanium.UI.iOS.WebViewProcessPool>.
+			 */
+			function createWebViewProcessPool(parameters?: any): Titanium.UI.iOS.WebViewProcessPool;
+
+			/**
 			 * Gets the value of the <Titanium.UI.iOS.bubbleParent> property.
 			 */
 			function getBubbleParent(): boolean;
@@ -23522,277 +25428,6 @@ declare namespace Titanium {
 			 * Sets the value of the <Titanium.UI.iOS.statusBarBackgroundColor> property.
 			 */
 			function setStatusBarBackgroundColor(statusBarBackgroundColor: string): void;
-
-			/**
-			 * The 3D Matrix is an object for holding values for a 3D affine transform.
-			 */
-			interface Matrix3D extends Titanium.Proxy {
-				/**
-				 * The entry at position [1,1] in the matrix.
-				 */
-				m11: number;
-
-				/**
-				 * The entry at position [1,2] in the matrix.
-				 */
-				m12: number;
-
-				/**
-				 * The entry at position [1,3] in the matrix.
-				 */
-				m13: number;
-
-				/**
-				 * The entry at position [1,4] in the matrix.
-				 */
-				m14: number;
-
-				/**
-				 * The entry at position [2,1] in the matrix.
-				 */
-				m21: number;
-
-				/**
-				 * The entry at position [2,2] in the matrix.
-				 */
-				m22: number;
-
-				/**
-				 * The entry at position [2,3] in the matrix.
-				 */
-				m23: number;
-
-				/**
-				 * The entry at position [2,4] in the matrix.
-				 */
-				m24: number;
-
-				/**
-				 * The entry at position [3,1] in the matrix.
-				 */
-				m31: number;
-
-				/**
-				 * The entry at position [3,2] in the matrix.
-				 */
-				m32: number;
-
-				/**
-				 * The entry at position [3,3] in the matrix.
-				 */
-				m33: number;
-
-				/**
-				 * The entry at position [3,4] in the matrix.
-				 */
-				m34: number;
-
-				/**
-				 * The entry at position [4,1] in the matrix.
-				 */
-				m41: number;
-
-				/**
-				 * The entry at position [4,2] in the matrix.
-				 */
-				m42: number;
-
-				/**
-				 * The entry at position [4,3] in the matrix.
-				 */
-				m43: number;
-
-				/**
-				 * The entry at position [4,4] in the matrix.
-				 */
-				m44: number;
-
-				/**
-				 * Returns a matrix constructed by inverting an existing matrix.
-				 */
-				invert(): Titanium.UI.Matrix3D;
-
-				/**
-				 * Returns a matrix constructed by combining two existing matrices.
-				 */
-				multiply(t2: Titanium.UI.Matrix3D): Titanium.UI.Matrix3D;
-
-				/**
-				 * Returns a matrix constructed by rotating an existing matrix.
-				 */
-				rotate(angle: number, x: number, y: number, z: number): Titanium.UI.Matrix3D;
-
-				/**
-				 * Returns a matrix constructed by scaling an existing matrix.
-				 */
-				scale(sx: number, sy: number, sz: number): Titanium.UI.Matrix3D;
-
-				/**
-				 * Returns a matrix constructed by translating an existing matrix.
-				 */
-				translate(tx: number, ty: number, tz: number): Titanium.UI.Matrix3D;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m11> property.
-				 */
-				getM11(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m11> property.
-				 */
-				setM11(m11: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m12> property.
-				 */
-				getM12(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m12> property.
-				 */
-				setM12(m12: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m13> property.
-				 */
-				getM13(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m13> property.
-				 */
-				setM13(m13: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m14> property.
-				 */
-				getM14(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m14> property.
-				 */
-				setM14(m14: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m21> property.
-				 */
-				getM21(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m21> property.
-				 */
-				setM21(m21: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m22> property.
-				 */
-				getM22(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m22> property.
-				 */
-				setM22(m22: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m23> property.
-				 */
-				getM23(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m23> property.
-				 */
-				setM23(m23: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m24> property.
-				 */
-				getM24(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m24> property.
-				 */
-				setM24(m24: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m31> property.
-				 */
-				getM31(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m31> property.
-				 */
-				setM31(m31: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m32> property.
-				 */
-				getM32(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m32> property.
-				 */
-				setM32(m32: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m33> property.
-				 */
-				getM33(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m33> property.
-				 */
-				setM33(m33: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m34> property.
-				 */
-				getM34(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m34> property.
-				 */
-				setM34(m34: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m41> property.
-				 */
-				getM41(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m41> property.
-				 */
-				setM41(m41: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m42> property.
-				 */
-				getM42(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m42> property.
-				 */
-				setM42(m42: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m43> property.
-				 */
-				getM43(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m43> property.
-				 */
-				setM43(m43: number): void;
-
-				/**
-				 * Gets the value of the <Titanium.UI.iOS.3DMatrix.m44> property.
-				 */
-				getM44(): number;
-
-				/**
-				 * Sets the value of the <Titanium.UI.iOS.3DMatrix.m44> property.
-				 */
-				setM44(m44: number): void;
-
-			}
 
 			/**
 			 * The AdView is a view for display Apple iAds.
@@ -23915,12 +25550,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -24023,6 +25659,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -24527,7 +26168,6 @@ declare namespace Titanium {
 				setAdSize(adSize: string): void;
 
 			}
-
 			/**
 			 * Dynamic behavior to support connections between an anchor point and an item.
 			 */
@@ -24623,7 +26263,6 @@ declare namespace Titanium {
 				setOffset(offset: Point): void;
 
 			}
-
 			/**
 			 * Provides support for the built-in iOS dynamic animations
 			 */
@@ -24699,7 +26338,6 @@ declare namespace Titanium {
 				getRunning(): boolean;
 
 			}
-
 			/**
 			 * The Home screen quick actions API is for adding shortcuts to your app icon that anticipate and accelerate a
 			 * user's interaction with your app.
@@ -24741,7 +26379,6 @@ declare namespace Titanium {
 				getDynamicShortcut(itemtype: string): void;
 
 			}
-
 			/**
 			 * An abstract datatype for specifying an attributed string attribute.
 			 */
@@ -24792,7 +26429,6 @@ declare namespace Titanium {
 				setRange(range: ReadonlyArray<number>): void;
 
 			}
-
 			/**
 			 * An attributed string proxy manages character strings and associated sets of attributes (for example,
 			 * font and kerning) that apply to individual characters or ranges of characters in the string.
@@ -24834,7 +26470,6 @@ declare namespace Titanium {
 				setAttributes(attributes: ReadonlyArray<Attribute>): void;
 
 			}
-
 			/**
 			 * A <Titanium.UI.iOS.BlurView> object gives you an easy way implement some complex visual effects.
 			 * The blur effect is applied to every view the blur view is added to by default. You can also place the
@@ -24961,12 +26596,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -25069,6 +26705,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -25568,7 +27209,6 @@ declare namespace Titanium {
 				setEffect(effect: number): void;
 
 			}
-
 			/**
 			 * Dynamic behavior to support collisions between items and boundaries.
 			 */
@@ -25664,7 +27304,6 @@ declare namespace Titanium {
 				setTreatReferenceAsBoundary(treatReferenceAsBoundary: boolean): void;
 
 			}
-
 			/**
 			 * The cover flow view is a container showing animated three-dimensional images in a style
 			 * consistent with the cover flow presentation style used for iPod, iTunes, and file browsing.
@@ -25782,12 +27421,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -25885,6 +27525,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -26409,7 +28054,6 @@ declare namespace Titanium {
 				setSelected(selected: number): void;
 
 			}
-
 			/**
 			 * A DocumentViewer provides in-app support for managing user interactions with files on the
 			 * local system.
@@ -26451,7 +28095,6 @@ declare namespace Titanium {
 				setUrl(url: string): void;
 
 			}
-
 			/**
 			 * Base dynamic configuration for an item.
 			 */
@@ -26587,7 +28230,6 @@ declare namespace Titanium {
 				setResistance(resistance: number): void;
 
 			}
-
 			/**
 			 * The feedback generator API is introduced in iOS 10 to handle the haptic feedback when using an iPhone 7 or
 			 * later devices.
@@ -26597,6 +28239,11 @@ declare namespace Titanium {
 				 * The type of feedback generator you want to create.
 				 */
 				type: number;
+
+				/**
+				 * The style of the feedback generator you want to create. This property is only required when using <Titanium.UI.iOS.FEEDBACK_GENERATOR_TYPE_IMPACT>.
+				 */
+				style?: number;
 
 				/**
 				 * Used to prepare the haptic sensor for the upcoming interaction with it.
@@ -26628,8 +28275,17 @@ declare namespace Titanium {
 				 */
 				setType(type: number): void;
 
-			}
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.FeedbackGenerator.style> property.
+				 */
+				getStyle(): number;
 
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.FeedbackGenerator.style> property.
+				 */
+				setStyle(style: number): void;
+
+			}
 			/**
 			 * Gravitational force to apply to an item.
 			 */
@@ -26700,7 +28356,6 @@ declare namespace Titanium {
 				setMagnitude(magnitude: number): void;
 
 			}
-
 			/**
 			 * A set of constants for the style that can be used for the `selectionStyle` property of a
 			 * ListItem, which is set in the `properties` dictionary of either the <ListDataItem> or
@@ -26723,7 +28378,6 @@ declare namespace Titanium {
 				readonly NONE: number;
 
 			}
-
 			/**
 			 * A set of constants for the position value that can be used for the `position` property of
 			 * <ListViewAnimationProperties> when invoking the ListView's `scrollToItem`, `appendSection`,
@@ -26753,7 +28407,6 @@ declare namespace Titanium {
 				readonly TOP: number;
 
 			}
-
 			/**
 			 * A set of constants for the style that can be used for the `style` property of
 			 * <Titanium.UI.ListView>.
@@ -26772,13 +28425,11 @@ declare namespace Titanium {
 				readonly PLAIN: number;
 
 			}
-
 			/**
 			 * Abstract object representing a live photo used in <Titanium.UI.iOS.LivePhotoView>.
 			 */
 			interface LivePhoto extends Titanium.Proxy {
 			}
-
 			/**
 			 * A view to display a <Titanium.UI.iOS.LivePhoto> object introduced in iOS 9.1.
 			 */
@@ -26900,12 +28551,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -27013,6 +28665,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -27532,7 +29189,6 @@ declare namespace Titanium {
 				setMuted(muted: boolean): void;
 
 			}
-
 			/**
 			 * A menu popup provides the ability to create custom tooltip options using the `items` property
 			 * covering the native `UIMenuController` class.
@@ -27571,7 +29227,6 @@ declare namespace Titanium {
 				setItems(items: string): void;
 
 			}
-
 			/**
 			 * A `NavigationWindow` implements a specialized view that manages the navigation of hierarchical
 			 * content.
@@ -27700,6 +29355,7 @@ declare namespace Titanium {
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -27799,8 +29455,7 @@ declare namespace Titanium {
 				autoAdjustScrollViewInsets: boolean;
 
 				/**
-				 * Specifies whether the content (subviews) of the window  will render inside the safe-area or not.
-				 * Only used in iOS 11.0 and later.
+				 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
 				 */
 				extendSafeArea: boolean;
 
@@ -27837,7 +29492,12 @@ declare namespace Titanium {
 				/**
 				 * A Boolean value indicating whether the title should be displayed in a large format.
 				 */
-				largeTitleEnabled: string;
+				largeTitleEnabled: boolean;
+
+				/**
+				 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+				 */
+				hidesSearchBarWhenScrolling: boolean;
 
 				/**
 				 * The mode to use when displaying the title of the navigation bar.
@@ -27855,9 +29515,9 @@ declare namespace Titanium {
 				modal: boolean;
 
 				/**
-				 * The <Titanium.UI.iOS.NavigationWindow> instance hosting this window.
+				 * The <Titanium.UI.NavigationWindow> instance hosting this window.
 				 */
-				readonly navigationWindow: Titanium.UI.iOS.NavigationWindow;
+				readonly navigationWindow: Titanium.UI.NavigationWindow;
 
 				/**
 				 * Array of supported orientation modes, specified using the orientation
@@ -27874,6 +29534,11 @@ declare namespace Titanium {
 				 * An Array of views to show in the right nav bar area.
 				 */
 				rightNavButtons: Titanium.UI.View[];
+
+				/**
+				 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+				 */
+				readonly safeAreaPadding: Dimension;
 
 				/**
 				 * The status bar style associated with this window.
@@ -27904,6 +29569,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -28535,12 +30205,22 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.largeTitleEnabled> property.
 				 */
-				getLargeTitleEnabled(): string;
+				getLargeTitleEnabled(): boolean;
 
 				/**
 				 * Sets the value of the <Titanium.UI.iOS.NavigationWindow.largeTitleEnabled> property.
 				 */
-				setLargeTitleEnabled(largeTitleEnabled: string): void;
+				setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				getHidesSearchBarWhenScrolling(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.NavigationWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.largeTitleDisplayMode> property.
@@ -28575,7 +30255,7 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.navigationWindow> property.
 				 */
-				getNavigationWindow(): Titanium.UI.iOS.NavigationWindow;
+				getNavigationWindow(): Titanium.UI.NavigationWindow;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.orientationModes> property.
@@ -28601,6 +30281,11 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.iOS.NavigationWindow.rightNavButtons> property.
 				 */
 				setRightNavButtons(rightNavButtons: any[]): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.safeAreaPadding> property.
+				 */
+				getSafeAreaPadding(): Dimension;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.NavigationWindow.statusBarStyle> property.
@@ -28633,7 +30318,6 @@ declare namespace Titanium {
 				setWindow(window: Titanium.UI.Window): void;
 
 			}
-
 			/**
 			 * A PreviewAction provides options to configure actions used by the iOS 9 3D-Touch "Peek and Pop"
 			 * feature.
@@ -28670,7 +30354,6 @@ declare namespace Titanium {
 				setStyle(style: number): void;
 
 			}
-
 			/**
 			 * A PreviewActionGroup provides options to configure a group of actions used by the iOS9 3D-Touch
 			 * feature "Peek and Pop".
@@ -28722,7 +30405,6 @@ declare namespace Titanium {
 				setActions(actions: ReadonlyArray<Titanium.UI.iOS.PreviewAction>): void;
 
 			}
-
 			/**
 			 * A PreviewContext provides options to configure the iOS 9 3D-Touch "Peek and Pop" feature.
 			 */
@@ -28773,7 +30455,6 @@ declare namespace Titanium {
 				setPreview(preview: any): void;
 
 			}
-
 			/**
 			 * Continuous or instantaneous force to apply to an item.
 			 */
@@ -28874,7 +30555,6 @@ declare namespace Titanium {
 				setPushMode(pushMode: number): void;
 
 			}
-
 			/**
 			 * Dynamic behavior defining an item's movement to a specific point.
 			 */
@@ -28925,7 +30605,6 @@ declare namespace Titanium {
 				setSnapPoint(snapPoint: Point): void;
 
 			}
-
 			/**
 			 * A SplitWindow is a window that manages the presentation of two side-by-side view
 			 * controllers.
@@ -29054,6 +30733,7 @@ declare namespace Titanium {
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -29173,8 +30853,7 @@ declare namespace Titanium {
 				autoAdjustScrollViewInsets: boolean;
 
 				/**
-				 * Specifies whether the content (subviews) of the window  will render inside the safe-area or not.
-				 * Only used in iOS 11.0 and later.
+				 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
 				 */
 				extendSafeArea: boolean;
 
@@ -29216,7 +30895,12 @@ declare namespace Titanium {
 				/**
 				 * A Boolean value indicating whether the title should be displayed in a large format.
 				 */
-				largeTitleEnabled: string;
+				largeTitleEnabled: boolean;
+
+				/**
+				 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+				 */
+				hidesSearchBarWhenScrolling: boolean;
 
 				/**
 				 * The mode to use when displaying the title of the navigation bar.
@@ -29249,9 +30933,9 @@ declare namespace Titanium {
 				navTintColor: string;
 
 				/**
-				 * The <Titanium.UI.iOS.NavigationWindow> instance hosting this window.
+				 * The <Titanium.UI.NavigationWindow> instance hosting this window.
 				 */
-				readonly navigationWindow: Titanium.UI.iOS.NavigationWindow;
+				readonly navigationWindow: Titanium.UI.NavigationWindow;
 
 				/**
 				 * Array of supported orientation modes, specified using the orientation
@@ -29273,6 +30957,11 @@ declare namespace Titanium {
 				 * An Array of views to show in the right nav bar area.
 				 */
 				rightNavButtons: Titanium.UI.View[];
+
+				/**
+				 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+				 */
+				readonly safeAreaPadding: Dimension;
 
 				/**
 				 * Shadow image for the navigation bar, specified as a URL to a local image..
@@ -29360,6 +31049,11 @@ declare namespace Titanium {
 				masterIsOverlayed: boolean;
 
 				/**
+				 * Determines whether to show the master view or hide.
+				 */
+				masterViewVisible: boolean;
+
+				/**
 				 * Determines the width of the `masterView` in portrait mode.
 				 */
 				portraitSplit: number;
@@ -29383,6 +31077,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -30074,12 +31773,22 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.largeTitleEnabled> property.
 				 */
-				getLargeTitleEnabled(): string;
+				getLargeTitleEnabled(): boolean;
 
 				/**
 				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.largeTitleEnabled> property.
 				 */
-				setLargeTitleEnabled(largeTitleEnabled: string): void;
+				setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				getHidesSearchBarWhenScrolling(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.largeTitleDisplayMode> property.
@@ -30144,7 +31853,7 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.navigationWindow> property.
 				 */
-				getNavigationWindow(): Titanium.UI.iOS.NavigationWindow;
+				getNavigationWindow(): Titanium.UI.NavigationWindow;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.orientationModes> property.
@@ -30180,6 +31889,11 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.rightNavButtons> property.
 				 */
 				setRightNavButtons(rightNavButtons: any[]): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.safeAreaPadding> property.
+				 */
+				getSafeAreaPadding(): Dimension;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.shadowImage> property.
@@ -30287,11 +32001,6 @@ declare namespace Titanium {
 				getToolbar(): any[];
 
 				/**
-				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.toolbar> property.
-				 */
-				setToolbar(toolbar: ReadonlyArray<any>): void;
-
-				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.translucent> property.
 				 */
 				getTranslucent(): boolean;
@@ -30337,19 +32046,19 @@ declare namespace Titanium {
 				getShowMasterInPortrait(): boolean;
 
 				/**
-				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.showMasterInPortrait> property.
-				 */
-				setShowMasterInPortrait(showMasterInPortrait: boolean): void;
-
-				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.masterIsOverlayed> property.
 				 */
 				getMasterIsOverlayed(): boolean;
 
 				/**
-				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.masterIsOverlayed> property.
+				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.masterViewVisible> property.
 				 */
-				setMasterIsOverlayed(masterIsOverlayed: boolean): void;
+				getMasterViewVisible(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.SplitWindow.masterViewVisible> property.
+				 */
+				setMasterViewVisible(masterViewVisible: boolean): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iOS.SplitWindow.portraitSplit> property.
@@ -30372,7 +32081,6 @@ declare namespace Titanium {
 				setLandscapeSplit(landscapeSplit: number): void;
 
 			}
-
 			/**
 			 * A widget used to increment and decrement a value.
 			 */
@@ -30489,12 +32197,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -30659,6 +32368,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -31248,7 +32962,6 @@ declare namespace Titanium {
 				setIncrementDisabledImage(incrementDisabledImage: string): void;
 
 			}
-
 			/**
 			 * A button bar that maintains a selected state.
 			 */
@@ -31365,12 +33078,13 @@ declare namespace Titanium {
 				layout: string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -31473,6 +33187,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -31977,7 +33696,6 @@ declare namespace Titanium {
 				setStyle(style: number): void;
 
 			}
-
 			/**
 			 * An iOS toolbar, which can contain buttons and certain other controls.
 			 */
@@ -32068,12 +33786,13 @@ declare namespace Titanium {
 				left: number | string;
 
 				/**
-				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque).
+				 * Opacity of this view, from 0.0 (transparent) to 1.0 (opaque). Defaults to 1.0 (opaque).
 				 */
 				opacity: number;
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -32181,6 +33900,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -32640,7 +34364,6 @@ declare namespace Titanium {
 				setTranslucent(translucent: boolean): void;
 
 			}
-
 			/**
 			 * Dynamic behavior to support connections between two items.
 			 */
@@ -32751,7 +34474,147 @@ declare namespace Titanium {
 				setItemOffset(itemOffset: Point): void;
 
 			}
+			/**
+			 * A collection of properties used to initialize a web view.
+			 */
+			interface WebViewConfiguration extends Titanium.Proxy {
+				/**
+				 * The preference settings to be used by the web view.
+				 */
+				preferences: WebViewPreferencesObject;
 
+				/**
+				 * The level of granularity with which the user can interactively select content in the web view.
+				 */
+				selectionGranularity: number;
+
+				/**
+				 * Determines which media types require a user gesture to begin playing.
+				 */
+				mediaTypesRequiringUserActionForPlayback: number;
+
+				/**
+				 * A Boolean value indicating whether the web view suppresses content rendering until it is fully
+				 * loaded into memory.
+				 */
+				suppressesIncrementalRendering: boolean;
+
+				/**
+				 * A Boolean value indicating whether HTML5 videos play inline or use the native full-screen controller.
+				 */
+				allowsInlineMediaPlayback: boolean;
+
+				/**
+				 * A Boolean value indicating whether AirPlay is allowed.
+				 */
+				allowsAirPlayMediaPlayback: boolean;
+
+				/**
+				 * A Boolean value indicating whether HTML5 videos can play picture-in-picture.
+				 */
+				allowsPictureInPictureMediaPlayback: boolean;
+
+				/**
+				 * The process pool from which to obtain the  Web Content process of view.
+				 */
+				processPool: Titanium.UI.iOS.WebViewProcessPool;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.preferences> property.
+				 */
+				getPreferences(): WebViewPreferencesObject;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.preferences> property.
+				 */
+				setPreferences(preferences: WebViewPreferencesObject): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.selectionGranularity> property.
+				 */
+				getSelectionGranularity(): number;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.selectionGranularity> property.
+				 */
+				setSelectionGranularity(selectionGranularity: number): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.mediaTypesRequiringUserActionForPlayback> property.
+				 */
+				getMediaTypesRequiringUserActionForPlayback(): number;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.mediaTypesRequiringUserActionForPlayback> property.
+				 */
+				setMediaTypesRequiringUserActionForPlayback(mediaTypesRequiringUserActionForPlayback: number): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.suppressesIncrementalRendering> property.
+				 */
+				getSuppressesIncrementalRendering(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.suppressesIncrementalRendering> property.
+				 */
+				setSuppressesIncrementalRendering(suppressesIncrementalRendering: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsInlineMediaPlayback> property.
+				 */
+				getAllowsInlineMediaPlayback(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsInlineMediaPlayback> property.
+				 */
+				setAllowsInlineMediaPlayback(allowsInlineMediaPlayback: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsAirPlayMediaPlayback> property.
+				 */
+				getAllowsAirPlayMediaPlayback(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsAirPlayMediaPlayback> property.
+				 */
+				setAllowsAirPlayMediaPlayback(allowsAirPlayMediaPlayback: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsPictureInPictureMediaPlayback> property.
+				 */
+				getAllowsPictureInPictureMediaPlayback(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.allowsPictureInPictureMediaPlayback> property.
+				 */
+				setAllowsPictureInPictureMediaPlayback(allowsPictureInPictureMediaPlayback: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iOS.WebViewConfiguration.processPool> property.
+				 */
+				getProcessPool(): Titanium.UI.iOS.WebViewProcessPool;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iOS.WebViewConfiguration.processPool> property.
+				 */
+				setProcessPool(processPool: Titanium.UI.iOS.WebViewProcessPool): void;
+
+			}
+			/**
+			 * It represents the decision handler to tell to webview, whether allow or cancel the navigation.
+			 */
+			interface WebViewDecisionHandler extends Titanium.Proxy {
+				/**
+				 * It calls the decision handler with given action policy.
+				 */
+				invoke(value: number): void;
+
+			}
+			/**
+			 * It represents a pool of Web Content processes.
+			 */
+			interface WebViewProcessPool extends Titanium.Proxy {
+			}
 
 			/**
 			 * A set of constants for the style that can be used for the `style` property of
@@ -33246,7 +35109,7 @@ declare namespace Titanium {
 				const apiName: string;
 
 				/**
-				 * Use with [Button.systemButton](Titanium.UI.Button.systemButton) to specify an **Action** button.
+				 * Use with [Button.systemButton](Titanium.UI.Button.systemButton) to specify an **Action** button. <img src="images/systembutton/system_icons.png"/>
 				 */
 				const ACTION: number;
 
@@ -33733,8 +35596,8 @@ declare namespace Titanium {
 			}
 
 			/**
-			 * A set of constants for the style that can be used for the button `style` property of
-			 * <Titanium.UI.TableView>.
+			 * A set of constants for the style that can be used for the `style` property of
+			 * <Titanium.UI.TableView> and <Titanium.UI.ListView>.
 			 */
 			namespace TableViewStyle {
 				/**
@@ -33758,6 +35621,12 @@ declare namespace Titanium {
 				 * float when the table view is scrolled.
 				 */
 				const PLAIN: number;
+
+				/**
+				 * A table view whose sections present distinct groups of rows  and grouped sections are inset with rounded corners.
+				 * The section headers and footers do not float.
+				 */
+				const INSET_GROUPED: number;
 
 				/**
 				 * Adds the specified callback as an event listener for the named event.
@@ -33907,7 +35776,6 @@ declare namespace Titanium {
 				setUrl(url: string): void;
 
 			}
-
 			/**
 			 * A Popover is used to manage the presentation of content in a popover.
 			 */
@@ -33966,6 +35834,11 @@ declare namespace Titanium {
 				 * Title of the navigation area of the popover.
 				 */
 				title: string;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -34125,7 +35998,6 @@ declare namespace Titanium {
 				setTitle(title: string): void;
 
 			}
-
 			/**
 			 * A SplitWindow is a window that manages the presentation of two side-by-side view
 			 * controllers.
@@ -34254,6 +36126,7 @@ declare namespace Titanium {
 
 				/**
 				 * Background color of the wrapper view when this view is used as either <Titanium.UI.ListView.pullView> or <Titanium.UI.TableView.headerPullView>.
+				 * Defaults to `undefined`. Results in a light grey background color on the wrapper view.
 				 */
 				pullBackgroundColor: string;
 
@@ -34368,8 +36241,7 @@ declare namespace Titanium {
 				autoAdjustScrollViewInsets: boolean;
 
 				/**
-				 * Specifies whether the content (subviews) of the window  will render inside the safe-area or not.
-				 * Only used in iOS 11.0 and later.
+				 * Specifies whether the screen insets/notches are allowed to overlap the window's content or not.
 				 */
 				extendSafeArea: boolean;
 
@@ -34411,7 +36283,12 @@ declare namespace Titanium {
 				/**
 				 * A Boolean value indicating whether the title should be displayed in a large format.
 				 */
-				largeTitleEnabled: string;
+				largeTitleEnabled: boolean;
+
+				/**
+				 * A Boolean value indicating whether the integrated search bar is hidden when scrolling any underlying content.
+				 */
+				hidesSearchBarWhenScrolling: boolean;
 
 				/**
 				 * The mode to use when displaying the title of the navigation bar.
@@ -34444,9 +36321,9 @@ declare namespace Titanium {
 				navTintColor: string;
 
 				/**
-				 * The <Titanium.UI.iOS.NavigationWindow> instance hosting this window.
+				 * The <Titanium.UI.NavigationWindow> instance hosting this window.
 				 */
-				readonly navigationWindow: Titanium.UI.iOS.NavigationWindow;
+				readonly navigationWindow: Titanium.UI.NavigationWindow;
 
 				/**
 				 * Array of supported orientation modes, specified using the orientation
@@ -34468,6 +36345,11 @@ declare namespace Titanium {
 				 * An Array of views to show in the right nav bar area.
 				 */
 				rightNavButtons: Titanium.UI.View[];
+
+				/**
+				 * The padding needed to safely display content without it being overlapped by the screen insets and notches.
+				 */
+				readonly safeAreaPadding: Dimension;
 
 				/**
 				 * Shadow image for the navigation bar, specified as a URL to a local image..
@@ -34563,6 +36445,11 @@ declare namespace Titanium {
 				 * Animates this view.
 				 */
 				animate(animation: any, callback?: (param0: any) => any): void;
+
+				/**
+				 * Removes all previously added motion effects.
+				 */
+				clearMotionEffects(): void;
 
 				/**
 				 * Finishes a batch update of the View's layout properties and schedules a layout pass of the
@@ -35234,12 +37121,22 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.largeTitleEnabled> property.
 				 */
-				getLargeTitleEnabled(): string;
+				getLargeTitleEnabled(): boolean;
 
 				/**
 				 * Sets the value of the <Titanium.UI.iPad.SplitWindow.largeTitleEnabled> property.
 				 */
-				setLargeTitleEnabled(largeTitleEnabled: string): void;
+				setLargeTitleEnabled(largeTitleEnabled: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				getHidesSearchBarWhenScrolling(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.UI.iPad.SplitWindow.hidesSearchBarWhenScrolling> property.
+				 */
+				setHidesSearchBarWhenScrolling(hidesSearchBarWhenScrolling: boolean): void;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.largeTitleDisplayMode> property.
@@ -35304,7 +37201,7 @@ declare namespace Titanium {
 				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.navigationWindow> property.
 				 */
-				getNavigationWindow(): Titanium.UI.iOS.NavigationWindow;
+				getNavigationWindow(): Titanium.UI.NavigationWindow;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.orientationModes> property.
@@ -35340,6 +37237,11 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.UI.iPad.SplitWindow.rightNavButtons> property.
 				 */
 				setRightNavButtons(rightNavButtons: any[]): void;
+
+				/**
+				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.safeAreaPadding> property.
+				 */
+				getSafeAreaPadding(): Dimension;
 
 				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.shadowImage> property.
@@ -35447,11 +37349,6 @@ declare namespace Titanium {
 				getToolbar(): any[];
 
 				/**
-				 * Sets the value of the <Titanium.UI.iPad.SplitWindow.toolbar> property.
-				 */
-				setToolbar(toolbar: ReadonlyArray<any>): void;
-
-				/**
 				 * Gets the value of the <Titanium.UI.iPad.SplitWindow.translucent> property.
 				 */
 				getTranslucent(): boolean;
@@ -35502,7 +37399,6 @@ declare namespace Titanium {
 				setShowMasterInPortrait(showMasterInPortrait: boolean): void;
 
 			}
-
 		}
 
 		/**
@@ -35656,7 +37552,6 @@ declare namespace Titanium {
 				readonly NONE: number;
 
 			}
-
 			/**
 			 * A set of constants for the position value that can be used for the `position` property of
 			 * <ListViewAnimationProperties> when invoking the ListView's `scrollToItem`, `appendSection`,
@@ -35686,7 +37581,6 @@ declare namespace Titanium {
 				readonly TOP: number;
 
 			}
-
 			/**
 			 * A set of constants for the style that can be used for the `style` property of
 			 * <Titanium.UI.ListView>.
@@ -35705,7 +37599,6 @@ declare namespace Titanium {
 				readonly PLAIN: number;
 
 			}
-
 
 			/**
 			 * A set of constants for the styles available for <Titanium.UI.ActivityIndicator> objects.
@@ -37378,7 +39271,7 @@ declare namespace Titanium {
 		const ACTION_GTALK_SERVICE_CONNECTED: string;
 
 		/**
-		 * GTalk connections has been disconnected.
+		 * GTalk connection has been disconnected.
 		 */
 		const ACTION_GTALK_SERVICE_DISCONNECTED: string;
 
@@ -37423,7 +39316,7 @@ declare namespace Titanium {
 		const ACTION_MEDIA_BUTTON: string;
 
 		/**
-		 * External media is present and being disk-checked
+		 * External media is present and being disk-checked.
 		 */
 		const ACTION_MEDIA_CHECKING: string;
 
@@ -38069,6 +39962,41 @@ declare namespace Titanium {
 		const DEFAULT_VIBRATE: number;
 
 		/**
+		 * A special value indicates to use all types set in manifest file.
+		 */
+		const FOREGROUND_SERVICE_TYPE_MANIFEST: number;
+
+		/**
+		 * The default foreground service type if not been set in manifest file.
+		 */
+		const FOREGROUND_SERVICE_TYPE_NONE: number;
+
+		/**
+		 * Constant corresponding to mediaPlayback in the R.attr.foregroundServiceType attribute. Music, video, news or other media playback.
+		 */
+		const FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK: number;
+
+		/**
+		 * Constant corresponding to phoneCall in the R.attr.foregroundServiceType attribute. Ongoing phone call or video conference.
+		 */
+		const FOREGROUND_SERVICE_TYPE_PHONE_CALL: number;
+
+		/**
+		 * Constant corresponding to location in the R.attr.foregroundServiceType attribute. GPS, map, navigation location update.
+		 */
+		const FOREGROUND_SERVICE_TYPE_LOCATION: number;
+
+		/**
+		 * Constant corresponding to connectedDevice in the R.attr.foregroundServiceType attribute. Auto, bluetooth, TV or other devices connection, monitoring and interaction.
+		 */
+		const FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE: number;
+
+		/**
+		 * Constant corresponding to mediaProjection in the R.attr.foregroundServiceType attribute. Managing a media projection session, e.g for screen recording or taking screenshots.
+		 */
+		const FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION: number;
+
+		/**
 		 * Cancel the notification when it is clicked by the user.
 		 */
 		const FLAG_AUTO_CANCEL: number;
@@ -38111,7 +40039,7 @@ declare namespace Titanium {
 		const PRIORITY_HIGH: number;
 
 		/**
-		 * Default priority if it does no fit into another priority category.
+		 * Default priority if it does not fit into another priority category.
 		 */
 		const PRIORITY_DEFAULT: number;
 
@@ -38293,12 +40221,12 @@ declare namespace Titanium {
 		const SHOW_AS_ACTION_WITH_TEXT: number;
 
 		/**
-		 * Standard Action Bar navigation mode
+		 * Standard Action Bar navigation mode.
 		 */
 		const NAVIGATION_MODE_STANDARD: number;
 
 		/**
-		 * Action Bar tab navigation mode
+		 * Action Bar tab navigation mode.
 		 */
 		const NAVIGATION_MODE_TABS: number;
 
@@ -38395,7 +40323,7 @@ declare namespace Titanium {
 		const IMPORTANCE_UNSPECIFIED: number;
 
 		/**
-		 * Activity of the active context.
+		 * References the top-most window's activity.
 		 */
 		const currentActivity: Titanium.Android.Activity;
 
@@ -38403,6 +40331,11 @@ declare namespace Titanium {
 		 * Service in the active context.
 		 */
 		const currentService: Titanium.Android.Service;
+
+		/**
+		 * The first activity launched by the application.
+		 */
+		const rootActivity: Titanium.Android.Activity;
 
 		/**
 		 * Adds the specified callback as an event listener for the named event.
@@ -38477,12 +40410,12 @@ declare namespace Titanium {
 		function isServiceRunning(intent: Titanium.Android.Intent): boolean;
 
 		/**
-		 * Registers broadcast receiver for the given actions
+		 * Registers broadcast receiver for the given actions.
 		 */
 		function registerBroadcastReceiver(broadcastReceiver: Titanium.Android.BroadcastReceiver, actions: ReadonlyArray<string>): void;
 
 		/**
-		 * Unregisters a broadcast receiver
+		 * Unregisters a broadcast receiver.
 		 */
 		function unregisterBroadcastReceiver(broadcastReceiver: Titanium.Android.BroadcastReceiver): void;
 
@@ -38717,7 +40650,6 @@ declare namespace Titanium {
 			setCustomView(customView: any): void;
 
 		}
-
 		/**
 		 * The Titanium binding of an Android Activity.
 		 */
@@ -38728,7 +40660,7 @@ declare namespace Titanium {
 			readonly actionBar: Titanium.Android.ActionBar;
 
 			/**
-			 * The `Intent` that was used to start this Activity.
+			 * The last `Intent` received by this activity.
 			 */
 			readonly intent: Titanium.Android.Intent;
 
@@ -38945,11 +40877,6 @@ declare namespace Titanium {
 			setOnStop(onStop: (param0: any) => any): void;
 
 			/**
-			 * Sets the value of the <Titanium.Android.Activity.requestedOrientation> property.
-			 */
-			setRequestedOrientation(requestedOrientation: number): void;
-
-			/**
 			 * Gets the value of the <Titanium.Android.Activity.supportToolbar> property.
 			 */
 			getSupportToolbar(): Titanium.UI.Toolbar;
@@ -38960,7 +40887,6 @@ declare namespace Titanium {
 			setSupportToolbar(supportToolbar: Titanium.UI.Toolbar): void;
 
 		}
-
 		/**
 		 * Helper object for generating large-format notifications that include a large image attachment.
 		 */
@@ -39061,7 +40987,6 @@ declare namespace Titanium {
 			setSummaryText(summaryText: string): void;
 
 		}
-
 		/**
 		 * Helper object for generating large-format notifications that include a lot of text.
 		 */
@@ -39112,7 +41037,6 @@ declare namespace Titanium {
 			setSummaryText(summaryText: string): void;
 
 		}
-
 		/**
 		 * Monitor and handle Android system broadcasts.
 		 */
@@ -39148,7 +41072,6 @@ declare namespace Titanium {
 			setUrl(url: string): void;
 
 		}
-
 		/**
 		 * Message objects passed between Android application components.
 		 */
@@ -39270,11 +41193,6 @@ declare namespace Titanium {
 			setClassName(className: string): void;
 
 			/**
-			 * Gets the value of the <Titanium.Android.Intent.data> property.
-			 */
-			getData(): string;
-
-			/**
 			 * Gets the value of the <Titanium.Android.Intent.flags> property.
 			 */
 			getFlags(): number;
@@ -39310,7 +41228,6 @@ declare namespace Titanium {
 			setUrl(url: string): void;
 
 		}
-
 		/**
 		 * The Titanium binding of an Android Options Menu.
 		 */
@@ -39390,11 +41307,25 @@ declare namespace Titanium {
 			getItems(): Titanium.Android.MenuItem[];
 
 		}
-
 		/**
 		 * The Titanium binding of an Android menu item.
 		 */
 		interface MenuItem extends Titanium.Proxy {
+			/**
+			 * Briefly describes what performing an action (such as a click) on the view will do.
+			 */
+			accessibilityHint: string;
+
+			/**
+			 * A succint label identifying the view for the device's accessibility service.
+			 */
+			accessibilityLabel: string;
+
+			/**
+			 * A string describing the value (if any) of the view for the device's accessibility service.
+			 */
+			accessibilityValue: string;
+
 			/**
 			 * Custom view that replaces the default menu item button.
 			 */
@@ -39516,6 +41447,36 @@ declare namespace Titanium {
 			setVisible(visible: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.Android.MenuItem.accessibilityHint> property.
+			 */
+			getAccessibilityHint(): string;
+
+			/**
+			 * Sets the value of the <Titanium.Android.MenuItem.accessibilityHint> property.
+			 */
+			setAccessibilityHint(accessibilityHint: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.Android.MenuItem.accessibilityLabel> property.
+			 */
+			getAccessibilityLabel(): string;
+
+			/**
+			 * Sets the value of the <Titanium.Android.MenuItem.accessibilityLabel> property.
+			 */
+			setAccessibilityLabel(accessibilityLabel: string): void;
+
+			/**
+			 * Gets the value of the <Titanium.Android.MenuItem.accessibilityValue> property.
+			 */
+			getAccessibilityValue(): string;
+
+			/**
+			 * Sets the value of the <Titanium.Android.MenuItem.accessibilityValue> property.
+			 */
+			setAccessibilityValue(accessibilityValue: string): void;
+
+			/**
 			 * Gets the value of the <Titanium.Android.MenuItem.actionView> property.
 			 */
 			getActionView(): Titanium.UI.View;
@@ -39576,7 +41537,6 @@ declare namespace Titanium {
 			setTitleCondensed(titleCondensed: string): void;
 
 		}
-
 		/**
 		 * UI notifications that can be sent while the application is in the background.
 		 */
@@ -39700,13 +41660,13 @@ declare namespace Titanium {
 			 * Will wake up the device for the given time (in milliseconds) when the notification is shown.
 			 * The application needs to also set the `android.permission.WAKE_LOCK` permission
 			 * in the Android manifest section of the `tiapp.xml` file.
-			 * <ti:app>
-			 *     <android>
-			 *         <manifest>
-			 *             <uses-permission android:name="android.permission.WAKE_LOCK" />
-			 *         </manifest>
-			 *     </android>
-			 * </ti:app>
+			 *     <ti:app>
+			 *         <android>
+			 *             <manifest>
+			 *                 <uses-permission android:name="android.permission.WAKE_LOCK" />
+			 *             </manifest>
+			 *         </android>
+			 *     </ti:app>
 			 */
 			wakeLock: wakeLockOptions;
 
@@ -40001,7 +41961,6 @@ declare namespace Titanium {
 			setWhen(when: number): void;
 
 		}
-
 		/**
 		 * Module for notification channels.
 		 */
@@ -40055,6 +42014,11 @@ declare namespace Titanium {
 			 * Whether notifications posted to this channel can appear as application icon badges in a Launcher.
 			 */
 			showBadge: boolean;
+
+			/**
+			 * A URL to the sound to play.
+			 */
+			sound: string;
 
 			/**
 			 * The vibration pattern for notifications posted to this channel.
@@ -40162,6 +42126,16 @@ declare namespace Titanium {
 			setShowBadge(showBadge: boolean): void;
 
 			/**
+			 * Gets the value of the <Titanium.Android.NotificationChannel.sound> property.
+			 */
+			getSound(): string;
+
+			/**
+			 * Sets the value of the <Titanium.Android.NotificationChannel.sound> property.
+			 */
+			setSound(sound: string): void;
+
+			/**
 			 * Gets the value of the <Titanium.Android.NotificationChannel.vibratePattern> property.
 			 */
 			getVibratePattern(): number[];
@@ -40172,7 +42146,6 @@ declare namespace Titanium {
 			setVibratePattern(vibratePattern: ReadonlyArray<number>): void;
 
 		}
-
 		/**
 		 * The Titanium binding of an Android `PendingIntent`.
 		 */
@@ -40224,7 +42197,6 @@ declare namespace Titanium {
 			setUpdateCurrentIntent(updateCurrentIntent: boolean): void;
 
 		}
-
 		/**
 		 * Android service for creating custom quick settings tiles and handling user's interaction with them.
 		 */
@@ -40248,7 +42220,7 @@ declare namespace Titanium {
 			/**
 			 * Puts the service into the "foreground" state and displays a notification.
 			 */
-			foregroundNotify(id: number, notification: Titanium.Android.Notification): void;
+			foregroundNotify(id: number, notification: Titanium.Android.Notification, foregroundServiceType?: number): void;
 
 			/**
 			 * Starts the Service.
@@ -40341,7 +42313,6 @@ declare namespace Titanium {
 			getServiceInstanceId(): number;
 
 		}
-
 		/**
 		 * The Titanium binding of [Android RemoteViews](https://developer.android.com/reference/android/widget/RemoteViews.html).
 		 */
@@ -40448,7 +42419,6 @@ declare namespace Titanium {
 			setPackageName(packageName: string): void;
 
 		}
-
 		/**
 		 * Android application component that executes in the background.
 		 */
@@ -40472,7 +42442,7 @@ declare namespace Titanium {
 			/**
 			 * Puts the service into the "foreground" state and displays a notification.
 			 */
-			foregroundNotify(id: number, notification: Titanium.Android.Notification): void;
+			foregroundNotify(id: number, notification: Titanium.Android.Notification, foregroundServiceType?: number): void;
 
 			/**
 			 * Starts the Service.
@@ -40495,7 +42465,6 @@ declare namespace Titanium {
 			getServiceInstanceId(): number;
 
 		}
-
 
 		/**
 		 * The Android.Calendar module provides proxies and methods for accessing the native Android
@@ -40748,7 +42717,6 @@ declare namespace Titanium {
 				getState(): number;
 
 			}
-
 			/**
 			 * An object that represents a single calendar on Android.
 			 */
@@ -40824,7 +42792,6 @@ declare namespace Titanium {
 				getSelected(): boolean;
 
 			}
-
 			/**
 			 * An object that represents a single event in an Android calendar.
 			 */
@@ -40991,7 +42958,6 @@ declare namespace Titanium {
 				getVisibility(): number;
 
 			}
-
 			/**
 			 * An object that represents a single reminder for an event in an Android calendar.
 			 */
@@ -41028,7 +42994,6 @@ declare namespace Titanium {
 				getMinutes(): number;
 
 			}
-
 		}
 
 		/**
@@ -41334,7 +43299,7 @@ declare namespace Titanium {
 			const style: any;
 
 			/**
-			 * Styleable reosurces. See
+			 * Styleable resources. See
 			 * [R.styleable](https://developer.android.com/reference/android/R.styleable.html)
 			 * in the Android Developer Reference.
 			 */
@@ -41536,6 +43501,11 @@ declare namespace Titanium {
 		 * Indicates whether or not the soft keyboard is visible.
 		 */
 		const keyboardVisible: boolean;
+
+		/**
+		 * Indicates whether or not the user interaction shoud be tracked.
+		 */
+		let trackUserInteraction: boolean;
 
 		/**
 		 * Adds the specified callback as an event listener for the named event.
@@ -41822,7 +43792,6 @@ declare namespace Titanium {
 			 */
 			interface R extends Titanium.Proxy {
 			}
-
 		}
 
 		/**
@@ -42153,12 +44122,27 @@ declare namespace Titanium {
 			/**
 			 * Show the notification's title, even if the user has disabled notification previews for the app.
 			 */
-			const USER_NOTIFICATION_CATEGORY_OPTION_HIDEEN_PREVIEWS_SHOW_TITLE: number;
+			const USER_NOTIFICATION_CATEGORY_OPTION_HIDDEN_PREVIEWS_SHOW_TITLE: number;
 
 			/**
 			 * Show the notification's subtitle, even if the user has disabled notification previews for the app.
 			 */
-			const USER_NOTIFICATION_CATEGORY_OPTION_HIDEEN_PREVIEWS_SHOW_SUBTITLE: number;
+			const USER_NOTIFICATION_CATEGORY_OPTION_HIDDEN_PREVIEWS_SHOW_SUBTITLE: number;
+
+			/**
+			 * An unspecified interface style.
+			 */
+			const USER_INTERFACE_STYLE_UNSPECIFIED: number;
+
+			/**
+			 * A light interface style.
+			 */
+			const USER_INTERFACE_STYLE_LIGHT: number;
+
+			/**
+			 * A dark interface style.
+			 */
+			const USER_INTERFACE_STYLE_DARK: number;
 
 			/**
 			 * Uniform type identifier for all text types.
@@ -42342,6 +44326,11 @@ declare namespace Titanium {
 			const applicationOpenSettingsURL: string;
 
 			/**
+			 * The style associated with the user interface.
+			 */
+			const userInterfaceStyle: string[];
+
+			/**
 			 * Adds the specified callback as an event listener for the named event.
 			 */
 			function addEventListener(name: string, callback: (param0: any) => any): void;
@@ -42478,6 +44467,11 @@ declare namespace Titanium {
 			function getApplicationOpenSettingsURL(): string;
 
 			/**
+			 * Gets the value of the <Titanium.App.iOS.userInterfaceStyle> property.
+			 */
+			function getUserInterfaceStyle(): string[];
+
+			/**
 			 * A service that runs when the application is placed in the background.
 			 */
 			interface BackgroundService extends Titanium.Proxy {
@@ -42507,7 +44501,6 @@ declare namespace Titanium {
 				setUrl(url: string): void;
 
 			}
-
 			/**
 			 * A local notification to alert the user of new or pending application information.
 			 */
@@ -42518,7 +44511,6 @@ declare namespace Titanium {
 				cancel(): void;
 
 			}
-
 			/**
 			 * A search query object manages the criteria to apply when searching app content that you have previously
 			 * indexed by using the Core Spotlight APIs.
@@ -42550,7 +44542,6 @@ declare namespace Titanium {
 				isCancelled(): boolean;
 
 			}
-
 			/**
 			 * The SearchableIndex module is used to add or remove Ti.App.iOS.SearchableItem objects from the device search index.
 			 */
@@ -42581,7 +44572,6 @@ declare namespace Titanium {
 				deleteSearchableItemsByIdentifiers(Array: ReadonlyArray<string>, callback: (param0: any) => any): void;
 
 			}
-
 			/**
 			 * Used to create a unique object containing all of the search information that will appear in the device search index.
 			 */
@@ -42637,7 +44627,6 @@ declare namespace Titanium {
 				setUniqueIdentifier(uniqueIdentifier: string): void;
 
 			}
-
 			/**
 			 * The SearchableItemAttributeSet module defines metadata properties for SearchItem and UserActivity objects.
 			 */
@@ -44048,7 +46037,6 @@ declare namespace Titanium {
 				setPostalCode(postalCode: string): void;
 
 			}
-
 			/**
 			 * The UserActivity module is used to enable device Handoff and to create User Activities.
 			 */
@@ -44072,6 +46060,16 @@ declare namespace Titanium {
 				 * Set to true if this user activity should be eligible to be handed off to another device
 				 */
 				eligibleForHandoff: boolean;
+
+				/**
+				 * A Boolean value that determines whether Siri can suggest the user activity as a shortcut to the user.
+				 */
+				eligibleForPrediction: boolean;
+
+				/**
+				 * A value used to identify the user activity.
+				 */
+				persistentIdentifier: string;
 
 				/**
 				 * Absolute date after which the activity is no longer eligible to be indexed or handed off.
@@ -44140,6 +46138,16 @@ declare namespace Titanium {
 				isSupported(): boolean;
 
 				/**
+				 * Deletes user activities created by your app that have the specified persistent identifiers.
+				 */
+				deleteSavedUserActivitiesForPersistentIdentifiers(persistentIdentifiers: ReadonlyArray<string>): void;
+
+				/**
+				 * Deletes all user activities created by your app.
+				 */
+				deleteAllSavedUserActivities(): void;
+
+				/**
 				 * Gets the value of the <Titanium.App.iOS.UserActivity.activityType> property.
 				 */
 				getActivityType(): string;
@@ -44178,6 +46186,26 @@ declare namespace Titanium {
 				 * Sets the value of the <Titanium.App.iOS.UserActivity.eligibleForHandoff> property.
 				 */
 				setEligibleForHandoff(eligibleForHandoff: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.App.iOS.UserActivity.eligibleForPrediction> property.
+				 */
+				getEligibleForPrediction(): boolean;
+
+				/**
+				 * Sets the value of the <Titanium.App.iOS.UserActivity.eligibleForPrediction> property.
+				 */
+				setEligibleForPrediction(eligibleForPrediction: boolean): void;
+
+				/**
+				 * Gets the value of the <Titanium.App.iOS.UserActivity.persistentIdentifier> property.
+				 */
+				getPersistentIdentifier(): string;
+
+				/**
+				 * Sets the value of the <Titanium.App.iOS.UserActivity.persistentIdentifier> property.
+				 */
+				setPersistentIdentifier(persistentIdentifier: string): void;
 
 				/**
 				 * Gets the value of the <Titanium.App.iOS.UserActivity.expirationDate> property.
@@ -44260,7 +46288,6 @@ declare namespace Titanium {
 				setWebpageURL(webpageURL: string): void;
 
 			}
-
 			/**
 			 * The UserDefaults module is used for storing application-related data in property/value pairs
 			 * that persist beyond application sessions and device power cycles. UserDefaults allows the suiteName
@@ -44369,7 +46396,6 @@ declare namespace Titanium {
 				setSuiteName(suiteName: string): void;
 
 			}
-
 			/**
 			 * An action the user selects in response to an interactive notification.
 			 */
@@ -44425,7 +46451,6 @@ declare namespace Titanium {
 				setBehavior(behavior: number): void;
 
 			}
-
 			/**
 			 * A set of notification actions to associate with a notification.
 			 */
@@ -44467,41 +46492,15 @@ declare namespace Titanium {
 
 			}
 
-
 			/**
 			 * The top-level App iOS Notification Center module. It is used to control scheduled notifications
 			 * and receive details about the system-wide notification settings.
 			 */
 			namespace UserNotificationCenter {
 				/**
-				 * Indicates if the proxy will bubble an event to its parent.
-				 */
-				let bubbleParent: boolean;
-
-				/**
 				 * The name of the API that this proxy corresponds to.
 				 */
 				const apiName: string;
-
-				/**
-				 * Adds the specified callback as an event listener for the named event.
-				 */
-				function addEventListener(name: string, callback: (param0: any) => any): void;
-
-				/**
-				 * Removes the specified callback as an event listener for the named event.
-				 */
-				function removeEventListener(name: string, callback: (param0: any) => any): void;
-
-				/**
-				 * Fires a synthesized event to any registered listeners.
-				 */
-				function fireEvent(name: string, event: any): void;
-
-				/**
-				 * Applies the properties to the proxy.
-				 */
-				function applyProperties(props: any): void;
 
 				/**
 				 * Fetches the pending notifications asynchronously.
@@ -44517,28 +46516,18 @@ declare namespace Titanium {
 				 * Removes the specified pending notifications to prevent them from being triggered.
 				 * If no notifications are specified, all pending notifications will be removed.
 				 */
-				function removePendingNotifications(notifications: ReadonlyArray<Titanium.App.iOS.LocalNotification>): void;
+				function removePendingNotifications(notifications: ReadonlyArray<UserNotificationDictionary>): void;
 
 				/**
 				 * Removes the specified delivered notifications from the notification-center.
 				 * If no notifications are specified, all delivered notifications will be removed.
 				 */
-				function removeDeliveredNotifications(): void;
+				function removeDeliveredNotifications(notifications: ReadonlyArray<UserNotificationDictionary>): void;
 
 				/**
 				 * Notification types and user notification categories the application is registered to use.
 				 */
 				function requestUserNotificationSettings(callback: (param0: GetUserNotificationSettings) => any): void;
-
-				/**
-				 * Gets the value of the <Titanium.App.iOS.UserNotificationCenter.bubbleParent> property.
-				 */
-				function getBubbleParent(): boolean;
-
-				/**
-				 * Sets the value of the <Titanium.App.iOS.UserNotificationCenter.bubbleParent> property.
-				 */
-				function setBubbleParent(bubbleParent: boolean): void;
 
 				/**
 				 * Gets the value of the <Titanium.App.iOS.UserNotificationCenter.apiName> property.
@@ -44654,26 +46643,26 @@ declare namespace Titanium {
 		const AVAILABILITY_UNAVAILABLE: number;
 
 		/**
-		 * A [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
+		 * An [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
 		 * indicating that the application is authorized to use events in the Calendar.
 		 */
 		const AUTHORIZATION_AUTHORIZED: number;
 
 		/**
-		 * A [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
+		 * An [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
 		 * indicating that the application is not authorized to use events in the Calendar.
 		 */
 		const AUTHORIZATION_DENIED: number;
 
 		/**
-		 * A [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
+		 * An [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
 		 * indicating that the application is not authorized to use events in the Calendar.
 		 * the user cannot change this application's status.
 		 */
 		const AUTHORIZATION_RESTRICTED: number;
 
 		/**
-		 * A [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
+		 * An [eventsAuthorization](Titanium.Calendar.eventsAuthorization) value
 		 * indicating that the authorization state is unknown.
 		 */
 		const AUTHORIZATION_UNKNOWN: number;
@@ -44967,7 +46956,7 @@ declare namespace Titanium {
 		function requestCalendarPermissions(callback: (param0: EventsAuthorizationResponse) => any): void;
 
 		/**
-		 * If authorization is unknown, will bring up a dialog requesting permission.
+		 * If authorization is unknown, the system will bring up a dialog requesting permission.
 		 */
 		function requestEventsAuthorization(callback: (param0: EventsAuthorizationResponse) => any): void;
 
@@ -45142,7 +47131,6 @@ declare namespace Titanium {
 			getState(): number;
 
 		}
-
 		/**
 		 * An object that represents a single attendee of an event.
 		 */
@@ -45150,32 +47138,32 @@ declare namespace Titanium {
 			/**
 			 * Indicates whether this attendee is the event organizer.
 			 */
-			isOrganizer: boolean;
+			readonly isOrganizer: boolean;
 
 			/**
 			 * The attendee name.
 			 */
-			name: string;
+			readonly name: string;
 
 			/**
 			 * The attendee email.
 			 */
-			email: string;
+			readonly email: string;
 
 			/**
 			 * The role of the attendee.
 			 */
-			role: number;
+			readonly role: number;
 
 			/**
 			 * The type of the attendee.
 			 */
-			type: number;
+			readonly type: number;
 
 			/**
 			 * The status of the attendee.
 			 */
-			status: number;
+			readonly status: number;
 
 			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.isOrganizer> property.
@@ -45183,19 +47171,9 @@ declare namespace Titanium {
 			getIsOrganizer(): boolean;
 
 			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.isOrganizer> property.
-			 */
-			setIsOrganizer(isOrganizer: boolean): void;
-
-			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.name> property.
 			 */
 			getName(): string;
-
-			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.name> property.
-			 */
-			setName(name: string): void;
 
 			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.email> property.
@@ -45203,19 +47181,9 @@ declare namespace Titanium {
 			getEmail(): string;
 
 			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.email> property.
-			 */
-			setEmail(email: string): void;
-
-			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.role> property.
 			 */
 			getRole(): number;
-
-			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.role> property.
-			 */
-			setRole(role: number): void;
 
 			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.type> property.
@@ -45223,22 +47191,11 @@ declare namespace Titanium {
 			getType(): number;
 
 			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.type> property.
-			 */
-			setType(type: number): void;
-
-			/**
 			 * Gets the value of the <Titanium.Calendar.Attendee.status> property.
 			 */
 			getStatus(): number;
 
-			/**
-			 * Sets the value of the <Titanium.Calendar.Attendee.status> property.
-			 */
-			setStatus(status: number): void;
-
 		}
-
 		/**
 		 * An object that represents a single calendar.
 		 */
@@ -45286,7 +47243,7 @@ declare namespace Titanium {
 			/**
 			 * Gets the event with the specified identifier.
 			 */
-			getEventById(id: number): Titanium.Calendar.Event;
+			getEventById(id: string): Titanium.Calendar.Event;
 
 			/**
 			 * Gets events that occur between two dates.
@@ -45359,7 +47316,6 @@ declare namespace Titanium {
 			getSourceIdentifier(): string;
 
 		}
-
 		/**
 		 * An object that represents a single event in a calendar.
 		 */
@@ -45427,7 +47383,7 @@ declare namespace Titanium {
 			/**
 			 * Availability of this event.
 			 */
-			readonly availability: number;
+			availability: number;
 
 			/**
 			 * Boolean value that indicates whether an event is a detached instance of a
@@ -45603,6 +47559,11 @@ declare namespace Titanium {
 			getAvailability(): number;
 
 			/**
+			 * Sets the value of the <Titanium.Calendar.Event.availability> property.
+			 */
+			setAvailability(availability: number): void;
+
+			/**
 			 * Gets the value of the <Titanium.Calendar.Event.isDetached> property.
 			 */
 			getIsDetached(): boolean;
@@ -45638,7 +47599,6 @@ declare namespace Titanium {
 			getAttendees(): Titanium.Calendar.Attendee[];
 
 		}
-
 		/**
 		 * An object that is used to describe the recurrence pattern for a recurring event.
 		 */
@@ -45660,9 +47620,9 @@ declare namespace Titanium {
 			readonly interval: number;
 
 			/**
-			 * The days of the week that the event occurs, as an Dictionay of `daysOfWeek` and `Week`.
+			 * The days of the week that the event occurs, as an array of objects `daysOfWeek` and `Week`.
 			 */
-			readonly daysOfTheWeek: daysOfTheWeekDictionary;
+			readonly daysOfTheWeek: daysOfTheWeekDictionary[];
 
 			/**
 			 * The days of the month that the event occurs, as an array of number objects.
@@ -45725,7 +47685,7 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.Calendar.RecurrenceRule.daysOfTheWeek> property.
 			 */
-			getDaysOfTheWeek(): daysOfTheWeekDictionary;
+			getDaysOfTheWeek(): daysOfTheWeekDictionary[];
 
 			/**
 			 * Gets the value of the <Titanium.Calendar.RecurrenceRule.daysOfTheMonth> property.
@@ -45758,7 +47718,6 @@ declare namespace Titanium {
 			getEnd(): recurrenceEndDictionary;
 
 		}
-
 		/**
 		 * An object that represents a single reminder for an event in a calendar.
 		 */
@@ -45795,7 +47754,6 @@ declare namespace Titanium {
 			getMinutes(): number;
 
 		}
-
 	}
 
 	/**
@@ -45985,6 +47943,11 @@ declare namespace Titanium {
 		let lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
 
 		/**
+		 * A boolean value that indicates whether to fetch the notes stored in contacts or not.
+		 */
+		let includeNote: boolean;
+
+		/**
 		 * Specifies that a contact is an organization.
 		 */
 		const CONTACTS_KIND_ORGANIZATION: number;
@@ -46076,7 +48039,7 @@ declare namespace Titanium {
 		function getAllPeople(limit: number): Titanium.Contacts.Person[];
 
 		/**
-		 * Gets the group with the specified identifier. Deprecated for >= iOS9. Use <Titanium.Contacts.getGroupByIdentifier> instead.
+		 * Gets the group with the specified identifier.
 		 */
 		function getGroupByID(id: number): Titanium.Contacts.Group;
 
@@ -46092,7 +48055,7 @@ declare namespace Titanium {
 		function getPeopleWithName(name: string): Titanium.Contacts.Person[];
 
 		/**
-		 * Gets the person with the specified identifier. Deprecated for >= iOS9. Use <Titanium.Contacts.getPersonByIdentifier> instead.
+		 * Gets the person with the specified identifier.
 		 */
 		function getPersonByID(id: number): Titanium.Contacts.Person;
 
@@ -46172,6 +48135,16 @@ declare namespace Titanium {
 		function setLifecycleContainer(lifecycleContainer: Titanium.UI.TabGroup): void;
 
 		/**
+		 * Gets the value of the <Titanium.Contacts.includeNote> property.
+		 */
+		function getIncludeNote(): boolean;
+
+		/**
+		 * Sets the value of the <Titanium.Contacts.includeNote> property.
+		 */
+		function setIncludeNote(includeNote: boolean): void;
+
+		/**
 		 * Gets the value of the <Titanium.Contacts.contactsAuthorization> property.
 		 */
 		function getContactsAuthorization(): number;
@@ -46242,7 +48215,6 @@ declare namespace Titanium {
 			getIdentifier(): string;
 
 		}
-
 		/**
 		 * An object that represents a contact record for a person or organization in the system contacts
 		 * address book.
@@ -46680,7 +48652,6 @@ declare namespace Titanium {
 			setUrl(url: any): void;
 
 		}
-
 	}
 
 	/**
@@ -46796,17 +48767,17 @@ declare namespace Titanium {
 			/**
 			 * The identifier of the last populated row.
 			 */
-			lastInsertRowId: number;
+			readonly lastInsertRowId: number;
 
 			/**
 			 * The name of the database.
 			 */
-			name: string;
+			readonly name: string;
 
 			/**
 			 * The number of rows affected by the last query.
 			 */
-			rowsAffected: number;
+			readonly rowsAffected: number;
 
 			/**
 			 * Closes the database and releases resources from memory. Once closed, this instance is no
@@ -46836,6 +48807,38 @@ declare namespace Titanium {
 			execute(sql: string, vararg?: ReadonlyArray<any>): Titanium.Database.ResultSet;
 
 			/**
+			 * Asynchronously executes an SQL statement against the database and fires a callback with a possible `Error` argument, and a second argument holding a possible `ResultSet`.
+			 */
+			executeAsync(query: string, vararg?: string, callback?: (param0: any, param1: Titanium.Database.ResultSet) => any): void;
+
+			/**
+			 * Asynchronously executes an SQL statement against the database and fires a callback with a possible `Error` argument, and a second argument holding a possible `ResultSet`.
+			 */
+			executeAsync(query: string, vararg?: ReadonlyArray<string>, callback?: (param0: any, param1: Titanium.Database.ResultSet) => any): void;
+
+			/**
+			 * Asynchronously executes an SQL statement against the database and fires a callback with a possible `Error` argument, and a second argument holding a possible `ResultSet`.
+			 */
+			executeAsync(query: string, vararg?: any, callback?: (param0: any, param1: Titanium.Database.ResultSet) => any): void;
+
+			/**
+			 * Asynchronously executes an SQL statement against the database and fires a callback with a possible `Error` argument, and a second argument holding a possible `ResultSet`.
+			 */
+			executeAsync(query: string, vararg?: ReadonlyArray<any>, callback?: (param0: any, param1: Titanium.Database.ResultSet) => any): void;
+
+			/**
+			 * Synchronously executes an array of SQL statements against the database and returns an array of `ResultSet`.
+			 * On failure, this will throw an [Error](BatchQueryError) that reports the failed index and partial results
+			 */
+			executeAll(queries: ReadonlyArray<string>): Titanium.Database.ResultSet[];
+
+			/**
+			 * Asynchronously executes an array of SQL statements against the database and fires a callback with a possible Error, and an array of `ResultSet`.
+			 * On failure, this will call the callback with an [Error](PossibleBatchQueryError) that reports the failed index, and a second argument with the partial results
+			 */
+			executeAllAsync(queries: ReadonlyArray<string>, callback: (param0: PossibleBatchQueryError, param1: Titanium.Database.ResultSet[]) => any): void;
+
+			/**
 			 * Removes the database files for this instance from disk. WARNING: this is a destructive
 			 * operation and cannot be reversed. All data in the database will be lost; use with caution.
 			 */
@@ -46852,32 +48855,16 @@ declare namespace Titanium {
 			getLastInsertRowId(): number;
 
 			/**
-			 * Sets the value of the <Titanium.Database.DB.lastInsertRowId> property.
-			 */
-			setLastInsertRowId(lastInsertRowId: number): void;
-
-			/**
 			 * Gets the value of the <Titanium.Database.DB.name> property.
 			 */
 			getName(): string;
-
-			/**
-			 * Sets the value of the <Titanium.Database.DB.name> property.
-			 */
-			setName(name: string): void;
 
 			/**
 			 * Gets the value of the <Titanium.Database.DB.rowsAffected> property.
 			 */
 			getRowsAffected(): number;
 
-			/**
-			 * Sets the value of the <Titanium.Database.DB.rowsAffected> property.
-			 */
-			setRowsAffected(rowsAffected: number): void;
-
 		}
-
 		/**
 		 * The ResultSet instance returned by <Titanium.Database.DB.execute>.
 		 */
@@ -46952,7 +48939,6 @@ declare namespace Titanium {
 			getValidRow(): boolean;
 
 		}
-
 	}
 
 	/**
@@ -47442,11 +49428,6 @@ declare namespace Titanium {
 			getNativePath(): string;
 
 			/**
-			 * Gets the value of the <Titanium.Filesystem.File.parent> property.
-			 */
-			getParent(): Titanium.Filesystem.File;
-
-			/**
 			 * Gets the value of the <Titanium.Filesystem.File.readonly> property.
 			 */
 			getReadonly(): boolean;
@@ -47482,7 +49463,6 @@ declare namespace Titanium {
 			getWriteable(): boolean;
 
 		}
-
 		/**
 		 * Wrapper around `Titanium.Filesystem.File` that implements the `Titanium.IOStream` interface
 		 */
@@ -47490,12 +49470,12 @@ declare namespace Titanium {
 			/**
 			 * Reads data from this stream into a buffer.
 			 */
-			read(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+			read(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: ReadCallbackArgs) => any): number;
 
 			/**
 			 * Writes data from a buffer to this stream.
 			 */
-			write(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+			write(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: WriteCallbackArgs) => any): number;
 
 			/**
 			 * Indicates whether this stream is writable.
@@ -47513,7 +49493,6 @@ declare namespace Titanium {
 			close(): void;
 
 		}
-
 	}
 
 	/**
@@ -47658,21 +49637,6 @@ declare namespace Titanium {
 		const ERROR_REGION_MONITORING_FAILURE: number;
 
 		/**
-		 * Specifies the GPS location provider.
-		 */
-		const PROVIDER_GPS: string;
-
-		/**
-		 * Specifies the network location provider.
-		 */
-		const PROVIDER_NETWORK: string;
-
-		/**
-		 * Specifies the passive location provider.
-		 */
-		const PROVIDER_PASSIVE: string;
-
-		/**
 		 * The location data is being used for an unknown activity.
 		 */
 		const ACTIVITYTYPE_OTHER: string;
@@ -47721,7 +49685,7 @@ declare namespace Titanium {
 		/**
 		 * Returns an authorization constant indicating if the application has access to location services.
 		 */
-		let locationServicesAuthorization: number;
+		const locationServicesAuthorization: number;
 
 		/**
 		 * Indicates if the user has enabled or disabled location services for the device (not the application).
@@ -47901,11 +49865,6 @@ declare namespace Titanium {
 		function getLocationServicesAuthorization(): number;
 
 		/**
-		 * Sets the value of the <Titanium.Geolocation.locationServicesAuthorization> property.
-		 */
-		function setLocationServicesAuthorization(locationServicesAuthorization: number): void;
-
-		/**
 		 * Gets the value of the <Titanium.Geolocation.locationServicesEnabled> property.
 		 */
 		function getLocationServicesEnabled(): boolean;
@@ -48011,6 +49970,21 @@ declare namespace Titanium {
 			let manualMode: boolean;
 
 			/**
+			 * Specifies the GPS location provider.
+			 */
+			const PROVIDER_GPS: string;
+
+			/**
+			 * Specifies the network location provider.
+			 */
+			const PROVIDER_NETWORK: string;
+
+			/**
+			 * Specifies the passive location provider.
+			 */
+			const PROVIDER_PASSIVE: string;
+
+			/**
 			 * Adds the specified callback as an event listener for the named event.
 			 */
 			function addEventListener(name: string, callback: (param0: any) => any): void;
@@ -48105,9 +50079,9 @@ declare namespace Titanium {
 			 */
 			interface LocationProvider extends Titanium.Proxy {
 				/**
-				 * Type of location provider: [PROVIDER_GPS](Titanium.Geolocation.PROVIDER_GPS),
-				 * [PROVIDER_NETWORK](Titanium.Geolocation.PROVIDER_NETWORK), or
-				 * [PROVIDER_PASSIVE](Titanium.Geolocation.PROVIDER_PASSIVE).
+				 * Type of location provider: [PROVIDER_GPS](Titanium.Geolocation.Android.PROVIDER_GPS),
+				 * [PROVIDER_NETWORK](Titanium.Geolocation.Android.PROVIDER_NETWORK), or
+				 * [PROVIDER_PASSIVE](Titanium.Geolocation.Android.PROVIDER_PASSIVE).
 				 */
 				name: string;
 
@@ -48153,7 +50127,6 @@ declare namespace Titanium {
 				setMinUpdateDistance(minUpdateDistance: number): void;
 
 			}
-
 			/**
 			 * A location rule to filter the results returned by location providers.
 			 */
@@ -48221,7 +50194,6 @@ declare namespace Titanium {
 				setMaxAge(maxAge: number): void;
 
 			}
-
 		}
 	}
 
@@ -49104,17 +51076,17 @@ declare namespace Titanium {
 		const VIDEO_LOAD_STATE_UNKNOWN: number;
 
 		/**
-		 * A audio type of media in the movie returned by <Titanium.Media.VideoPlayer> `mediaTypes` property.
+		 * A audio type of media in the movie returned by [Titanium.Media.VideoPlayer](Titanium.Media.VideoPlayer) `mediaTypes` property.
 		 */
 		const VIDEO_MEDIA_TYPE_AUDIO: number;
 
 		/**
-		 * An unknown type of media in the movie returned by <Titanium.Media.VideoPlayer> `mediaTypes` property.
+		 * An unknown type of media in the movie returned by [Titanium.Media.VideoPlayer](Titanium.Media.VideoPlayer) `mediaTypes` property.
 		 */
 		const VIDEO_MEDIA_TYPE_NONE: number;
 
 		/**
-		 * A video type of media in the movie returned by <Titanium.Media.VideoPlayer> `mediaTypes` property.
+		 * A video type of media in the movie returned by [Titanium.Media.VideoPlayer](Titanium.Media.VideoPlayer) `mediaTypes` property.
 		 */
 		const VIDEO_MEDIA_TYPE_VIDEO: number;
 
@@ -50044,21 +52016,6 @@ declare namespace Titanium {
 			setRate(rate: number): void;
 
 			/**
-			 * Gets the value of the <Titanium.Media.AudioPlayer.paused> property.
-			 */
-			getPaused(): boolean;
-
-			/**
-			 * Sets the value of the <Titanium.Media.AudioPlayer.paused> property.
-			 */
-			setPaused(paused: boolean): void;
-
-			/**
-			 * Gets the value of the <Titanium.Media.AudioPlayer.playing> property.
-			 */
-			getPlaying(): boolean;
-
-			/**
 			 * Gets the value of the <Titanium.Media.AudioPlayer.progress> property.
 			 */
 			getProgress(): number;
@@ -50114,7 +52071,6 @@ declare namespace Titanium {
 			setTime(time: number): void;
 
 		}
-
 		/**
 		 * An audio recorder object used for recording audio from the device microphone.
 		 */
@@ -50200,7 +52156,6 @@ declare namespace Titanium {
 			getStopped(): boolean;
 
 		}
-
 		/**
 		 * A representation of a media item returned by [openMusicLibrary](Titanium.Media.openMusicLibrary) or [queryMusicLibrary](Titanium.Media.queryMusicLibrary).
 		 */
@@ -50570,7 +52525,6 @@ declare namespace Titanium {
 			getUserGrouping(): string;
 
 		}
-
 		/**
 		 * This object represents a music controller.
 		 */
@@ -50703,7 +52657,6 @@ declare namespace Titanium {
 			setShuffleMode(shuffleMode: number): void;
 
 		}
-
 		/**
 		 * An object for playing basic audio resources.
 		 */
@@ -50924,7 +52877,6 @@ declare namespace Titanium {
 			setVolume(volume: number): void;
 
 		}
-
 		/**
 		 * An object for playing system sounds.
 		 */
@@ -50950,7 +52902,6 @@ declare namespace Titanium {
 			setUrl(url: string): void;
 
 		}
-
 		/**
 		 * A native control for playing videos.
 		 */
@@ -51368,7 +53319,6 @@ declare namespace Titanium {
 
 		}
 
-
 		/**
 		 * Android-specific media-related functionality.
 		 */
@@ -51581,6 +53531,11 @@ declare namespace Titanium {
 		 * Constant value specifying TLS version 1.2 for SSL.
 		 */
 		const TLS_VERSION_1_2: number;
+
+		/**
+		 * Constant value specifying TLS version 1.3 for SSL.
+		 */
+		const TLS_VERSION_1_3: number;
 
 		/**
 		 * Constant value specifying that the progress of a download can not be calculated.
@@ -51869,7 +53824,6 @@ declare namespace Titanium {
 			setServiceType(serviceType: string): void;
 
 		}
-
 		/**
 		 * Describes a service on the network which is published by Bonjour.
 		 */
@@ -51965,7 +53919,6 @@ declare namespace Titanium {
 			setType(type: string): void;
 
 		}
-
 		/**
 		 * Cookie object used to manage the system cookie store and HTTP client cookie store.
 		 */
@@ -52136,7 +54089,6 @@ declare namespace Titanium {
 			setVersion(version: number): void;
 
 		}
-
 		/**
 		 * HTTP client object that (mostly) implements the XMLHttpRequest specification.
 		 */
@@ -52208,9 +54160,9 @@ declare namespace Titanium {
 			enableKeepAlive: boolean;
 
 			/**
-			 * Target local file to receive data.
+			 * Target local file or file path to receive data.
 			 */
-			file: string;
+			file: string | Titanium.Filesystem.File;
 
 			/**
 			 * Absolute URL of the request.
@@ -52435,12 +54387,17 @@ declare namespace Titanium {
 			/**
 			 * Gets the value of the <Titanium.Network.HTTPClient.file> property.
 			 */
-			getFile(): string;
+			getFile(): string | Titanium.Filesystem.File;
 
 			/**
 			 * Sets the value of the <Titanium.Network.HTTPClient.file> property.
 			 */
 			setFile(file: string): void;
+
+			/**
+			 * Sets the value of the <Titanium.Network.HTTPClient.file> property.
+			 */
+			setFile(file: Titanium.Filesystem.File): void;
 
 			/**
 			 * Gets the value of the <Titanium.Network.HTTPClient.location> property.
@@ -52553,11 +54510,6 @@ declare namespace Titanium {
 			getTimeout(): number;
 
 			/**
-			 * Sets the value of the <Titanium.Network.HTTPClient.timeout> property.
-			 */
-			setTimeout(timeout: number): void;
-
-			/**
 			 * Gets the value of the <Titanium.Network.HTTPClient.username> property.
 			 */
 			getUsername(): string;
@@ -52598,7 +54550,6 @@ declare namespace Titanium {
 			setCache(cache: boolean): void;
 
 		}
-
 		/**
 		 * The TCPSocket instance returned from <Titanium.Network.createTCPSocket>.  This object
 		 * represents a socket which either listens locally on the device for connections,
@@ -52706,7 +54657,6 @@ declare namespace Titanium {
 			setStripTerminator(stripTerminator: boolean): void;
 
 		}
-
 
 		/**
 		 * Socket module, used for creating sockets.
@@ -52854,12 +54804,12 @@ declare namespace Titanium {
 				/**
 				 * Reads data from this stream into a buffer.
 				 */
-				read(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+				read(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: ReadCallbackArgs) => any): number;
 
 				/**
 				 * Writes data from a buffer to this stream.
 				 */
-				write(buffer: Titanium.Buffer, offset?: number, length?: number): number;
+				write(buffer: Titanium.Buffer, offset?: number, length?: number, resultsCallback?: (param0: WriteCallbackArgs) => any): number;
 
 				/**
 				 * Indicates whether this stream is writable.
@@ -52967,7 +54917,6 @@ declare namespace Titanium {
 				getState(): number;
 
 			}
-
 		}
 	}
 
@@ -53022,7 +54971,7 @@ declare namespace Titanium {
 		const architecture: string;
 
 		/**
-		 * System's unused memory, measured in megabytes on iOS and bytes on Android.
+		 * System's unused memory, measured in bytes.
 		 */
 		const availableMemory: number;
 
@@ -53112,7 +55061,7 @@ declare namespace Titanium {
 		const ostype: string;
 
 		/**
-		 * Number of processing cores.
+		 * Number of logical processing cores.
 		 */
 		const processorCount: number;
 
@@ -53120,6 +55069,16 @@ declare namespace Titanium {
 		 * Short name of the JavaScript runtime in use.
 		 */
 		const runtime: string;
+
+		/**
+		 * System's total memory, measured in bytes.
+		 */
+		const totalMemory: number;
+
+		/**
+		 * System uptime since last boot in seconds.
+		 */
+		const uptime: number;
 
 		/**
 		 * System name, if set. On iOS, this can be found in Settings > General > About > Name.
@@ -53152,9 +55111,14 @@ declare namespace Titanium {
 		function applyProperties(props: any): void;
 
 		/**
-		 * Returns whether the system is configured with a default application to handle the URL's protocol.
+		 * Returns whether the system is configured with a default application to handle the URL's protocol/scheme.
 		 */
 		function canOpenURL(url: string): boolean;
+
+		/**
+		 * Returns an array of basic cpu information for all logical processors
+		 */
+		function cpus(): CPU[];
 
 		/**
 		 * Creates a globally-unique identifier.
@@ -53162,7 +55126,7 @@ declare namespace Titanium {
 		function createUUID(): string;
 
 		/**
-		 * Opens this URL using the system's default application for its protocol.
+		 * Opens this URL using the system's default application for its protocol/scheme.
 		 */
 		function openURL(url: string, options: any, callback: () => any): boolean;
 
@@ -53317,6 +55281,16 @@ declare namespace Titanium {
 		function getRuntime(): string;
 
 		/**
+		 * Gets the value of the <Titanium.Platform.totalMemory> property.
+		 */
+		function getTotalMemory(): number;
+
+		/**
+		 * Gets the value of the <Titanium.Platform.uptime> property.
+		 */
+		function getUptime(): number;
+
+		/**
 		 * Gets the value of the <Titanium.Platform.username> property.
 		 */
 		function getUsername(): string;
@@ -53404,7 +55378,6 @@ declare namespace Titanium {
 			getYdpi(): number;
 
 		}
-
 
 		/**
 		 * The Android-specific Platform module, used to access the device's platform-related functionality.
@@ -54314,7 +56287,6 @@ declare namespace Titanium {
 			setValue(value: string): void;
 
 		}
-
 		/**
 		 * Used to include blocks of literal text containing characters that would otherwise need
 		 * to be escaped.
@@ -54580,7 +56552,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 		/**
 		 * An interface extending <Titanium.XML.Node> with a set of attributes and methods for accessing character data in the DOM.
 		 * Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-FF21A306) on Android and iOS. For reasons of compatibility with the javascript engine, text is represented by UTF-8 instead of UTF-16 on Android and iOS.
@@ -54841,7 +56812,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 		/**
 		 * Represents the contents of an XML comment.
 		 */
@@ -55101,7 +57071,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 		/**
 		 * The <Titanium.XML.DOMImplementation> interface provides a number of methods for performing operations that are independent of any particular instance of the document object model.Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-102161490) on Android and iOS.
 		 */
@@ -55122,7 +57091,6 @@ declare namespace Titanium {
 			hasFeature(feature: string, version: string): boolean;
 
 		}
-
 		/**
 		 * The DOM Document returned from <Titanium.XML.parseString>.
 		 */
@@ -55434,7 +57402,6 @@ declare namespace Titanium {
 			getImplementation(): Titanium.XML.DOMImplementation;
 
 		}
-
 		/**
 		 * A lightweight document object used as a container for a group of nodes.
 		 */
@@ -55644,7 +57611,6 @@ declare namespace Titanium {
 			getAttributes(): Titanium.XML.NamedNodeMap;
 
 		}
-
 		/**
 		 * Each <Titanium.XML.Document> has a `doctype` attribute whose value is either 'null' or a <Titanium.XML.DocumentType> object.
 		 */
@@ -55914,7 +57880,6 @@ declare namespace Titanium {
 			getSystemId(): string;
 
 		}
-
 		/**
 		 * Represents an element in a DOM document, a <Titanium.XML.Node> defined by a start-tag and end-tag (or an empty tag). Elements may have [attributes](Titanium.XML.Attr) associated with them.
 		 * Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-745549614) on Android and iOS with some non-standard extensions.
@@ -56210,7 +58175,6 @@ declare namespace Titanium {
 			getTagName(): string;
 
 		}
-
 		/**
 		 * This interface represents an entity, either parsed or unparsed, in an XML document. Note that this models the entity itself not the entity declaration. The nodeName attribute that is inherited from Node contains the name of the entity. An Entity node does not have any parent.
 		 * Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-527DCFF2) on Android and iOS.
@@ -56451,7 +58415,6 @@ declare namespace Titanium {
 			getSystemId(): string;
 
 		}
-
 		/**
 		 * Represents an XML entity reference.
 		 */
@@ -56661,7 +58624,6 @@ declare namespace Titanium {
 			getAttributes(): Titanium.XML.NamedNodeMap;
 
 		}
-
 		/**
 		 * A key-value paired map that maps String objects to <Titanium.XML.Node> objects.
 		 * Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1780488922) on Android and iOS.
@@ -56713,7 +58675,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 		/**
 		 * A single node in the [Document](Titanium.XML.Document) tree.
 		 */
@@ -56923,7 +58884,6 @@ declare namespace Titanium {
 			getAttributes(): Titanium.XML.NamedNodeMap;
 
 		}
-
 		/**
 		 * A list of <Titanium.XML.Node> objects. Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-536297177) on Android and iOS.
 		 */
@@ -56944,7 +58904,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 		/**
 		 * Represents a notation declared in the DTD.  Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-5431D1B9) on Android and iOS.
 		 */
@@ -56970,7 +58929,6 @@ declare namespace Titanium {
 			getSystemId(): string;
 
 		}
-
 		/**
 		 * A way to keep processor-specific information in the text of the document. Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1004215813) on Android and iOS.
 		 */
@@ -57001,7 +58959,6 @@ declare namespace Titanium {
 			getTarget(): string;
 
 		}
-
 		/**
 		 * Represents the textual content of an <Titanium.XML.Element> or <Titanium.XML.Attr> Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1312295772) on Android and iOS.
 		 */
@@ -57266,7 +59223,6 @@ declare namespace Titanium {
 			getLength(): number;
 
 		}
-
 	}
 
 	/**
@@ -57380,7 +59336,6 @@ interface CloudACLsResponse {
 	acls?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57416,7 +59371,6 @@ interface CloudACLsCheckResponse {
 	permission?: any;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57452,7 +59406,6 @@ interface CloudChatsResponse {
 	chats?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57488,7 +59441,6 @@ interface CloudChatGroupsResponse {
 	chat_groups?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57524,7 +59476,6 @@ interface CloudCheckinsResponse {
 	checkins?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57565,7 +59516,6 @@ interface CloudClientsResponse {
 	location?: any;
 
 }
-
 /**
  * Argument passed to the callback as a request is transmitted or received.
  */
@@ -57581,7 +59531,6 @@ interface CloudStreamProgress {
 	url?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57612,7 +59561,6 @@ interface CloudResponse {
 	message?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57643,7 +59591,6 @@ interface CloudEmailsResponse {
 	message?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57679,7 +59626,6 @@ interface CloudEventsResponse {
 	events?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57715,7 +59661,6 @@ interface CloudEventOccurrencesResponse {
 	event_occurrences?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57751,7 +59696,6 @@ interface CloudFilesResponse {
 	files?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57787,7 +59731,6 @@ interface CloudFriendsResponse {
 	users?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57823,7 +59766,6 @@ interface CloudFriendRequestsResponse {
 	friend_requests?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57859,7 +59801,6 @@ interface CloudGeoFenceResponse {
 	geo_fences?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57895,7 +59836,6 @@ interface CloudKeyValuesResponse {
 	keyvalues?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57931,7 +59871,6 @@ interface CloudLikesResponse {
 	likes?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -57967,7 +59906,6 @@ interface CloudMessagesResponse {
 	messages?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58003,7 +59941,6 @@ interface CloudObjectsResponse {
 	classname?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58039,7 +59976,6 @@ interface CloudPhotoCollectionsResponse {
 	collections?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58075,7 +60011,6 @@ interface CloudPhotoCollectionsPhotosResponse {
 	photos?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58111,7 +60046,6 @@ interface CloudPhotosResponse {
 	photos?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58147,7 +60081,6 @@ interface CloudPlacesResponse {
 	places?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58183,7 +60116,6 @@ interface CloudPostsResponse {
 	posts?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58214,7 +60146,6 @@ interface CloudPushNotificationsResponse {
 	message?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully.
  */
@@ -58250,7 +60181,6 @@ interface CloudPushNotificationsQueryChannelResponse {
 	push_channels?: string[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully.
  */
@@ -58286,7 +60216,6 @@ interface CloudPushNotificationsShowChannelResponse {
 	devices?: any;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58322,7 +60251,6 @@ interface CloudPushNotificationsQueryResponse {
 	subscriptions?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully.
  */
@@ -58358,7 +60286,6 @@ interface CloudPushSchedulesResponse {
 	push_schedules?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58394,7 +60321,6 @@ interface CloudReviewsResponse {
 	reviews?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58430,7 +60356,6 @@ interface CloudSocialIntegrationsResponse {
 	users?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58466,7 +60391,6 @@ interface CloudStatusesResponse {
 	statuses?: any[];
 
 }
-
 /**
  * Properties for the modal dialog used in 3-Legged OAuth
  */
@@ -58477,7 +60401,6 @@ interface CloudUsersSecureDialog {
 	title?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58513,7 +60436,6 @@ interface CloudUsersResponse {
 	users?: any[];
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58554,7 +60476,6 @@ interface CloudUsersSecureResponse {
 	expiresIn?: number;
 
 }
-
 /**
  * Simple object for specifying token retrieval options to [retrieveDeviceToken](Modules.CloudPush.retrieveDeviceToken).
  */
@@ -58570,7 +60491,6 @@ interface CloudPushNotificationConfig {
 	error?: (param0: CloudPushNotificationErrorArg) => any;
 
 }
-
 /**
  * A simple object passed to the [retrieveDeviceToken](Modules.CloudPush.retrieveDeviceToken) success callback.
  */
@@ -58581,7 +60501,6 @@ interface CloudPushNotificationSuccessArg {
 	deviceToken?: string;
 
 }
-
 /**
  * A simple object passed to the [retrieveDeviceToken](Modules.CloudPush.retrieveDeviceToken) error callback.
  */
@@ -58592,13 +60511,11 @@ interface CloudPushNotificationErrorArg {
 	error?: string;
 
 }
-
 /**
  * Optional Titanium modules.
  */
 interface Modules {
 }
-
 /**
  * Simple object passed to the
  * [startActivityForResult](Titanium.Android.Activity.startActivityForResult) callback.
@@ -58622,7 +60539,6 @@ interface ActivityResult {
 	intent?: Titanium.Android.Intent;
 
 }
-
 /**
  * Options passed to <Titanium.Android.createServiceIntent>.
  */
@@ -58633,12 +60549,11 @@ interface ServiceIntentOptions {
 	url?: string;
 
 	/**
-	 * One of the `START_` constants from <Titanium.Android> to specify the "stickiness" of the Service when Android shuts down the host application.
+	 * One of the `START_*` constants from <Titanium.Android> to specify the "stickiness" of the Service when Android shuts down the host application.
 	 */
 	startMode?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58659,7 +60574,6 @@ interface RequestPermissionAccessResult {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -58680,7 +60594,6 @@ interface CalendarPermissionResponse {
 	code?: number;
 
 }
-
 /**
  * Parameter for wakeLock
  */
@@ -58696,7 +60609,6 @@ interface wakeLockOptions {
 	flags?: number;
 
 }
-
 /**
  * Dictionary of options for the <Titanium.UI.OptionDialog.show> method.
  */
@@ -58737,7 +60649,6 @@ interface showParams {
 	rect?: Dimension;
 
 }
-
 /**
  * Dictionary describing the arguments passed to the application on startup.
  * Use the [getArguments](Titanium.App.getArguments) method to retrieve the launch options.
@@ -58762,7 +60673,6 @@ interface launchOptions {
 	launchOptionsLocationKey?: boolean;
 
 }
-
 /**
  * Response when receiving pending or local notifications
  * in <Titanium.App.iOS.UserNotificationCenter.getPendingNotifications> and
@@ -58775,7 +60685,6 @@ interface UserNotificationCallbackResponse {
 	notifications?: UserNotificationDictionary[];
 
 }
-
 /**
  * Dictionary of notification data used in the array of `notifications`
  * when receiving pending or local notifications in
@@ -58850,7 +60759,6 @@ interface UserNotificationDictionary {
 	region?: any;
 
 }
-
 /**
  * Dictionary object of parameters used to register the application with local notifications using
  * the <Titanium.App.iOS.registerUserNotificationSettings> method.
@@ -58919,7 +60827,6 @@ interface GetUserNotificationSettings {
 	alertStyle?: number;
 
 }
-
 /**
  * Dictionary object of parameters used to create a notification using
  * <Titanium.App.iOS.scheduleLocalNotification>.
@@ -59015,7 +60922,6 @@ interface NotificationParams {
 	summaryArgumentCount?: string;
 
 }
-
 /**
  * Provide at least the property `identifier` and `url` property to identify a local
  * image, sound or video. If your media is invalid, the API will throw an error log and
@@ -59039,7 +60945,6 @@ interface UserNotificationAttachment {
 	options?: any;
 
 }
-
 /**
  * Dictionary object of parameters used to identify an incoming URL that is handled
  * by the application.
@@ -59056,7 +60961,6 @@ interface LaunchOptionsType {
 	url?: string;
 
 }
-
 /**
  * Dictionary object of parameters used to register the application with local notifications using
  * the <Titanium.App.iOS.registerUserNotificationSettings> method.
@@ -59075,7 +60979,6 @@ interface UserNotificationSettings {
 	categories?: Titanium.App.iOS.UserNotificationCategory[];
 
 }
-
 /**
  * Simple object used to specify options for [imageAsCropped](Titanium.Blob.imageAsCropped).
  */
@@ -59101,7 +61004,6 @@ interface ImageAsCroppedDict {
 	y?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -59122,7 +61024,6 @@ interface EventsAuthorizationResponse {
 	code?: number;
 
 }
-
 /**
  * Dictionary containing `daysOfWeek` and `week`.
  */
@@ -59140,7 +61041,6 @@ interface daysOfTheWeekDictionary {
 	week?: number;
 
 }
-
 /**
  * Dictionary containing either `endDate` or `occurrenceCount` property.
  */
@@ -59156,7 +61056,6 @@ interface recurrenceEndDictionary {
 	occurrenceCount?: number;
 
 }
-
 /**
  * Named parameters for <Titanium.Codec.encodeNumber>.
  */
@@ -59187,7 +61086,6 @@ interface EncodeNumberDict {
 	byteOrder?: number;
 
 }
-
 /**
  * Named parameters for <Titanium.Codec.decodeNumber>.
  */
@@ -59213,7 +61111,6 @@ interface DecodeNumberDict {
 	byteOrder?: number;
 
 }
-
 /**
  * Named parameters for <Titanium.Codec.encodeString>.
  */
@@ -59249,7 +61146,6 @@ interface EncodeStringDict {
 	charset?: string;
 
 }
-
 /**
  * Named parameters for <Titanium.Codec.decodeString>.
  */
@@ -59275,7 +61171,6 @@ interface DecodeStringDict {
 	charset?: string;
 
 }
-
 /**
  * Dictionary of options for the <Titanium.Contacts.showContacts> method.
  */
@@ -59314,7 +61209,6 @@ interface showContactsParams {
 	selectedProperty?: (param0: any) => any;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -59335,7 +61229,33 @@ interface ContactsAuthorizationResponse {
 	code?: number;
 
 }
+/**
+ * Simple `Error` instance thrown from the
+ * [executeAll](Titanium.Database.DB.executeAll) method in case of failure
+ */
+interface BatchQueryError {
+	/**
+	 * Index of the failed query
+	 */
+	index?: number;
 
+	/**
+	 * partial `ResultSet`s of any successful queries before the failure
+	 */
+	results?: Titanium.Database.ResultSet[];
+
+}
+/**
+ * Simple `Error` argument provided to the callback from the
+ * [executeAllAsync](Titanium.Database.DB.executeAllAsync) method in case of failure
+ */
+interface PossibleBatchQueryError {
+	/**
+	 * Index of the failed query
+	 */
+	index?: number;
+
+}
 /**
  * Properties used in any event or callback which needs to report a success or failure.
  */
@@ -59356,7 +61276,6 @@ interface ErrorResponse {
 	code?: number;
 
 }
-
 /**
  * Properties used in any event or callback which needs to report a success.
  */
@@ -59377,7 +61296,6 @@ interface SuccessResponse {
 	code?: number;
 
 }
-
 /**
  * Properties used in any event or callback which needs to report a failure.
  */
@@ -59398,7 +61316,6 @@ interface FailureResponse {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -59419,7 +61336,6 @@ interface RequestStorageAccessResult {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the [getCurrentPosition](Titanium.Geolocation.getCurrentPosition) callback.
  */
@@ -59450,7 +61366,6 @@ interface LocationResults {
 	coords?: LocationCoordinates;
 
 }
-
 /**
  * Simple object holding the data for a location update.
  */
@@ -59506,7 +61421,6 @@ interface LocationCoordinates {
 	floor?: LocationCoordinatesFloor;
 
 }
-
 /**
  * Simple object holding floor of the building on which the user is located.
  */
@@ -59517,7 +61431,6 @@ interface LocationCoordinatesFloor {
 	level?: number;
 
 }
-
 /**
  * Simple object returned in the callback from the
  * [forwardGeocoder](Titanium.Geolocation.forwardGeocoder) method.
@@ -59610,7 +61523,6 @@ interface ForwardGeocodeResponse {
 	address?: string;
 
 }
-
 /**
  * Argument passed to the [getCurrentHeading](Titanium.Geolocation.getCurrentHeading) callback.
  */
@@ -59636,7 +61548,6 @@ interface HeadingResponse {
 	heading?: HeadingData;
 
 }
-
 /**
  * Simple object holding compass heading data.
  */
@@ -59677,7 +61588,6 @@ interface HeadingData {
 	z?: number;
 
 }
-
 /**
  * Simple object describing a location provider.
  */
@@ -59698,7 +61608,6 @@ interface LocationProviderDict {
 	power?: number;
 
 }
-
 /**
  * Simple object returned in the callback from the
  * [reverseGeocoder](Titanium.Geolocation.reverseGeocoder) method.
@@ -59725,7 +61634,6 @@ interface ReverseGeocodeResponse {
 	places?: GeocodedAddress[];
 
 }
-
 /**
  * Simple object representing a place, returned in the callback from the
  * [reverseGeocoder](Titanium.Geolocation.reverseGeocoder) method.
@@ -59757,12 +61665,12 @@ interface GeocodedAddress {
 	region2?: string;
 
 	/**
-	 * Postal code. On iOS, use `zipcode`.
+	 * Postal code
 	 */
 	postalCode?: string;
 
 	/**
-	 * Postal code. On Android, use `postalCode`.
+	 * Postal code. To be replaced by `postalCode`
 	 */
 	zipcode?: string;
 
@@ -59772,24 +61680,24 @@ interface GeocodedAddress {
 	country?: string;
 
 	/**
-	 * Country code. On iOS, use `country_code`.
+	 * Country code.
 	 */
 	countryCode?: string;
 
 	/**
-	 * Country code. Same as `country_code`.
+	 * Country code. To be replaced by `countryCode`.
 	 */
 	country_code?: string;
 
 	/**
 	 * Longitude of the geocoded point.
 	 */
-	longitude?: string;
+	longitude?: number;
 
 	/**
 	 * Latitude of the geocoded point.
 	 */
-	latitude?: string;
+	latitude?: number;
 
 	/**
 	 * Display address. Identical to `address`.
@@ -59802,7 +61710,6 @@ interface GeocodedAddress {
 	address?: string;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -59823,7 +61730,6 @@ interface LocationAuthorizationResponse {
 	code?: number;
 
 }
-
 /**
  * Simple object passed to the [scanMediaFiles](Titanium.Media.Android.scanMediaFiles) callback.
  */
@@ -59840,7 +61746,6 @@ interface MediaScannerResponse {
 	uri?: string;
 
 }
-
 /**
  * An abstract type to represent a metadata item inside the `metadata` event (iOS only).
  */
@@ -59866,7 +61771,6 @@ interface TiMetadataItemType {
 	extraAttributes?: any;
 
 }
-
 /**
  * Simple object for specifying options to [openMusicLibrary](Titanium.Media.openMusicLibrary).
  */
@@ -59907,7 +61811,6 @@ interface MusicLibraryOptionsType {
 	allowMultipleSelections?: boolean;
 
 }
-
 /**
  * Simple object passed to the [openMusicLibrary](Titanium.Media.openMusicLibrary)
  * `success` callback function.
@@ -59930,7 +61833,6 @@ interface MusicLibraryResponseType {
 	types?: number;
 
 }
-
 /**
  * A specifier for a media library query. By default, filters perform an exact match.
  */
@@ -60034,7 +61936,6 @@ interface MediaQueryType {
 	podcastPersistentID?: MediaQueryInfoType | number;
 
 }
-
 /**
  * A full query descriptor for a filtering predicate.
  */
@@ -60050,7 +61951,6 @@ interface MediaQueryInfoType {
 	exact?: boolean;
 
 }
-
 /**
  * Simple object for specifying options to [showCamera](Titanium.Media.showCamera).
  */
@@ -60148,7 +62048,6 @@ interface CameraOptionsType {
 	autorotate?: boolean;
 
 }
-
 /**
  * Simple object for specifying options to
  * [openPhotoGallery](Titanium.Media.openPhotoGallery).
@@ -60209,8 +62108,12 @@ interface PhotoGalleryOptionsType {
 	 */
 	allowMultiple?: boolean;
 
-}
+	/**
+	 * Specifies if the video should be transcoded (using highest quality preset) . If set to false no video transcoding will be performed.
+	 */
+	allowTranscoding?: boolean;
 
+}
 /**
  * A media object from the camera or photo gallery.
  */
@@ -60257,7 +62160,6 @@ interface CameraMediaItemType {
 	livePhoto?: Titanium.UI.iOS.LivePhoto;
 
 }
-
 /**
  * Simple object for describing the crop rectangle for an image.
  */
@@ -60283,7 +62185,6 @@ interface CropRectType {
 	height?: number;
 
 }
-
 /**
  * Simple object for describing the preview image rectangle. This will be undefined when custom camera overlay is not used.
  */
@@ -60299,7 +62200,6 @@ interface PreviewRectType {
 	height?: number;
 
 }
-
 /**
  * Options passed to <Titanium.Media.previewImage>.
  */
@@ -60320,7 +62220,6 @@ interface PreviewImageOptions {
 	error?: (param0: PreviewImageError) => any;
 
 }
-
 /**
  * The parameter passed to the `error` callback of <PreviewImageOptions>.
  */
@@ -60346,7 +62245,6 @@ interface PreviewImageError {
 	message?: string;
 
 }
-
 /**
  * The parameter passed to the <Titanium.Media.takeScreenshot> callback.
  */
@@ -60357,7 +62255,6 @@ interface ScreenshotResult {
 	media?: Titanium.Blob;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -60378,7 +62275,6 @@ interface MediaAuthorizationResponse {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -60399,7 +62295,6 @@ interface RequestCameraAccessResult {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -60420,7 +62315,6 @@ interface RequestMusicLibraryAccessResult {
 	code?: number;
 
 }
-
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
@@ -60441,7 +62335,6 @@ interface RequestPhotoGalleryAccessResult {
 	code?: number;
 
 }
-
 /**
  * An Object describing the current audio route.
  */
@@ -60457,7 +62350,6 @@ interface RouteDescription {
 	outputs?: any[];
 
 }
-
 /**
  * Simple object passed to the thumbnail callback in response to the
  * [requestThumbnailImagesAtTimes](Titanium.Media.VideoPlayer.requestThumbnailImagesAtTimes)
@@ -60490,7 +62382,6 @@ interface ThumbnailResponse {
 	time?: number;
 
 }
-
 /**
  * Simple object used to describe the size of a movie.
  */
@@ -60506,7 +62397,6 @@ interface MovieSize {
 	height?: number;
 
 }
-
 /**
  * The protocol that the <Titanium.Network.HTTPClient.securityManager> must implement.
  */
@@ -60532,13 +62422,11 @@ interface SecurityManagerProtocol {
 	getKeyManagers(proxy: any): any[];
 
 }
-
 /**
  * An extension of the [NSURLConnectionDelegate](https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLConnectionDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSURLConnectionDelegate) protocol to allow users to participate in authentication and resource management for this HTTPClient.
  */
 interface APSConnectionDelegate {
 }
-
 /**
  * An Object describing the current ready state. See [onreadystatechange](Titanium.Network.HTTPClient.onreadystatechange) for more information.
  */
@@ -60549,7 +62437,6 @@ interface ReadyStatePayload {
 	readyState?: number;
 
 }
-
 /**
  * Simple object for specifying push notification options to
  * [registerForPushNotifications](Titanium.Network.registerForPushNotifications).
@@ -60576,7 +62463,6 @@ interface PushNotificationConfig {
 	callback?: (param0: PushNotificationData) => any;
 
 }
-
 /**
  * A simple object passed to the
  * [registerForPushNotifications](Titanium.Network.registerForPushNotifications) success callback.
@@ -60608,7 +62494,6 @@ interface PushNotificationSuccessArg {
 	deviceToken?: string;
 
 }
-
 /**
  * A simple object passed to the
  * [registerForPushNotifications](Titanium.Network.registerForPushNotifications) error callback.
@@ -60635,7 +62520,6 @@ interface PushNotificationErrorArg {
 	type?: string;
 
 }
-
 /**
  * A simple object representing a push notification.
  */
@@ -60652,7 +62536,6 @@ interface PushNotificationData {
 	inBackground?: boolean;
 
 }
-
 /**
  * Argument object passed to the [connected](Titanium.Network.Socket.TCP.connected) callback when the socket connects.
  */
@@ -60663,7 +62546,6 @@ interface ConnectedCallbackArgs {
 	socket?: Titanium.Network.Socket.TCP;
 
 }
-
 /**
  * Object passed to the error callback when the socket enters the [ERROR](Titanium.Network.Socket.ERROR) state.
  */
@@ -60694,7 +62576,6 @@ interface ErrorCallbackArgs {
 	errorCode?: number;
 
 }
-
 /**
  * Argument object passed to the [accepted](Titanium.Network.Socket.TCP.accepted)
  * callback when a listener accepts a connection.
@@ -60711,7 +62592,6 @@ interface AcceptedCallbackArgs {
 	inbound?: Titanium.Network.Socket.TCP;
 
 }
-
 /**
  * Options object for the [accept](Titanium.Network.Socket.TCP.accept) method.
  */
@@ -60727,7 +62607,56 @@ interface AcceptDict {
 	error?: (param0: ErrorCallbackArgs) => any;
 
 }
+/**
+ * Simple object holding the data for a logical cpu.
+ */
+interface CPU {
+	/**
+	 * General description of the CPU
+	 */
+	model?: string;
 
+	/**
+	 * Speed of the CPU in MHz
+	 */
+	speed?: number;
+
+	/**
+	 * A collection of timings for this logical CPU.
+	 */
+	times?: CPUTimes;
+
+}
+/**
+ * Simple object holding the data for a logical cpu execution times.
+ */
+interface CPUTimes {
+	/**
+	 * The number of milliseconds the CPU has spent in user mode.
+	 */
+	user?: number;
+
+	/**
+	 * The number of milliseconds the CPU has spent in nice mode.
+	 */
+	nice?: number;
+
+	/**
+	 * The number of milliseconds the CPU has spent in sys mode.
+	 */
+	sys?: number;
+
+	/**
+	 * The number of milliseconds the CPU has spent in idle mode.
+	 */
+	idle?: number;
+
+	/**
+	 * The number of milliseconds the CPU has spent in irq mode.
+	 */
+	irq?: number;
+
+}
 /**
  * Argument passed to [createStream](Titanium.Stream.createStream).
  */
@@ -60743,7 +62672,6 @@ interface CreateStreamArgs {
 	mode?: number;
 
 }
-
 /**
  * Argument passed to the read callback when an asynchronous [read](Titanium.Stream.read) operation
  * finishes.
@@ -60786,7 +62714,6 @@ interface ReadCallbackArgs {
 	errorDescription?: string;
 
 }
-
 /**
  * Argument passed to the write callback when an asynchronous
  * [write](Titanium.Stream.write) operation
@@ -60830,7 +62757,6 @@ interface WriteCallbackArgs {
 	errorDescription?: string;
 
 }
-
 /**
  * Argument passed to the callback when an asynchronous
  * [writeStream](Titanium.Stream.writeStream) operation finishes.
@@ -60878,7 +62804,6 @@ interface WriteStreamCallbackArgs {
 	errorDescription?: string;
 
 }
-
 /**
  * Argument passed to the callback each time the
  * [pump](Titanium.Stream.pump) operation has new data to deliver.
@@ -60933,7 +62858,6 @@ interface PumpCallbackArgs {
 	errorDescription?: string;
 
 }
-
 /**
  * Arguments to be passed to createBuffer
  */
@@ -60959,7 +62883,6 @@ interface CreateBufferArgs {
 	byteOrder?: number;
 
 }
-
 /**
  * Simple object passed to <Titanium.UI.create2DMatrix> to initialize a matrix.
  */
@@ -60984,7 +62907,6 @@ interface MatrixCreationDict {
 	anchorPoint?: any;
 
 }
-
 /**
  * An abstract datatype for specifying an attributed string attribute.
  */
@@ -61005,7 +62927,77 @@ interface Attribute {
 	range: number[];
 
 }
+/**
+ * An abstract datatype for specifying an Paragraph style attribute.
+ */
+interface ParagraphAttribute {
+	/**
+	 * The text alignment of the receiver.
+	 */
+	alignment?: number;
 
+	/**
+	 * The indentation of the first line of the receiver.
+	 */
+	firstLineHeadIndent?: number | string;
+
+	/**
+	 * The indentation of the lines of lines other than the first.
+	 */
+	headIndent?: number | string;
+
+	/**
+	 * The trailing indentation of the receiver.
+	 */
+	tailIndent?: number | string;
+
+	/**
+	 * The mode that should be used to break lines in the receiver.
+	 */
+	lineBreakMode?: number;
+
+	/**
+	 * The maximum line height of receiver.
+	 */
+	maximumLineHeight?: number | string;
+
+	/**
+	 * The minimum height of receiver.
+	 */
+	minimumLineHeight?: number | string;
+
+	/**
+	 * The distance in points between the bottom of one line fragment and the top of the next.
+	 */
+	lineSpacing?: number | string;
+
+	/**
+	 * The space after the end of the paragraph.
+	 */
+	paragraphSpacingAfter?: number | string;
+
+	/**
+	 * The distance between the top of paragraph and the beginning of its text content.
+	 */
+	paragraphSpacingBefore?: number | string;
+
+	/**
+	 * The line height multiple.
+	 */
+	lineHeightMultiple?: number;
+
+	/**
+	 * The threshold of paragraph for hyphenation.
+	 */
+	hyphenationFactor?: number;
+
+	/**
+	 * A Boolean value indicating whether the system may tighten inter-character spacing
+	 * before truncating text.
+	 */
+	allowsDefaultTighteningForTruncation?: boolean;
+
+}
 /**
  * Dictionary describing the items for <Titanium.UI.Clipboard.setItems>.
  */
@@ -61024,7 +63016,6 @@ interface ClipboardItemsType {
 	options?: any;
 
 }
-
 /**
  * An abstract datatype for specifying a text font.
  */
@@ -61056,7 +63047,6 @@ interface Font {
 	textStyle?: string;
 
 }
-
 /**
  * Template that represents the basic appearance of a list item.
  */
@@ -61077,7 +63067,6 @@ interface ItemTemplate {
 	childTemplates?: ViewTemplate[];
 
 }
-
 /**
  * Template that represents a view subcomponent of an <ItemTemplate>.
  */
@@ -61108,7 +63097,6 @@ interface ViewTemplate {
 	childTemplates?: ViewTemplate[];
 
 }
-
 /**
  * Represents displayed item data.
  */
@@ -61126,7 +63114,6 @@ interface ListDataItem {
 	properties?: any;
 
 }
-
 /**
  * Represents the custom edit action for a ListItem.
  */
@@ -61153,7 +63140,6 @@ interface RowActionType {
 	color?: string;
 
 }
-
 /**
  * A simple object for specifying the animation properties to use when inserting or deleting
  * sections or cells, or scrolling the list.
@@ -61175,7 +63161,6 @@ interface ListViewAnimationProperties {
 	position?: number;
 
 }
-
 /**
  * A simple object that represents an index entry in a `ListView`.
  */
@@ -61191,7 +63176,6 @@ interface ListViewIndexEntry {
 	index?: number;
 
 }
-
 /**
  * Optional parameter for [setContentInsets](Titanium.UI.ListView.setContentInsets) method.
  */
@@ -61207,7 +63191,6 @@ interface ListViewContentInsetOption {
 	duration?: number;
 
 }
-
 /**
  * The parameter for [setMarker](Titanium.UI.ListView.setMarker) and [addMarker](Titanium.UI.ListView.addMarker) methods.
  */
@@ -61223,7 +63206,6 @@ interface ListViewMarkerProps {
 	itemIndex?: number;
 
 }
-
 /**
  * The parameter for [setContentInsets](Titanium.UI.TableView.setContentInsets) method.
  */
@@ -61249,7 +63231,6 @@ interface ListViewEdgeInsets {
 	bottom?: number;
 
 }
-
 /**
  * The arguments for the <Titanium.UI.ListView.prefetch> and <Titanium.UI.ListView.cancelprefetch> events.
  */
@@ -61275,7 +63256,60 @@ interface ListItemEventType {
 	itemId?: string;
 
 }
+/**
+ * The arguments for the <Titanium.UI.ListView.itemsselected> event.
+ */
+interface SelectedItem {
+	/**
+	 * List section if the item is contained in a list section.
+	 */
+	section?: Titanium.UI.ListSection;
 
+	/**
+	 * Section index.
+	 */
+	sectionIndex?: number;
+
+	/**
+	 * Item index.
+	 */
+	itemIndex?: number;
+
+}
+/**
+ * Simple object passed to <Titanium.UI.createMatrix2D> to initialize a matrix.
+ */
+interface Matrix2DCreationDict {
+	/**
+	 * Scale the matrix by the specified scaling factor. The same scaling factor is used
+	 * for both horizontal and vertical scaling.
+	 */
+	scale?: number;
+
+	/**
+	 * Rotation angle, in degrees. See the [rotate](Titanium.UI.Matrix2D.rotate) method
+	 * for a discussion of rotation.
+	 */
+	rotate?: number;
+
+	/**
+	 * Point to rotate around, specified as a dictionary object with `x` and `y`
+	 * properties, where { x: 0.5, y: 0.5 } represents the center of whatever is being
+	 * rotated.
+	 */
+	anchorPoint?: any;
+
+}
+/**
+ * Simple object passed to <Titanium.UI.createMatrix3D> to initialize a matrix.
+ */
+interface Matrix3DCreationDict {
+	/**
+	 * Scale the matrix by the specified scaling factor.
+	 */
+	scale?: number;
+
+}
 /**
  * Dictionary of options for the <Titanium.UI.OptionDialog.hide> method.
  */
@@ -61286,7 +63320,6 @@ interface hideParams {
 	animated?: boolean;
 
 }
-
 /**
  * Optional parameter for [setContentOffset](Titanium.UI.ScrollView.setContentOffset) method.
  */
@@ -61297,7 +63330,6 @@ interface contentOffsetOption {
 	animated?: boolean;
 
 }
-
 /**
  * Optional parameter for [setZoomScale](Titanium.UI.ScrollView.setZoomScale) method.
  */
@@ -61308,7 +63340,6 @@ interface zoomScaleOption {
 	animated?: boolean;
 
 }
-
 /**
  * A simple object for specifying the animation properties when scrolling the view.
  */
@@ -61319,7 +63350,6 @@ interface ScrollViewAnimationProperties {
 	animated?: boolean;
 
 }
-
 /**
  * Dictionary to specify edge insets for <Titanium.UI.Tab.iconInsets>.
  */
@@ -61335,7 +63365,6 @@ interface TabIconInsets {
 	left?: number;
 
 }
-
 /**
  * A simple object for specifying the animation properties to use when inserting or deleting rows, or scrolling the table.
  */
@@ -61356,7 +63385,6 @@ interface TableViewAnimationProperties {
 	position?: number;
 
 }
-
 /**
  * A simple object that represents an index entry in a `TableView`.
  */
@@ -61372,7 +63400,6 @@ interface TableViewIndexEntry {
 	index?: number;
 
 }
-
 /**
  * Optional parameter for [setContentInsets](Titanium.UI.TableView.setContentInsets) method.
  */
@@ -61388,7 +63415,6 @@ interface TableViewContentInsetOption {
 	duration?: number;
 
 }
-
 /**
  * The parameter for [setContentInsets](Titanium.UI.TableView.setContentInsets) method.
  */
@@ -61414,7 +63440,31 @@ interface TableViewEdgeInsets {
 	bottom?: number;
 
 }
+/**
+ * The arguments for the <Titanium.UI.TableView.rowsselected> event.
+ */
+interface SelectedRowObject {
+	/**
+	 * Row index.
+	 */
+	index?: number;
 
+	/**
+	 * Table view row object.
+	 */
+	row?: Titanium.UI.TableViewRow;
+
+	/**
+	 * Properties of the row. Use this property rather than `row` to access any custom row properties.
+	 */
+	rowData?: any;
+
+	/**
+	 * Table view section object, if the clicked row is contained in a section.
+	 */
+	section?: Titanium.UI.TableViewSection;
+
+}
 /**
  * Dictionary object of parameters for the <Titanium.UI.TextArea.selected> event and <Titanium.UI.TextArea.selection> property that describes
  * position and length of the selected text.
@@ -61431,33 +63481,6 @@ interface textAreaSelectedParams {
 	length?: number;
 
 }
-
-/**
- * Dictionary object of parameters for the <Titanium.UI.TextArea.padding>  that describes the padding
- */
-interface TextAreaPadding {
-	/**
-	 * Left padding
-	 */
-	left?: number;
-
-	/**
-	 * Right padding
-	 */
-	right?: number;
-
-	/**
-	 * Top padding
-	 */
-	top?: number;
-
-	/**
-	 * Bottom padding
-	 */
-	bottom?: number;
-
-}
-
 /**
  * Dictionary object of parameters for the <Titanium.UI.TextField.selection> property that describes
  * position and length of the selected text.
@@ -61474,7 +63497,6 @@ interface textFieldSelectedParams {
 	length?: number;
 
 }
-
 /**
  * Dictionary object of parameters for the <Titanium.UI.TextField.padding>  that describes the padding
  */
@@ -61500,7 +63522,6 @@ interface TextFieldPadding {
 	bottom?: number;
 
 }
-
 /**
  * A pair of coordinates used to describe the location of a <Titanium.UI.View>.
  */
@@ -61516,7 +63537,6 @@ interface Point {
 	y?: number | string;
 
 }
-
 /**
  * A simple object defining a color gradient.
  */
@@ -61562,7 +63582,6 @@ interface Gradient {
 	backfillEnd?: boolean;
 
 }
-
 /**
  * A simple object consisting of a color and an offset.
  */
@@ -61578,7 +63597,6 @@ interface GradientColorRef {
 	offset?: number;
 
 }
-
 /**
  * A simple object consisting of the position and size measurements.
  */
@@ -61604,7 +63622,6 @@ interface Dimension {
 	y?: number;
 
 }
-
 /**
  * Optional parameter to enable animation to [hide](Titanium.UI.View.hide) and [show](Titanium.UI.View.show).
  */
@@ -61615,7 +63632,111 @@ interface AnimationOption {
 	animated?: boolean;
 
 }
+/**
+ * Dictionary object of parameters for the padding applied to all kinds of views.
+ */
+interface ViewPadding {
+	/**
+	 * Left padding
+	 */
+	left?: number;
 
+	/**
+	 * Right padding
+	 */
+	right?: number;
+
+	/**
+	 * Top padding
+	 */
+	top?: number;
+
+	/**
+	 * Bottom padding
+	 */
+	bottom?: number;
+
+}
+/**
+ * The parameter passed to the <Titanium.UI.WebView.takeSnapshot> callback.
+ */
+interface SnapshotResult {
+	/**
+	 * The snapshot image.
+	 */
+	snapshot?: Titanium.Blob;
+
+	/**
+	 * Indicates if the snapshot taken.
+	 */
+	success?: boolean;
+
+	/**
+	 * Error message, if any returned.
+	 */
+	error?: string;
+
+}
+/**
+ * The object returned to the <Titanium.UI.WebView.backForwardList> method.
+ */
+interface BackForwardList {
+	/**
+	 * The current item.
+	 */
+	currentItem?: BackForwardListItem;
+
+	/**
+	 * The item immediately preceding the current item.
+	 */
+	backItem?: BackForwardListItem;
+
+	/**
+	 * The item immediately following the current item.
+	 */
+	forwardItem?: BackForwardListItem;
+
+	/**
+	 * The portion of the list preceding the current item.
+	 */
+	backList?: BackForwardListItem[];
+
+	/**
+	 * The portion of the list following the current item.
+	 */
+	forwardList?: BackForwardListItem[];
+
+}
+/**
+ * The object represents a webpage in the back-forward of a web view.
+ */
+interface BackForwardListItem {
+	/**
+	 * The URL of the webpage represented by this item.
+	 */
+	url?: string;
+
+	/**
+	 * The URL of the initial request that created this item.
+	 */
+	initialUrl?: string;
+
+	/**
+	 * The title of the webpage represented by this item.
+	 */
+	title?: string;
+
+}
+/**
+ * An object returned when the <Titanium.UI.WebView.onlink> callback is fired.
+ */
+interface OnLinkURLResponse {
+	/**
+	 * The url of the link that should be navigated to.
+	 */
+	url?: string;
+
+}
 /**
  * Dictionary of options for the <Titanium.UI.Window.open> method.
  */
@@ -61649,6 +63770,11 @@ interface openWindowParams {
 	 * Determines whether to open the window modal in front of other windows.
 	 */
 	modal?: boolean;
+
+	/**
+	 * Indicates whether the window enforces modal behaviour.
+	 */
+	forceModal?: boolean;
 
 	/**
 	 * Presentation style of this modal window.
@@ -61686,17 +63812,16 @@ interface openWindowParams {
 	width?: number | string;
 
 	/**
-	 * Animation resource to run on the activity (heavyweight window) being opened.
+	 * Animation resource to run on the activity being opened.
 	 */
 	activityEnterAnimation?: number;
 
 	/**
-	 * Animation resource to run on the activity that is being put in background as a heavyweight window is being opened above it.
+	 * Animation resource to run on the activity that is being put in background as a window is being opened above it.
 	 */
 	activityExitAnimation?: number;
 
 }
-
 /**
  * Dictionary of options for the <Titanium.UI.Window.setToolbar> method.
  */
@@ -61722,7 +63847,6 @@ interface windowToolbarParam {
 	tintColor?: string;
 
 }
-
 /**
  * Dictionary of options for the <Titanium.UI.Window.close> method.
  */
@@ -61738,12 +63862,11 @@ interface closeWindowParams {
 	activityEnterAnimation?: number;
 
 	/**
-	 * Animation resource to use for the outgoing activity (heavyweight window).
+	 * Animation resource to use for the outgoing activity.
 	 */
 	activityExitAnimation?: number;
 
 }
-
 /**
  * Dictionary of options for the <Titanium.UI.Window.titleAttributes> property.
  */
@@ -61764,7 +63887,6 @@ interface titleAttributesParams {
 	shadow?: shadowDict;
 
 }
-
 /**
  * Dictionary describing the shadow effect for text.
  */
@@ -61786,7 +63908,6 @@ interface shadowDict {
 	offset?: any;
 
 }
-
 /**
  * Object of options for <Titanium.UI.iOS.ApplicationShortcuts.addDynamicShortcut>.
  */
@@ -61819,7 +63940,6 @@ interface ShortcutParams {
 	userInfo?: any;
 
 }
-
 /**
  * Dictionary to specify a boundary identifier for <Titanium.UI.iOS.CollisionBehavior.addBoundary>.
  */
@@ -61840,7 +63960,6 @@ interface BoundaryIdentifier {
 	point2?: Point;
 
 }
-
 /**
  * Dictionary to specify edge insets for <Titanium.UI.iOS.CollisionBehavior.referenceInsets>.
  */
@@ -61866,7 +63985,6 @@ interface ReferenceInsets {
 	bottom?: number;
 
 }
-
 /**
  * Simple object for defining a single image in a cover flow view.
  */
@@ -61887,7 +64005,6 @@ interface CoverFlowImageType {
 	height?: number;
 
 }
-
 /**
  * A simple object for specifying options when showing or dismissing a <Titanium.UI.iOS.DocumentViewer>.
  */
@@ -61903,7 +64020,6 @@ interface DocumentViewerOptions {
 	view?: Titanium.UI.View;
 
 }
-
 /**
  * Dictionary of options for showing a menu popup with <Titanium.UI.iOS.MenuPopup.show>.
  */
@@ -61924,7 +64040,6 @@ interface MenuPopupShowParams {
 	arrowDirection?: number;
 
 }
-
 /**
  * Dictionary of options for hiding a menu popup with <Titanium.UI.iOS.MenuPopup.hide>.
  */
@@ -61935,7 +64050,6 @@ interface MenuPopupHideParams {
 	animated?: boolean;
 
 }
-
 /**
  * Optional parameter for [setShowMasterInPortrait](Titanium.UI.iOS.SplitWindow.setShowMasterInPortrait) and
  * [setMasterIsOverlayed](Titanium.UI.iOS.SplitWindow.setMasterIsOverlayed) methods.
@@ -61947,7 +64061,6 @@ interface animationOption {
 	animated?: boolean;
 
 }
-
 /**
  * Object describing a button bar or tabbed bar item.
  */
@@ -61978,7 +64091,26 @@ interface BarItemType {
 	accessibilityLabel?: string;
 
 }
+/**
+ * The parameter passed to the <Titanium.UI.iOS.WebViewConfiguration.preferences> method.
+ */
+interface WebViewPreferencesObject {
+	/**
+	 * The minimum font size in points.
+	 */
+	minimumFontSize?: number;
 
+	/**
+	 * A Boolean value indicating whether JavaScript is enabled.
+	 */
+	javaScriptEnabled?: boolean;
+
+	/**
+	 * A Boolean value indicating whether JavaScript can open windows without user interaction.
+	 */
+	javaScriptCanOpenWindowsAutomatically?: boolean;
+
+}
 /**
  * Dictionary specifying the transition animation used with the <Titanium.UI.iOS.createTransitionAnimation> method.
  */
@@ -61999,7 +64131,6 @@ interface transitionAnimationParam {
 	transitionTo?: Titanium.UI.Animation;
 
 }
-
 /**
  * Dictionary of options for <Titanium.UI.iPad.Popover.show> and <Titanium.UI.iPad.Popover.hide>.
  */
@@ -62021,7 +64152,6 @@ interface PopoverParams {
 	view: Titanium.UI.View;
 
 }
-
 /**
  * Reply message received from watch app.
  */
@@ -62047,7 +64177,6 @@ interface MessageReply {
 	code?: number;
 
 }
-
 /**
  * Properties passed to a yql callback to report a success or failure.
  */
